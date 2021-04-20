@@ -1,0 +1,73 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+section {
+  padding: 3rem;
+  flex: 1;
+  display: flex;
+  margin-left: 150px;
+  flex-direction: column;
+}
+  .sidenav {
+    height: 100%;
+    width: 160px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: rgb(220, 223, 235);
+    overflow-x: hidden;
+    padding-top: 20px;
+    border-radius: 4px;
+  }
+
+  .sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 17px;
+    color: #302626;
+    display: block;
+  }
+  
+  .sidenav a:hover {
+    color: #400053;
+    background-color: rgb(74, 71, 255);
+  }
+  
+  .main {
+    margin-left: 160px; /* Same as the width of the sidenav */
+    font-size: 28px; /* Increased text to enable scrolling */
+    padding: 0px 10px;
+  }
+  .button{
+    float: left;
+    display: block;
+    width: 150px;
+    padding: 8px 0;
+    margin: 30px auto;
+    background: #4979ff;
+    border-radius: 1200px;
+    color:white;
+    text-align:center;
+    
+  }
+  .button a{
+   
+
+      font-size: px;
+ 
+  }
