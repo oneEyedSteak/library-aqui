@@ -13,13 +13,14 @@
     "final-form": "^4.20.2",
     "next": "10.0.9",
     "next-auth": "^3.14.8",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
     "react-final-form": "^6.5.3",
     "serverless-mysql": "^1.5.4",
     "styled-components": "^5.2.3"
   },
   "devDependencies": {
+    "@tailwindcss/custom-forms": "^0.2.1",
     "autoprefixer": "^10.2.5",
     "postcss": "^8.2.10",
     "tailwindcss": "^2.1.1"
