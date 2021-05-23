@@ -1,6 +1,6 @@
 import mysql from '../../providers/mysql';
 
-export default async function (req, res) {
+export default async function LogIn({uname, password}) {
     try {
         const { uname, 
             password } = req.body;
@@ -10,7 +10,7 @@ export default async function (req, res) {
 
         await mysql.end()
 
-        res.status(200).json({ message: 'Succesfully Created' });
+        res.status(200).json({ message: 'Succesfully Logged in' });
     } catch (error) {
         res.status(400).json({ message: 'Error' });
     }

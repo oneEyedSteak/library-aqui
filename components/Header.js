@@ -39,8 +39,8 @@ const Header = () => {
             </div>
           </div>
           <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-            <button class="ml-4 bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none ring-1 focus:ring-offset-1 focus:ring-offset-gray-700 focus:ring-white">
-              <Link href="/login"><span className="  hover:text-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium">Log In</span></Link>
+            <button class="mr-2 bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none ring-1 focus:ring-offset-1 focus:ring-offset-gray-700 focus:ring-white">
+              <Link href="/login"><span className="  hover:text-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium ">Log In</span></Link>
             </button>
             <button class="bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none ring-1 focus:ring-offset-0 focus:ring-offset-gray-700 focus:text-red-50 focus:ring-white">
 
@@ -52,7 +52,7 @@ const Header = () => {
 
         </div>
       </div>
-      <div class="sm:hidden" id="mobile-menu">
+      {/* <div class="sm:hidden" id="mobile-menu">
         <div class="px-2 pt-2 pb-3 space-y-1">
 
           <a href="#" class="bg-gray-900 text-white block px-3 py-2 rounded-md text-base font-medium" aria-current="page">Dashboard</a>
@@ -63,7 +63,7 @@ const Header = () => {
 
           <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Calendar</a>
         </div>
-      </div>
+      </div> */}
     </nav >
 
   );
