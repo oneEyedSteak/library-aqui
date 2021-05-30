@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { useSession } from 'next-auth/client';
-
+import Head from 'next/head'
 export default function Landing() {
     const [session] = useSession();
 
@@ -11,6 +11,11 @@ export default function Landing() {
           
         {JSON.stringify(session)}
 
+        <Head>
+                <title>Library Acquisition | Welcome! </title>
+                <meta name="keywords" content="someting" />
+                <link rel="icon" href="/icon.ico" />
+            </Head>
 
             <div class="md:relaive mx-8 lg:float-right lg:px-6">
 

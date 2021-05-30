@@ -2,11 +2,11 @@ import mysql from '../../providers/mysql';
 
 export default async function (req, res) {
     try {
-        const { uname, fname, mname, lname, password, email, pnumber } = req.body;
+        const { uname, fname, mname, lname, password, email, pnumber, selectDepartment, selectPosition } = req.body;
 
   
-         await mysql.query(`INSERT INTO users(username, fname, mname, lname, password, email, pnumber) VALUES('${uname}',
-          '${fname}', '${mname}', '${lname}', '${password}', '${email}', '${pnumber}')`)
+         await mysql.query(`INSERT INTO users(username, fname, mname, lname, password, email, pnumber, selectDepartment, selectPosition) VALUES('${uname}',
+          '${fname}', '${mname}', '${lname}', '${password}', '${email}', '${pnumber}', '${selectDepartment}' ,'${selectPosition}')`)
 
         await mysql.end()
 

@@ -11,6 +11,8 @@ export default function Home() {
       <Head>
         <title>Library Acquisition | Home </title>
         <meta name="keywords" content="someting" />
+        <link rel="icon" href="/icon.ico" />
+
       </Head>
       <div className="  from-blue-900 to-yellow-600 bg-gradient-to-br min-h-screen mx-auto mt2">
         <div className='"max-w-7xl mx-auto px-2 sm:px-6 lg:px-8'>
