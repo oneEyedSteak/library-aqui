@@ -2,13 +2,13 @@ import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useSession } from 'next-auth/client'
+
 export default function Home() {
 
 
   return (
     <>
       <Head>
-
         <title>Library Acquisition | Home </title>
         <meta name="keywords" content="someting" />
       </Head>

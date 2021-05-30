@@ -12,7 +12,7 @@ export default function Landing() {
         {JSON.stringify(session)}
 
 
-            <div class="md:relaive mx-auto lg:float-right lg:px-6">
+            <div class="md:relaive mx-8 lg:float-right lg:px-6">
 
                 <ul class="list-reset flex flex-row md:flex-col text-center md:text-left">
                 {JSON.stringify(session)}

@@ -21,7 +21,9 @@ const options = {
 
               if (data) {
                 return user
+             
               } else {
+                
                 return null
               }
             } catch (error) {

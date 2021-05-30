@@ -1,5 +1,7 @@
 import { Form, Field } from 'react-final-form'
 import axios from 'axios';
+import Head from 'next/head'
+
 
 export default function RequestForm() {
     const handleOnSubmit = async (payload) => {
@@ -10,6 +12,11 @@ export default function RequestForm() {
 
     return (
         <section className=" mx-auto p-10 md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen ">
+
+            <Head>
+                <title>Library Acquisition | Request Form </title>
+                <meta name="keywords" content="someting" />
+            </Head>
 
             <Form
                 onSubmit={handleOnSubmit}
@@ -176,9 +183,9 @@ export default function RequestForm() {
 
                         <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-end">
                             <label htmlFor="addedas" className="">
-                            <span className="  text-xs font-bold  text-gray-700 mb-1">Added as --</span>
+                                <span className="  text-xs font-bold  text-gray-700 mb-1">Added as --</span>
                             </label>
-                            
+
                             <label htmlFor="nrush" className="ml-1">
                                 <Field className=" text-xs text-gray-500 form-radio h-3 w-3 rounded-sm " name="addedAs" component="input" type="radio" value="newCopy" />
                                 <span className="  text-xs font-bold  text-gray-700 mb-1">New Copy</span>

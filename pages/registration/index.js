@@ -1,4 +1,6 @@
 import { Form, Field } from 'react-final-form'
+import Head from 'next/head'
+
 import axios from 'axios';
 
 export default function RegistrationForm() {
@@ -9,6 +11,12 @@ export default function RegistrationForm() {
   }
 
   return (
+<>
+    <Head>
+    <title>Library Acquisition | Sign Up </title>
+    <meta name="keywords" content="someting" />
+</Head>
+
     <section className="mx-auto p-6 bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen">
 
       <Form
@@ -69,6 +77,7 @@ export default function RegistrationForm() {
         )}
       />
     </section>
+    </>
   )
 
 }

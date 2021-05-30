@@ -40,7 +40,7 @@ const Header = () => {
           </div>
           <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             <button class="mr-2 bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none ring-1 focus:ring-offset-1 focus:ring-offset-gray-700 focus:ring-white">
-              <Link href="/login"><span className="  hover:text-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium ">Log In</span></Link>
+              <Link href="/login"><span className="  hover:text-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium ">Sign In</span></Link>
             </button>
             <button class="bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white focus:outline-none ring-1 focus:ring-offset-0 focus:ring-offset-gray-700 focus:text-red-50 focus:ring-white">
 
