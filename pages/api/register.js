@@ -5,8 +5,7 @@ export default async function (req, res) {
         const { uname, fname, mname, lname, password, email, pnumber, selectDepartment, selectPosition } = req.body;
 
   
-         await mysql.query(`INSERT INTO users(username, fname, mname, lname, password, email, pnumber, selectDepartment, selectPosition) VALUES('${uname}',
-          '${fname}', '${mname}', '${lname}', '${password}', '${email}', '${pnumber}', '${selectDepartment}' ,'${selectPosition}')`)
+         await mysql.query(`INSERT INTO users(uname, fname, mname, lname, password, email, pnumber, selectDepartment, selectPosition) VALUES('${uname}','${fname}', '${mname}', '${lname}', '${password}', '${email}', '${pnumber}', '${selectDepartment}','${selectPosition}')`)
 
         await mysql.end()
 

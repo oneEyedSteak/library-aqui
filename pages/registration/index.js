@@ -2,7 +2,6 @@ import { Form, Field } from 'react-final-form'
 import Head from 'next/head'
 
 import axios from 'axios';
-import { options } from 'next-auth/client';
 
 export default function RegistrationForm() {
   const handleOnSubmit = async (payload) => {
@@ -31,8 +30,8 @@ export default function RegistrationForm() {
 
 
                 <div className="content-around justify-center  flex items-center">
-                  <img class="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-                  <img class="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+                  <img className="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+                  <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
 
                 </div>
                 <div className="justify-center  flex items-center">
@@ -75,7 +74,7 @@ export default function RegistrationForm() {
                 </label>
 
                 <label htmlFor="lname" className="block mt-2">
-                  <span className="block text-xs text-gray-500  font-bold text-gray-500  mb-1">Lastname</span>
+                  <span className="block text-xs   font-bold text-gray-500 mb-1">Lastname</span>
                   <Field className=" placeholder-gray-400 focus:placeholder-gray-500 placeholder-opacity-50 rounded-md border-gray-300 w-full shadow-sm " name="lname" component="input" type="text" placeholder="Lastname"  />
                 </label>
 
@@ -126,11 +125,10 @@ export default function RegistrationForm() {
                   <label htmlFor="pnumber" className="block mt- ">
                     <span className="block  text-xs font-bold text-gray-500 mb-1">Contact Number</span>
                     <Field className="rounded-md border-gray-300 shadow-sm   placeholder-gray-400 
-                focus:placeholder-gray-500 placeholder-opacity-50  "  name="pnumber" component="input" type="text" autoComplete placeholder="Contact#" />
+                focus:placeholder-gray-500 placeholder-opacity-50" name="pnumber" component="input" type="text" autoComplete placeholder="Contact#" />
                   </label>
 
                 </div>
-
 
                 <div className="block text-right mt-5">
                   <button type="submit" className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 

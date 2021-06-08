@@ -1,5 +1,5 @@
 import { Form, Field } from 'react-final-form'
-import axios from 'axios';
+import axios from 'axios'
 import Head from 'next/head'
 
 
@@ -26,26 +26,30 @@ export default function RequestForm() {
                     <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w-2/3 mx-auto min-h-screen ">
 
                         <div className="flex-shrink-0 flex content-around items-center">
-                            <img class="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-                            <img class="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+                            <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+                            <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
                             <h1 className="text-xl mt 4 font-bold text-gray-600 ">Library Acquisition Request Form</h1>
+                            
                         </div>
 
                         <div className="flex space-y-6  justify-end">
 
                             <label htmlFor="date" className="block ">
-                                <span className="block  text-xs font-bold  text-gray-500 mb-1">Select Date</span>
+                                <span className="block  text-xs font-bold  text-gray-500 mb-1">Requested Date</span>
                                 <Field className="placeholder-gray-500 text-xs w-min placeholder-opacity-50 rounded-md border-gray-300 shadow-sm 
                                   leading-none focus:outline-none focus:shadow-outline text-gray-600 font-medium mr-4" name="date" component="input" type="date" />
                             </label>
+
                             <label htmlFor="rush" className=" mr-2 ">
                                 <Field className="text-gray-500 form-radio h-3 w-3 rounded-sm" name="rushornrush" component="input" type="radio" value="Rush" />
                                 <span className="  text-xs font-bold  text-gray-500 mb-1">Rush</span>
                             </label>
+
                             <label htmlFor="nrush" className="">
                                 <Field className=" text-xs text-gray-500 form-radio h-3 w-3 rounded-sm " name="rushornrush" component="input" type="radio" value="Not Rush" />
                                 <span className="  text-xs font-bold  text-gray-500 mb-1">Not Rush</span>
                             </label>
+                            
                         </ div>
 
                         <label htmlFor="author" className="">
@@ -65,21 +69,21 @@ export default function RequestForm() {
                         <div className="flex flex-row space-x-4">
                             <label htmlFor="edition" className="mt-11">
                                 <span className="block  text-xs font-bold text-gray-500 underline">Edition</span>
-                                <Field className="text-xs focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2 
+                                <Field className="text-xs focus:placeholder-gray-400  md:w-full  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2 
                                         block w-36 px-0   mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                                     component="input" name="edition" type="text" placeholder="Edition" />
                             </label>
 
                             <label htmlFor="copvol" className="mt-9 ">
                                 <span className="  text-xs font-bold text-gray-500">Copies/Volumes</span>
-                                <Field className="text-xs pt-3 pb-2 block  w-36 px-0 mt-0 focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-50   bg-transparent border-0 
+                                <Field className="text-xs pt-3 pb-2 block md:w-full   w-36 px-0 mt-0 focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-50   bg-transparent border-0 
                                     border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                                     component="input" name="copvol" type="text" placeholder="#" />
                             </label>
 
                             <label htmlFor="pdate" className="mt-9 relative z-0 w-36 mb-5 ">
                                 <span className="  text-xs font-bold text-gray-500">Publication Date</span>
-                                <Field className="text-xs pt-3 pb-2 block w-full px-0 mt-0 bg-transparent border-0
+                                <Field className="text-xs pt-3 pb-2 block  md:w-full  w-full px-0 mt-0 bg-transparent border-0
                                      border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                                     component="input" name="pubdate" type="date" placeholder="#" />
                             </label>
@@ -88,13 +92,13 @@ export default function RequestForm() {
 
                         <label htmlFor="chargedto" className="">
                                 <span className="block  text-xs font-bold text-gray-500 mb-1">Publisher Name</span>
-                                <Field className="text-xs mr-4 w-96 span-12 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2 
+                                <Field className="text-xs mr-4  md:w-full  w-96 span-12 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2 
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                                     component="input" name="pubName" type="text" placeholder="Publisher Name" />
                             </label>
                             <label htmlFor="chargedto" className=" ">
                                 <span className="block  text-xs font-bold text-gray-500 mb-1">Publisher Address</span>
-                                <Field className="text-xs mr-4 w-96 span-12 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2 
+                                <Field className="text-xs  md:w-full  mr-4 w-96 span-12 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2 
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                                     component="input" name="pubAddress" type="text" placeholder="Publisher Address" />
                             </label>
@@ -222,7 +226,7 @@ export default function RequestForm() {
                         
                 <div className="block text-right mt-5">
                   <button type="submit" className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Sign Up</button>
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Send Request</button>
                 </div>
 
                     </form>

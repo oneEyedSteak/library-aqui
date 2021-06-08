@@ -5,7 +5,7 @@ export default async function (req, res) {
         const { date, rushornrush, authorName, title, edition, copvol, pubdate, pubName, pubAddress, recby, recomby, chargeto, subject, enumtitle, notereqform, dealer, price,dated, sinumb, addedAs} = req.body;
 
   
-         await mysql.query(`INSERT INTO requestform( date, rushornrush, authorName, title, edition, copvol, pubdate, pubName, pubAddress, recby, recomby, chargeto, subject, enumtitle, notereqform, dealer, price, dated, sinumb, addedAs) VALUES('${date}','${rushornrush}',
+         await mysql.query(`INSERT INTO requestform(date, rushornrush, authorName, title, edition, copvol, pubdate, pubName, pubAddress, recby, recomby, chargeto, subject, enumtitle, notereqform, dealer, price, dated, sinumb, addedAs) VALUES('${date}','${rushornrush}',
          '${authorName}','${title}','${edition}','${copvol}','${pubdate}','${pubName}','${pubAddress}','${recby}','${recomby}','${chargeto}','${subject}' ,'${enumtitle}' ,'${notereqform}','${dealer}',
          '${price}','${dated}','${sinumb}','${addedAs}')`)
 

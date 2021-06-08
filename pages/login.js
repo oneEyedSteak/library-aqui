@@ -1,4 +1,3 @@
-
 import { getCsrfToken } from 'next-auth/client'
 import Head from 'next/head'
 
@@ -23,8 +22,8 @@ export default function SignIn({ csrfToken }) {
         <form method='post' action='/api/auth/callback/credentials' className="px-8 py-8 grid grid-cols-1 p-6 bg-white  rounded-md mx-auto  w-1/4 ">
 
           <div className="content-around justify-center mx-auto items-center">
-            <img class="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-            <img class="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+            <img className="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+            <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
             <h1 className="text-xl mt-1 ml-2 font-bold text-gray-600 ">  Sign In</h1>
           </div>
 
@@ -33,7 +32,7 @@ export default function SignIn({ csrfToken }) {
 
           <label className="block">
             <span className="block font-bold text-gray-500 pt-3">Username</span>
-            <input placeholder="Username" name='username' type='text' className="mt-1 rounded-md border-gray-300 shadow-sm w-full
+            <input placeholder="Username" name='uname' type='text' className="mt-1 rounded-md border-gray-300 shadow-sm w-full
             focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50" />
           </label>
           <br />

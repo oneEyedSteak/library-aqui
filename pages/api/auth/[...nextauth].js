@@ -1,7 +1,6 @@
 import NextAuth from "next-auth"
 import Providers from "next-auth/providers"
 import mysql from '../../../providers/mysql'
-import axios from 'axios';
 
 const options = {
 
@@ -17,7 +16,7 @@ const options = {
               const { username, password } = credentials;
               const user = { id: 1, name: username, email: username }
          
-              const data = await mysql.query(`SELECT username, password FROM users WHERE username ='${username}' && password ='${password}'`)
+              const data = await mysql.query(`SELECT uname, password FROM users WHERE username ='${username}' && password ='${password}'`)
 
               if (data) {
                 return user
