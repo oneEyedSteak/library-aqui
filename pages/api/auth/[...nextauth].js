@@ -31,11 +31,11 @@ const options = {
           }
         })
       ],
-      callbacks: {
-        async redirect(url, baseUrl) {
-          return '/landing'
-        },
-      }
+      // callbacks: {
+      //   async redirect(url, baseUrl) {
+      //     return '/landing'
+      //   },
+      // }
  }
 
  
