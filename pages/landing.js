@@ -1,10 +1,7 @@
 import Link from 'next/link'
-import { useSession } from 'next-auth/client';
 import Head from 'next/head'
 
 export default function Landing() {
-    const [session] = useSession();
-
     return (
         <section className=" mx-auto md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen ">
 
