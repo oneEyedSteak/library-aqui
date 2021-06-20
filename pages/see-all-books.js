@@ -4,13 +4,14 @@
 export const getStaticProps = async () => {
     const res = await fetch("http://localhost:3000/api/postBooks");
     const posts = await res.json();
-  
+
     return {
-      props: { booksDisplay: posts }
+        props: { booksDisplay: posts }
     }
 
-const   = () => {
-    
+}
+const seeAllBooks = () => {
+
     return (
 
         <>
@@ -31,9 +32,9 @@ const   = () => {
                 </div>
 
 
-                    {booksDisplay.map(books => (
-                        <BookCards books={books} key={books.entryBooksID} />
-                    ))}
+                {booksDisplay.map(books => (
+                    <BookCards books={books} key={books.entryBooksID} />
+                ))}
             </section>
         </>
 
