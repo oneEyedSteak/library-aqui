@@ -3,7 +3,6 @@ import BookCards from '../components/BookCards';
 import { useSession } from 'next-auth/client';
 
 
-const [session] = useSession();
 
 
 
@@ -19,6 +18,7 @@ export const getStaticProps = async () => {
 }
 
 const Home = ({ booksDisplay }) => {
+  const [session] = useSession();
 
 
   return (
@@ -36,13 +36,18 @@ const Home = ({ booksDisplay }) => {
         </div>
         <div>
           <h2 className="bg-gray-100  p-4 mt-5 mb-1 rounded">See What's new! </h2>
+          
         </div>
+        <table className="table p-4 bg-white shadow rounded-lg">
+        
+        <tr>
+
+                </tr>
         {booksDisplay.map(books => (
-
-          <BookCards books={books} key={books.BookID} />
-
+          <BookCards books={books} key={books.entryBooksID} />
         ))}
-
+                {JSON.stringify(session)}
+</table>
       </section>
     </>
   )
