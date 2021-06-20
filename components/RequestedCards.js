@@ -2,7 +2,7 @@
 
 
 
-const bookcards = ({ books }) => {
+const seeAllRequestBooks = ({ reqbooks }) => {
     return (
         <>
 
@@ -40,4 +40,4 @@ const bookcards = ({ books }) => {
     );
 }
 
-export default bookcards;
+export default seeAllRequestBooks;

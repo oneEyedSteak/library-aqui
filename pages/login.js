@@ -30,14 +30,14 @@ export default function SignIn({ csrfToken }) {
 
           <input name='csrfToken' type='hidden' defaultValue={csrfToken} />
 
-          <label className="block">
+          <label for="uname" className="block">
             <span className="block font-bold text-gray-500 pt-3">Username</span>
             <input placeholder="Username" name='uname' type='text' className="mt-1 rounded-md border-gray-300 shadow-sm w-full
             focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50" />
           </label>
           <br />
 
-          <label>
+          <label for="password">
             <span className="block  font-bold text-gray-500 mb-">Password</span>
             <input placeholder="Password" className="mt-1 rounded-md border-gray-300 shadow-sm w-full  focus:placeholder-gray-700
             placeholder-gray-500 placeholder-opacity-50 " name='password' type='password' />

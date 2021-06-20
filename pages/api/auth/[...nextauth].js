@@ -8,15 +8,16 @@ const options = {
         Providers.Credentials({
           name: 'Credentials',
           credentials: {
-            username: { label: "Username", type: "text" },
-            password: {  label: "Password", type: "password" }
+            username: { label: "uname", type: "text" },
+            password: {  label: "password", type: "password" }
           },
+
           async authorize(credentials, req) {
             try {
-              const { username, password } = credentials;
-              const user = { id: 1, name: username, email: username }
+              const { id, uname, password } = credentials;
+              const user = {  name: uname, password: password}
          
-              const data = await mysql.query(`SELECT uname, password FROM users WHERE username ='${username}' && password ='${password}'`)
+              const data = await mysql.query(`SELECT uname, password FROM users WHERE  uname ='${uname}' && password ='${password}'`)
 
               if (data) {
                 return user

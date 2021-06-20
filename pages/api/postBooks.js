@@ -3,7 +3,7 @@ import mysql from '../../providers/mysql';
 export default async function (_, res) {
     try {
 
-        const result = await mysql.query('SELECT * FROM entry_books');
+        const result = await mysql.query ('SELECT * FROM entry_books');
         // const { date, rushornrush, authorName, title, edition, copvol, pubdate, pubName, pubAddress, recby, recomby, chargeto, subject, enumtitle, notereqform, dealer, price,dated, sinumb, addedAs} = req.body;
 
   
