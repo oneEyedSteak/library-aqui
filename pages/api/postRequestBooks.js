@@ -2,7 +2,7 @@ import mysql from '../../providers/mysql';
 
 export default async (_, res) => {
   try {
-    const result = await mysql.query('SELECT * FROM requestform WHERE status = 1 ');
+    const result = await mysql.query('SELECT * FROM requestform WHERE status = 0');
 
     return res.json(result);
   } catch (error) {

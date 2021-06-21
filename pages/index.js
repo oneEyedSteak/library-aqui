@@ -1,25 +1,19 @@
-import Head from 'next/head'
-import BookCards from '../components/BookCards';
+import Head from 'next/head';
 import { useSession } from 'next-auth/client';
-
-
-
-
-
+import BookCards from '../components/BookCards';
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/postBooks");
+  const res = await fetch('http://localhost:3000/api/postBooks');
   const posts = await res.json();
 
+  console.log();
   return {
-    props: { booksDisplay: posts }
-  }
-
-}
+    props: { booksDisplay: posts },
+  };
+};
 
 const Home = ({ booksDisplay }) => {
   const [session] = useSession();
-
 
   return (
     <>
@@ -29,27 +23,28 @@ const Home = ({ booksDisplay }) => {
         <link rel="icon" href="/icon.ico" />
 
       </Head>
+
       <section className="max-w-screen from-blue-900 to-yellow-600 bg-gradient-to-br min-h-screen mx-auto ">
 
         <div className=" mx-auto  sm:px-6 lg:px-8">
-          <img src='/1234.jpg' className=" w-full h-10/12 mx-auto  " />
+          <img src="/1234.jpg" className=" w-full h-10/12 mx-auto  " />
         </div>
-        <div>
-          <h2 className="bg-gray-100  p-4 mt-5 mb-1 rounded">See What's new! </h2>
-          
-        </div>
-        <table className="table p-4 bg-white shadow rounded-lg">
-        
-        <tr>
 
-                </tr>
-        {booksDisplay.map(books => (
+        <div>
+          <h2 className=" bg-gray-100 w-3/4 mx-auto p-4 mt-2 rounded"> See What's new! </h2>
+        </div>
+        <div className="p-28 grid grid-cols-3 gap-1 sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5 xl:grid-cols-4">
+
+          {
+        booksDisplay && booksDisplay.map((books) => (
           <BookCards books={books} key={books.entryBooksID} />
-        ))}
-                {JSON.stringify(session)}
-</table>
+        ))
+        }
+        </div>
       </section>
+      {JSON.stringify(session)}
+
     </>
-  )
-}
+  );
+};
 export default Home;

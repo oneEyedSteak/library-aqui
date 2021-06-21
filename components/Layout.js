@@ -1,16 +1,11 @@
+import Header from './Header';
 
-import Navbar from './Navbar'
-import Footer from './Footer'
-import Header from './Header'
+const Layout = ({ children }) => (
+  <div className="content">
+    <Header />
+    { children }
 
-const Layout = ({ children }) => {
-    return (
-        <div className="content">
-            <Header/>
-{ children }
-
-        </div>
-    );
-}
+  </div>
+);
 
 export default Layout;
