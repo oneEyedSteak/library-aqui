@@ -18,7 +18,6 @@ const seeAllBooks = ({ books }) => (
         <th className="border p-4 dark:border-dark-5 whitespace-nowrap font-normal text-gray-900">
           Entry Date
         </th>
-
       </tr>
     </thead>
     <tbody>

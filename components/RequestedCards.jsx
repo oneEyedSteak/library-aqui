@@ -13,7 +13,6 @@ const seeAllRequestBooks = ({ requestBook }) => (
         </div>
         <div className=" flex p-2">
           <div className=" space-y-1">
-
             <p className="text-gray-700 text-s">
               Date Requested:
               {new Date(requestBook.date).toDateString()}
