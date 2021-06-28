@@ -24,5 +24,16 @@ module.exports = {
     // allow jsx syntax in js files (for next.js project)
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], // should add ".ts" if typescript project,
     'react/prop-types': 0,
+    'jsx-a11y/label-has-associated-control': ['error', {
+      required: {
+        some: ['nesting', 'id'],
+      },
+    }],
+    'jsx-a11y/label-has-for': ['error', {
+      required: {
+        some: ['nesting', 'id'],
+      },
+    }],
+    'no-console': 'off',
   },
 };

@@ -8,33 +8,38 @@ const options = {
     Providers.Credentials({
       name: 'Credentials',
       credentials: {
-        username: { label: 'uname', type: 'text' },
-        password: { label: 'password', type: 'password' },
+        username: { label: 'Username', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
-
       async authorize(credentials) {
         try {
           const { uname, password } = credentials;
-          const user = { name: uname, password };
 
-          const data = await mysql.query(`SELECT uname, password FROM users WHERE  uname ='${uname}' && password ='${password}'`);
+          const [data] = await mysql.query(`SELECT * FROM users WHERE uname ='${uname}' && password ='${password}'`);
+          console.log(data);
+          const user = { name: uname, email: data.email };
 
           if (data) {
             return user;
           }
-
           return null;
         } catch (error) {
-          throw Error(error);
+          console.log(error);
         }
+        return this.authorize;
       },
     }),
   ],
-  // callbacks: {
-  //   async redirect(url, baseUrl) {
-  //     return '/landing'
-  //   },
-  // }
+  callbacks: {
+    async session(session, user) {
+      const [data] = await mysql.query(`SELECT * FROM users WHERE email ='${user.email}'`);
+
+      // eslint-disable-next-line no-param-reassign
+      session.account = data;
+
+      return session;
+    },
+  },
 };
 
 export default (req, res) => NextAuth(req, res, options);

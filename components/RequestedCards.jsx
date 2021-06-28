@@ -1,141 +1,156 @@
 import Link from 'next/link';
 
-const seeAllRequestBooks = ({ requestBook }) => (
+export default function BookCards({ requestBook }) {
+  return (
+    <div className="md:container md:mx-aut ">
+      <div className=" w-full lg:max-w-full lg:flex flex text-sm">
+        <div className="border-2 rounded-l border-gray-400 lg:border-l-1 lg:border-t\
+   lg:border-gray-400 bg-white  lg:rounded-b-1
+    lg:rounded-r p-4 flex flex-col justify-between leading-normal"
+        >
+          <div className="mb-8">
+            <img className="w-auto h-auto  lazy mr-4" src="bookcover.jpg" alt="Book Cover" />
+          </div>
+          <small className="font-thin text-gray-700">
+            {requestBook.rushornrush}
+          </small>
 
-  <div className="md:container md:mx-auto   ">
+          <h4 className="text-gray-600 font-bold text-2xl mb-2">{requestBook.title}</h4>
+          <p className="text-gray-600 mb-5">
+            {requestBook.notereqform}
+          </p>
+          <div className="flex justify-between space-x-1 text-gray-600 text-xs">
+            <div>
+              <small className="font-bold">Author</small>
+              <p className="text-gray-600 mb-2 font-thin ">
+                {requestBook.authorName}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold">Publisher</small>
+              <p className="font-thin ">
+                {requestBook.pubName}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold ">Publisher Address</small>
+              <p className="font-thin px-4">
+                {requestBook.pubAddress}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold">Edition</small>
+              <p className="font-thin  underline">
+                {requestBook.edition}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold">Copy of Volumes</small>
+              <p className="px-9 underline font-thin ">
+                {requestBook.copvol}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold ">Subject</small>
+              <p className=" font-thin ">
+                {requestBook.subject}
+              </p>
+            </div>
 
-    <div className=" w-full h-auto lg:max-w-full lg:flex">
+          </div>
+          <div className="flex justify-between space-x-1 text-gray-600 text-xs">
+            <div>
+              <small className="font-bold ">Recommended By</small>
+              <p className="mb-2 font-thin underline">
+                {requestBook.recomby}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold ">Position</small>
+              <p className=" font-thin ">
+                {requestBook.position}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold ">Charge to</small>
+              <p className=" font-thin underline ">
+                {requestBook.chargeto}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold mr-2">Existing # of Titles</small>
+              <p className=" font-thin ">
+                {requestBook.enumtitle}
+              </p>
+            </div>
 
-      <div className="mx-auto w-3/4 border-r border-b border-l border-t mt-1  border-gray-500 lg:border-l-1 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r lg:rounded-l  flex">
+          </div>
+          <div className="flex justify-between space-x-1 text-gray-600 text-xs">
+            <div>
+              <small className="font-bold mr-2">Dealer</small>
+              <p className=" font-thin mb-2">
+                {requestBook.dealer}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold mr-2">Price</small>
+              <p className=" font-thin ">
+                {requestBook.price}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold mr-2">Dated</small>
+              <p className=" font-thin ">
+                {requestBook.dated}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold mr-2">SI #</small>
+              <p className=" font-thin ">
+                {requestBook.sinumb}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold mr-2">Added As</small>
+              <p className=" font-thin ">
+                {requestBook.addedAs}
+              </p>
+            </div>
 
-        <div className="flex items-center border-r-2 border-gray-500 mr-2">
-          <img className="w-20 h-20 ml-7 mr-7" alt="CPU Logo" src="/cpulog.png" />
-        </div>
-        <div className=" flex p-2">
-          <div className=" space-y-1">
-            <p className="text-gray-700 text-s">
-              Date Requested:
-              {new Date(requestBook.date).toDateString()}
-            </p>
+          </div>
+          <div className="flex justify-between space-x-1 text-gray-600 text-xs">
+            <div>
+              <small className="font-bold mr-2">Status</small>
+              <p className=" font-thin ">
+                { requestBook.status}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold">Publication Date</small>
+              <p className=" font-thin">
+                {new Date(requestBook.pubdate).toDateString()}
+              </p>
+            </div>
+            <div>
+              <small className="font-bold">Requested Date</small>
+              <p className=" font-thin">
+                {new Date(requestBook.date).toDateString()}
+              </p>
+              <Link href={`/enter-books/${requestBook.requestID}`}>
+                <button
+                  type="button"
+                  className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                                     text-white bg-indigo-600 hover:bg-indigo-700
+                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                >
+                  Update Request
+                </button>
+              </Link>
+            </div>
 
-            <p className="text-sm text-gray-600 font-bold flex items-center">
-              Rush or Not Rush:
-              {requestBook.rushornrush}
-            </p>
-
-            <p className="text-sm text-gray-600 font-bold flex items-center">
-              Author:
-              {requestBook.authorName}
-            </p>
-
-            <p>
-              Title:
-              {requestBook.title}
-            </p>
-
-            <p className="text-sm text-gray-600 font-bold flex items-center">
-              Copy of Volumes:
-              {requestBook.copvol}
-            </p>
-
-            <p className="text-gray-700 text-s">
-              Publication Name:
-              {requestBook.pubName}
-            </p>
-
-            <p className="text-gray-700 text-s">
-              Publication Address:
-              {requestBook.pubAddress}
-            </p>
-
-            <p className="text-gray-700 text-s">
-              Publication Date:
-              {new Date(requestBook.pubdate).toDateString()}
-            </p>
-
-            <p className="text-gray-700 text-s">
-              Recommended By:
-              {requestBook.recomby}
-            </p>
-
-            <p className="text-gray-700 text-s">
-              Position :
-              {requestBook.position}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Charge to:
-              {requestBook.chargeto}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Edition:
-              {requestBook.edition}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Subjects:
-              {requestBook.subject}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Existing Number of Titles:
-              {requestBook.enumtitle}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Note:
-              {requestBook.notereqform}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Dealer:
-              {requestBook.dealer}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Price:
-              {requestBook.price}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Dated:
-              {requestBook.dated}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              SI#:
-              {requestBook.sinumb}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Added As:
-              {requestBook.addedAs}
-            </p>
-
-            <p className="text-gray-700 text-xs">
-              Status:
-              {requestBook.status}
-            </p>
-
-            <Link href={`/enter-books/${requestBook.requestID}`}>
-              <button
-                type="button"
-                className="mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                                       text-white bg-indigo-600 hover:bg-indigo-700
-                                      focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-              >
-                Update Request
-              </button>
-            </Link>
           </div>
         </div>
-
       </div>
-
     </div>
-  </div>
-
-);
-
-export default seeAllRequestBooks;
+  );
+}
