@@ -12,7 +12,7 @@ export const getServerSideProps = async (context) => {
   };
 };
 
-export default function seeAllBooks({ requestBook, session }) {
+export default function seeAllBooks({ requestBook }) {
   return (
 
     <>
