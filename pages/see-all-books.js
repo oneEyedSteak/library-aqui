@@ -4,7 +4,9 @@ import api from '../lib/api';
 import RequestedCards from '../components/RequestedCards';
 
 export const getServerSideProps = async (context) => {
+
   const { data } = await api.get('/api/postRequestBooks');
+  
   const session = await validateSession(context);
 
   return {
