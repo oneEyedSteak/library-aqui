@@ -2,35 +2,27 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
-import Popup from 'reactjs-popup';
-import SignaturePad from 'react-signature-canvas';
-import { useRef, useState } from 'react';
 import api from '../../lib/api';
 
 export const getServerSideProps = async (context) => {
-  const { bookId } = context.query;
-  const { data } = await api.get(`/api/books/${bookId}`);
+  const { bookIdDean } = context.query;
+  const { data } = await api.get(`/api/deanbooks/${bookIdDean}`);
 
   console.log(data);
 
   return {
-    props: { book: data },
+    props: { bookDean: data },
 
   };
 };
 
-export default function RequestForm({ book }) {
+export default function RequestForm({ bookDean }) {
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookUpdate', payload);
+    const { data } = await axios.post('/api/bookUpdateDean', payload);
 
     alert(data.message);
   };
   const [session] = useSession();
-  const [imageURL, setImageURL] = useState(null);
-  const sigCanvas = useRef({});
-  const clear = () => sigCanvas.current.clear();
-
-  const save = () => setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
   return (
 
     <section className=" mx-auto  md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen ">
@@ -71,11 +63,11 @@ export default function RequestForm({ book }) {
               <div className="flex space-x-6 content-around items-center mt-10 justify-end">
 
                 <label htmlFor="date" className="block ">
-                  <span className="block  text-xs font-bold  text-gray-500 mb-1">Entry Date</span>
+                  <span className="block  text-xs font-bold  text-gray-500 mb-1">Approved Date</span>
                   <Field
                     className="text-xs font-bold text-gray-500 placeholder-gray-500  w-min placeholder-opacity-50 border-0  border-b-1 focus:outline-none focus:ring-0 focus:border-black  border-gray-300 shadow-sm
                                   leading-none focus:shadow-outline  mr-4"
-                    name="entryDate"
+                    name="approvalDateDean"
                     component="input"
                     type="date"
                     required
@@ -87,15 +79,27 @@ export default function RequestForm({ book }) {
               <div className="flex space-x-6 content-around items-center mt-6">
 
                 <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">Book Reference:</span>
+                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">Name</span>
                   <Field
                     className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                     component="input"
-                    name="bookRef"
+                    name="requestee"
                     type="text"
-                    placeholder="Set ID "
-                    required
+                    initialValue={bookDean.requestee}
+                    disabled
+                  />
+                </label>
+                <label htmlFor="author" className="">
+                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">User ID</span>
+                  <Field
+                    className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                    component="input"
+                    name="userID"
+                    type="text"
+                    initialValue={bookDean.userID}
+                    disabled
                   />
                 </label>
 
@@ -110,7 +114,7 @@ export default function RequestForm({ book }) {
                   name="Author"
                   type="text"
                   placeholder="Author"
-                  initialValue={book.authorName}
+                  initialValue={bookDean.authorName}
                   disabled
                 />
               </label>
@@ -124,7 +128,7 @@ export default function RequestForm({ book }) {
                   name="Title"
                   type="text"
                   placeholder="Title"
-                  initialValue={book.title}
+                  initialValue={bookDean.title}
                   disabled
                 />
               </label>
@@ -139,7 +143,7 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="NumberOfCopies"
                     type="text"
-                    initialValue={book.copvol}
+                    initialValue={bookDean.copvol}
                     disabled
                   />
                 </label>
@@ -152,8 +156,7 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="Edition"
                     type="text"
-                    initialValue={book.edition}
-                    value={book.edition}
+                    initialValue={bookDean.edition}
                     disabled
                   />
                 </label>
@@ -170,24 +173,10 @@ export default function RequestForm({ book }) {
                   component="textarea"
                   name="noteEntry"
                   type="input"
-                  initialValue={book.notereqform}
+                  initialValue={bookDean.notereqform}
                   disabled
                 />
               </label>
-              {imageURL ? (
-                <img
-                  name="signatureImage"
-                  src={imageURL}
-                  alt="signature"
-                  style={{
-                    display: 'block',
-                    margin: '0 auto',
-                    border: '1px solid black',
-                    width: '150px',
-                    backgroundColor: 'white',
-                  }}
-                />
-              ) : null}
 
               <div className="flex space-x-6 content-around items-center mt-10 justify-start">
 
@@ -199,18 +188,18 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="publicationDate"
                     type="text"
-                    initialValue={new Date(book.pubdate).toDateString()}
+                    initialValue={new Date(bookDean.pubdate).toDateString()}
                     disabled
                   />
                 </label>
 
                 <label htmlFor="selectDosition" className="block mt-2">
                   <span className="block  text-xs font-bold text-gray-500 p">Select Status</span>
-                  <Field name="status" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
+                  <Field name="approvalDean" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
 
                     <option value=""> </option>
                     <option className="block text-xs font-bold text-gray-500" value="0">On Going</option>
-                    <option className="block text-xs font-bold text-gray-500" value="1">Added</option>
+                    <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
 
                   </Field>
                 </label>
@@ -223,8 +212,8 @@ export default function RequestForm({ book }) {
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                   component="input"
                   name="requestID"
-                  type="hidden"
-                  initialValue={book.requestID}
+                  type="text"
+                  initialValue={bookDean.requestID}
                 />
               </label>
               <div className="block text-right mt-5">
@@ -236,58 +225,6 @@ export default function RequestForm({ book }) {
                   Update Request
 
                 </button>
-
-                <Popup
-                  modal
-                  trigger={(
-                    <button
-                      className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      a
-                      type="button"
-                    >
-                      {' '}
-                      Sign Here
-                    </button>
-          )}
-                  closeOnDocumentClick={false}
-                >
-                  {(close) => (
-                    <>
-                      <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
-                      <div className="space-x-2  justify-items-center ">
-                        <button
-                          className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-               text-white bg-indigo-600 hover:bg-indigo-700
-              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={clear}
-                        >
-                          clear
-                        </button>
-                        <button
-                          className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={close}
-                        >
-                          Close
-                        </button>
-                        <button
-                          className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={save}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </Popup>
               </div>
 
             </form>

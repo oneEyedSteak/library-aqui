@@ -67,6 +67,13 @@ export default function Header() {
                   See All Requested Books-Dean
                 </span>
               </Link>
+              <Link href="/see-all-books-vpaa">
+                <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  See All Requested Books-VPAA
+                </span>
+              </Link>
               <Link href="/requestform">
                 <span className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"

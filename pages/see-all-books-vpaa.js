@@ -1,26 +1,21 @@
 import Head from 'next/head';
-import validateSession from '../lib/session';
 import mysql from '../providers/mysql';
-import RequestedCardsDean from '../components/RequestedCardsDean';
+import RequestedCardsVPAA from '../components/RequestedCardsVPAA';
 
-export const getServerSideProps = async (context) => {
+export const getServerSideProps = async () => {
   try {
-    const { account } = await validateSession(context);
-
-    const result = await mysql.query(`SELECT * FROM requestform WHERE approvalDean = 0 && 
-    selectDepartment = ('${account.selectDepartment}')`);
+    const result = await mysql.query('SELECT * FROM requestform WHERE approvalDean = 1 AND approvalVpaa = 0');
 
     const post = JSON.parse(JSON.stringify(result));
     return {
-      props: { booksDeanDisplay: post },
+      props: { booksVPAADisplay: post },
     };
   } catch (error) {
     return { props: { post: false } };
   }
 };
-
-export default function seeAllBooksDean({ booksDeanDisplay }) {
-  console.log(booksDeanDisplay);
+export default function seeAllBooksVPAA({ booksVPAADisplay }) {
+  console.log(booksVPAADisplay);
 
   return (
     <>
@@ -43,11 +38,11 @@ export default function seeAllBooksDean({ booksDeanDisplay }) {
         >
           {
 
-booksDeanDisplay && booksDeanDisplay.map((reqbook) => (
-  <RequestedCardsDean booksDeanDisplay={reqbook} />
-))
+            booksVPAADisplay && booksVPAADisplay.map((reqbook) => (
+              <RequestedCardsVPAA booksVPAADisplay={reqbook} />
+            ))
 
-        }
+          }
         </div>
       </section>
     </>

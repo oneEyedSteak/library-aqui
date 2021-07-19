@@ -3,32 +3,23 @@ import axios from 'axios';
 import Head from 'next/head';
 import validateSession from '../lib/session';
 
-
 export const getServerSideProps = async (context) => {
-
   const { account } = await validateSession(context);
-
 
   return {
     props: { account },
   };
-
-}
-
+};
 
 export default function RequestForm({ account }) {
-
   const handleOnSubmit = async (payload) => {
-
     const { data } = await axios.post('/api/requestform', payload);
 
     alert(data.message);// eslint-disable-line no-alert
-
   };
   return (
 
     <section className=" mx-auto p-10 md:flex from-blue-900 to-yellow-600 bg-gradient-to-br  min-h-screen ">
-
 
       <Head>
         <title>Library Acquisition | Request Form </title>
@@ -48,7 +39,7 @@ export default function RequestForm({ account }) {
               component="input"
               name="userID"
               type="hidden"
-              initialValue={account.userID}
+              initialValue={account.id}
             />
             <Field
               className="form-text text-xs font-bold text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
@@ -56,9 +47,9 @@ export default function RequestForm({ account }) {
               component="input"
               name="requestee"
               type="hidden"
-              initialValue={account.fname+" "+ account.mname+" "+account.lname}
+              initialValue={account.fname + account.mname + account.lname}
             />
-          
+
             <Field
               className="form-text text-xs font-bold text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
@@ -75,9 +66,7 @@ export default function RequestForm({ account }) {
               type="hidden"
               initialValue={account.selectPosition}
             />
-          
-            {/* ends here */}
-            
+
             <div className="flex-shrink-0 flex content-around items-center">
               <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
               <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
@@ -95,6 +84,7 @@ export default function RequestForm({ account }) {
                   name="date"
                   component="input"
                   type="date"
+                  Required
                 />
               </label>
 
@@ -119,7 +109,6 @@ export default function RequestForm({ account }) {
                 placeholder="Author"
               />
             </label>
-
 
             <label htmlFor="title" className=" ">
               <span className="block  text-xs font-bold text-gray-500 ">Title</span>
@@ -393,7 +382,6 @@ export default function RequestForm({ account }) {
           </form>
         )}
       />
-
 
     </section>
   );
