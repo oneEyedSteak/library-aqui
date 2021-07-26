@@ -7,12 +7,12 @@ export const getServerSideProps = async (context) => {
   try {
     const { account } = await validateSession(context);
 
-    const result = await mysql.query(`SELECT * FROM requestform WHERE approvalDean = 0 && 
-    selectDepartment = ('${account.selectDepartment}')`);
+    const result = await mysql.query(`SELECT * FROM requestform WHERE approvalDean = 0 AND
+    selectDepartment = ('${account.selectDepartment}') `);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
-      props: { booksDeanDisplay: post },
+      props: { booksDeanDisplay: post, account },
     };
   } catch (error) {
     return { props: { post: false } };
@@ -43,11 +43,11 @@ export default function seeAllBooksDean({ booksDeanDisplay }) {
         >
           {
 
-booksDeanDisplay && booksDeanDisplay.map((reqbook) => (
-  <RequestedCardsDean booksDeanDisplay={reqbook} />
-))
+            booksDeanDisplay && booksDeanDisplay.map((reqbook) => (
+              <RequestedCardsDean booksDeanDisplay={reqbook} />
+            ))
 
-        }
+          }
         </div>
       </section>
     </>

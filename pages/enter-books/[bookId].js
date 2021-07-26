@@ -157,6 +157,17 @@ export default function RequestForm({ book }) {
                     disabled
                   />
                 </label>
+                <label htmlFor="edition" className="mt-6 ml">
+                  <span className="block  text-xs font-bold text-gray-500 ">Price</span>
+                  <Field
+                    className="focus:placeholder-gray-400 text-xs font-bold text-gray-500 placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
+                                        block w-36  mt-0 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                    component="input"
+                    name="price"
+                    type="text"
+                    placeholder="Enter Price"
+                  />
+                </label>
 
               </div>
               <br />
@@ -205,12 +216,12 @@ export default function RequestForm({ book }) {
                 </label>
 
                 <label htmlFor="selectDosition" className="block mt-2">
-                  <span className="block  text-xs font-bold text-gray-500 p">Select Status</span>
+                  <span className="block  text-xs font-bold text-gray-500 p">For Approval</span>
                   <Field name="status" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
 
                     <option value=""> </option>
                     <option className="block text-xs font-bold text-gray-500" value="0">On Going</option>
-                    <option className="block text-xs font-bold text-gray-500" value="1">Added</option>
+                    <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
 
                   </Field>
                 </label>

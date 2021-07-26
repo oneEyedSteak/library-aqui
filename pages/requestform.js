@@ -19,7 +19,7 @@ export default function RequestForm({ account }) {
   };
   return (
 
-    <section className=" mx-auto p-10 md:flex from-blue-900 to-yellow-600 bg-gradient-to-br  min-h-screen ">
+    <section className=" mx-auto  md:flex bg-gray-400  min-h-screen ">
 
       <Head>
         <title>Library Acquisition | Request Form </title>
@@ -30,7 +30,7 @@ export default function RequestForm({ account }) {
         onSubmit={handleOnSubmit}
         render={({ handleSubmit }) => (
 
-          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w-2/3 mx-auto min-h-screen ">
+          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w-2/3 mx-auto h-auto  ">
 
             {/* //hidden stuff starts here */}
             <Field
@@ -185,45 +185,6 @@ export default function RequestForm({ account }) {
               </label>
             </div>
 
-            <label htmlFor="recom" className=" mt-4 border-t-">
-              <span className="  text-xs font-bold text-gray-500 ">Recommended By</span>
-              <Field
-                className="text-xs focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-50  placeholder- pt-3 pb-2
-                             block px-0 mt-0 bg-transparent border-0 border-b-2 w-9/12 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                component="input"
-                name="recomby"
-                type="text"
-                placeholder="Recommended By"
-              />
-            </label>
-
-            <div className=" flex  content-center ">
-              <label htmlFor="faculty" className=" mr-2 mt-2 ">
-                <Field className=" text-gray-500 form-radio h-3 w-3 rounded-sm" name="position" component="input" type="radio" value="Faculty" />
-                <span className="  text-xs font-bold  text-gray-500  ml-1 ">Faculty</span>
-              </label>
-
-              <label htmlFor="librarian" className=" mr-2 mt-2">
-                <Field className="  text-gray-500  form-radio h-3 w-3 rounded-sm" name="position" component="input" type="radio" value="Librarian" />
-                <span className="  text-xs font-bold  text-gray-500  ml-1 ">Librarian</span>
-              </label>
-
-              <label htmlFor="administrator" className="mr-3 mt-2">
-                <Field className=" text-gray-500 form-radio h-3 w-3 rounded-sm" name="position" component="input" type="radio" value="Administrator" />
-                <span className="  text-xs font-bold  text-gray-500   ml-1">Administrator</span>
-              </label>
-
-              <label htmlFor="staff" className="mr-2 mt-2 block">
-                <Field className=" text-gray-500 form-radio h-3 w-3 rounded-sm" name="position" component="input" type="radio" value="Staff" />
-                <span className="  text-xs font-bold  text-gray-500 ml-1">Staff</span>
-              </label>
-
-              <label htmlFor="staff" className="mr-2 mt-2 block">
-                <Field className=" text-gray-500 form-radio h-3 w-3 rounded-sm" name="position" component="input" type="radio" value="Others" />
-                <span className="  text-xs font-bold  text-gray-500 ml-1">Others</span>
-              </label>
-            </div>
-
             <div className="mt-7">
               <label htmlFor="chargedto" className=" h-48">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Charge to</span>
@@ -277,7 +238,7 @@ export default function RequestForm({ account }) {
               </label>
             </div>
 
-            <div className="flex flex-row space-x-3 content-around justify-center">
+            <div className="flex flex-row space-x-3 content-around justify-start">
 
               <label htmlFor="dealer" className="mt-4">
                 <span className="  text-xs font-bold text-gray-500 mb-1">Dealer :</span>
@@ -288,18 +249,6 @@ export default function RequestForm({ account }) {
                   name="dealer"
                   type="text"
                   placeholder="Dealer"
-                />
-              </label>
-
-              <label htmlFor="price" className="mt-4">
-                <span className="  text-xs font-bold text-gray-500 mb-1">Price :</span>
-                <Field
-                  className="  text-xs w-1/10 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                             px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                  component="input"
-                  name="price"
-                  type="text"
-                  placeholder=" ₱/$  "
                 />
               </label>
 
@@ -327,7 +276,7 @@ export default function RequestForm({ account }) {
               </label>
             </div>
 
-            <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-end">
+            <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-start">
               <label htmlFor="addedas" className="">
                 <span className="  text-xs font-bold  text-gray-500 mb-1">Added as --</span>
               </label>

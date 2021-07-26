@@ -1,23 +1,24 @@
 import Head from 'next/head';
 import mysql from '../providers/mysql';
-import RequestedCardsVPAA from '../components/RequestedCardsVPAA';
+import RequestCardsFinance from '../components/RequestCardsFinance';
 import validateSession from '../lib/session';
 
 export const getServerSideProps = async (context) => {
   try {
-    const result = await mysql.query('SELECT * FROM requestform WHERE approvalDean = 1 AND approvalVpaa = 0');
+    const result = await
+    mysql.query('SELECT * FROM requestform WHERE approvalVpaa = 1 AND approvalDean = 1 AND approvalAcqui = 1 AND approvalFinance = 0 ');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
-      props: { booksVPAADisplay: post, session },
+      props: { booksFinanceDisplay: post, session },
     };
   } catch (error) {
     return { props: { post: false } };
   }
 };
-export default function seeAllBooksVPAA({ booksVPAADisplay }) {
-  console.log(booksVPAADisplay);
+export default function seeAllBooksFinance({ booksFinanceDisplay }) {
+  console.log(booksFinanceDisplay);
 
   return (
     <>
@@ -40,9 +41,9 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
         >
           {
 
-            booksVPAADisplay && booksVPAADisplay.map((reqbook) => (
-              <RequestedCardsVPAA booksVPAADisplay={reqbook} />
-            ))
+booksFinanceDisplay && booksFinanceDisplay.map((reqbook) => (
+  <RequestCardsFinance booksFinanceDisplay={reqbook} />
+))
 
           }
         </div>

@@ -54,7 +54,6 @@ const Home = ({ booksDisplay }) => {
               }
             </>
           )}
-
         </div>
       </section>
 

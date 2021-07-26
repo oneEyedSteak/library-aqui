@@ -1,23 +1,25 @@
 import Head from 'next/head';
 import mysql from '../providers/mysql';
-import RequestedCardsVPAA from '../components/RequestedCardsVPAA';
 import validateSession from '../lib/session';
+
+import RequestedCardsPresident from '../components/RequestedCardsPresident';
 
 export const getServerSideProps = async (context) => {
   try {
-    const result = await mysql.query('SELECT * FROM requestform WHERE approvalDean = 1 AND approvalVpaa = 0');
+    const result = await
+    mysql.query('SELECT * FROM requestform WHERE statusPass = 1 AND approvalFinance = 1');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
-      props: { booksVPAADisplay: post, session },
+      props: { booksDisplayPresident: post, session },
     };
   } catch (error) {
     return { props: { post: false } };
   }
 };
-export default function seeAllBooksVPAA({ booksVPAADisplay }) {
-  console.log(booksVPAADisplay);
+export default function seeAllBooksVPAA({ booksDisplayPresident }) {
+  console.log(booksDisplayPresident);
 
   return (
     <>
@@ -40,9 +42,9 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
         >
           {
 
-            booksVPAADisplay && booksVPAADisplay.map((reqbook) => (
-              <RequestedCardsVPAA booksVPAADisplay={reqbook} />
-            ))
+booksDisplayPresident && booksDisplayPresident.map((reqbook) => (
+  <RequestedCardsPresident booksDisplayPresident={reqbook} />
+))
 
           }
         </div>
