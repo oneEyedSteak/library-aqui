@@ -82,7 +82,6 @@ export default function Header() {
                   </span>
                 </Link>
                 )}
-
                 {['Finance', 'Admin'].includes(account.selectPosition) && (
                 <Link href="/see-all-books-finance">
                   <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
