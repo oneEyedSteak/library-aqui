@@ -30,7 +30,7 @@ export default function RequestForm({ account }) {
         onSubmit={handleOnSubmit}
         render={({ handleSubmit }) => (
 
-          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w-2/3 mx-auto h-auto  ">
+          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w-auto mx-auto h-auto  ">
 
             {/* //hidden stuff starts here */}
             <Field
@@ -211,7 +211,7 @@ export default function RequestForm({ account }) {
                   placeholder="Subject "
                 />
               </label>
-              <label htmlFor="enumtitle" className="">
+              {/* <label htmlFor="enumtitle" className="">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Existing Number of titles</span>
                 <Field
                   className=" text-xs  focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
@@ -221,7 +221,7 @@ export default function RequestForm({ account }) {
                   type="text"
                   placeholder="Existing Number of titles"
                 />
-              </label>
+              </label> */}
             </div>
 
             <div className="flex flex-row space-x-5 content-around items-center">
@@ -266,7 +266,7 @@ export default function RequestForm({ account }) {
               <label htmlFor="SI#:" className="mt-4">
                 <span className="  text-xs font-bold text-gray-500 mb-1">SI#:</span>
                 <Field
-                  className="  text-xs w-1/4 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                  className="  text-xs w-auto form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                              px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                   component="input"
                   name="sinumb"

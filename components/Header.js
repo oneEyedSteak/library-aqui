@@ -55,14 +55,14 @@ export default function Header() {
           <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
             {account && (
               <>
-                {['Acquition', 'Admin'].includes(account.selectPosition) && (
-                <Link href="/see-all-books">
-                  <span className="w-auto hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books">
+                    <span className="w-auto hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    See All Requested Books
-                  </span>
-                </Link>
+                    >
+                      See All Requested Books
+                    </span>
+                  </Link>
                 )}
                 {['Dean', 'Admin'].includes(account.selectPosition) && (
                   <Link href="/see-all-books-dean">
@@ -74,31 +74,40 @@ export default function Header() {
                   </Link>
                 )}
                 {['VPAA', 'Admin'].includes(account.selectPosition) && (
-                <Link href="/see-all-books-vpaa">
-                  <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  <Link href="/see-all-books-vpaa">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    See All Requested Books-VPAA
-                  </span>
-                </Link>
+                    >
+                      See All Requested Books-VPAA
+                    </span>
+                  </Link>
                 )}
                 {['Finance', 'Admin'].includes(account.selectPosition) && (
-                <Link href="/see-all-books-finance">
-                  <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  <Link href="/see-all-books-finance">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    See All Requested Books-Finance
-                  </span>
-                </Link>
+                    >
+                      See All Requested Books-Finance
+                    </span>
+                  </Link>
                 )}
                 {['President', 'Admin'].includes(account.selectPosition) && (
-                <Link href="/see-all-books-president">
-                  <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  <Link href="/see-all-books-president">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    See All Requested Books-President
-                  </span>
-                </Link>
+                    >
+                      See All Requested Books-President
+                    </span>
+                  </Link>
+                )}
+                {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-topurchase">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Books to Verify
+                    </span>
+                  </Link>
                 )}
                 <Link href="/requestform">
                   <span className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
@@ -108,13 +117,22 @@ export default function Header() {
                   </span>
                 </Link>
                 {['Admin'].includes(account.selectPosition) && (
-                <Link href="/registrationProfile">
-                  <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  <Link href="/registrationProfile">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
-                  >
-                    Register
-                  </span>
-                </Link>
+                    >
+                      Register
+                    </span>
+                  </Link>
+                )}
+                {['Custodian', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-custodian">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Books to Verify
+                    </span>
+                  </Link>
                 )}
               </>
             )}

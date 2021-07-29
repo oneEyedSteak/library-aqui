@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function RequestedCardsPresident({ booksDisplayPresident }) {
+export default function RequestCardsToCustodian({ booksToVerify }) {
   return (
     <div className="md:container md:mx-aut heat">
       <div className=" w-full lg:max-w-full lg:flex flex text-sm">
@@ -12,60 +12,71 @@ export default function RequestedCardsPresident({ booksDisplayPresident }) {
             <img className="w-auto h-auto  lazy mr-4" src="bookcover.jpg" alt="Book Cover" />
           </div>
 
-          <h4 className="text-gray-600 font-bold text-2xl mb-2">{booksDisplayPresident.title}</h4>
+          <h4 className="text-gray-600 font-bold text-2xl mb-2">{booksToVerify.title}</h4>
           <p className="text-gray-600 mb-5">
-            {booksDisplayPresident.notereqform}
+            {booksToVerify.notereqform}
           </p>
           <div className="flex justify-between space-x-1 text-gray-600 text-xs">
             <div>
               <small className="font-bold">Author</small>
               <p className="text-gray-600 mb-2 font-thin ">
-                {booksDisplayPresident.authorName}
+                {booksToVerify.authorName}
               </p>
             </div>
           </div>
           <div>
             <small className="font-bold">Price</small>
             <p className="text-gray-600 mb-2 font-thin ">
-              {booksDisplayPresident.price}
+              {booksToVerify.price}
             </p>
           </div>
           <div>
             <small className="font-bold mr-2">Requestee ID</small>
             <p className=" font-thin ">
-              { booksDisplayPresident.userID}
+              {booksToVerify.userID}
             </p>
           </div>
           <div>
             <small className="font-bold mr-2">Name</small>
             <p className=" font-thin ">
-              { booksDisplayPresident.requestee}
+              {booksToVerify.requestee}
             </p>
           </div>
           <div>
             <small className="font-bold mr-2">Position</small>
             <p className=" font-thin ">
-              { booksDisplayPresident.selectPosition}
+              {booksToVerify.selectPosition}
             </p>
           </div>
           <div>
             <small className="font-bold mr-2">Requestee Department</small>
             <p className=" font-thin ">
-              { booksDisplayPresident.selectDepartment}
+              {booksToVerify.selectDepartment}
+            </p>
+          </div>
+          <div>
+            <small className="font-bold mr-2">Approved By:</small>
+            <p className=" font-thin ">
+              Finance 
+              <div>{booksToVerify.approvalFinance}</div>
+            </p>
+            <p className=" font-thin ">
+              President 
+              <div>{booksToVerify.approvalPresident}</div>
             </p>
           </div>
           <div>
             <small className="font-bold">Publication Date</small>
             <p className=" font-thin">
-              {new Date(booksDisplayPresident.pubdate).toDateString()}
+              {new Date(booksToVerify.pubdate).toDateString()}
             </p>
           </div>
           <div>
             <small className="font-bold">Requested Date</small>
             <p className=" font-thin">
-              {new Date(booksDisplayPresident.date).toDateString()}
+              {new Date(booksToVerify.date).toDateString()}
             </p>
-            <Link href={`/approve-books-president/${booksDisplayPresident.requestID}`}>
+            <Link href={`/books-to-verify/${booksToVerify.requestID}`}>
               <button
                 type="button"
                 className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
