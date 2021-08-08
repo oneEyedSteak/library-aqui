@@ -2,7 +2,11 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
+import Popup from 'reactjs-popup';
+import { useRef, useState } from 'react';
+import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
+import dataURItoBlob from '../../lib/date-uri-to-blob';
 
 export const getServerSideProps = async (context) => {
   const { bookIdPayment } = context.query;
@@ -17,10 +21,37 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdPayment }) {
-  const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookPayment', payload);
+  const [imageURL, setImageURL] = useState(null);
 
-    alert(data.message);
+  const handleOnSubmit = async (payload) => {
+    const { data } = await axios.post('/api/bookPayment', {
+      ...payload,
+      imageURL,
+    });
+
+    alert(data.message); // eslint-disable-line no-alert
+  };
+  const sigCanvas = useRef({});
+  const clear = () => sigCanvas.current.clear();
+
+  const save = async () => {
+    try {
+      const blob = dataURItoBlob(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+      const img = new File([blob], 'fileName.jpg', { type: 'image/jpeg', lastModified: new Date() });
+
+      const config = {
+        headers: { 'content-type': 'multipart/form-data' },
+      };
+
+      const formData = new FormData();
+      formData.append('file', img);
+
+      const { data } = await api.post('/api/upload', formData, config);
+
+      setImageURL(data.filePath);
+    } catch (error) {
+      alert('Error');// eslint-disable-line no-alert
+    }
   };
   const [session] = useSession();
   return (
@@ -149,7 +180,6 @@ export default function RequestForm({ bookIdPayment }) {
                     />
                   </label>
 
-              
                   <label htmlFor="edition" className="mt-6 ml">
                     <span className="block  text-xs font-bold text-gray-500 ">Edition</span>
                     <Field
@@ -162,10 +192,9 @@ export default function RequestForm({ bookIdPayment }) {
                       disabled
                     />
                   </label>
-                  
 
                 </div>
-          
+
                 <br />
 
                 <label htmlFor="notereqform" className="">
@@ -181,22 +210,101 @@ export default function RequestForm({ bookIdPayment }) {
                     disabled
                   />
                 </label>
-                <small className="font-bold  block  text-xs text-gray-600  mr-2 block">Approved By:</small>
-                  <span className="font-thin block mt-2">
-                            President:    {bookIdPayment.approvalPresident}
-                  </span>
-                  <span className="font-thin block mt-1">
-                             Finance: {bookIdPayment.approvalPresident}
-                  </span>
-                  {/* <label htmlFor="selectDosition" className="block mt-2">
-                  <span className="block  text-xs font-bold text-gray-500 p">Approve this Payment</span>
-                  <Field name="approvalDirector" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
-
-                    <option value=""> </option>
-                    <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
-
-                  </Field>
-                </label> */}
+                <label htmlFor="requesID" className="">
+                  <span className="  text-xs font-bold text-gray-500 p">Dean Signature</span>
+                  <img src={bookIdPayment.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                </label>
+                <label htmlFor="requesID" className="">
+                  <span className="  text-xs font-bold text-gray-500 p">Acquisition Signature</span>
+                  <img src={bookIdPayment.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                </label>
+                <label htmlFor="edition" className="mt-6 mb-">
+                  <span className="block  text-xs font-bold text-gray-500 ">Price</span>
+                  <Field
+                    className="focus:placeholder-gray-400 text-xs font-bold text-gray-500 placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
+                                        block w-36  mt-0 mb-3 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                    component="input"
+                    name="price"
+                    type="text"
+                    initialValue={bookIdPayment.price}
+                    disabled
+                  />
+                </label>
+                <span className="font-thin block mt-2">
+                  President:
+                  {' '}
+                  {bookIdPayment.approvalPresident}
+                </span>
+                <span className="font-thin block mt-1">
+                  Finance:
+                  {' '}
+                  {bookIdPayment.approvalPresident}
+                </span>
+                <Popup
+                  modal
+                  trigger={(
+                    <button
+                      className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      a
+                      type="button"
+                    >
+                      {' '}
+                      Sign Here
+                    </button>
+          )}
+                  closeOnDocumentClick={false}
+                >
+                  {(close) => (
+                    <>
+                      <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
+                      <div className="space-x-2  justify-items-center ">
+                        <button
+                          className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+               text-white bg-indigo-600 hover:bg-indigo-700
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={clear}
+                        >
+                          clear
+                        </button>
+                        <button
+                          className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={close}
+                        >
+                          Close
+                        </button>
+                        <button
+                          className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={save}
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </Popup>
+                {imageURL ? (
+                  <img
+                    name="signatureImage"
+                    src={imageURL}
+                    alt="signature"
+                    style={{
+                      display: 'block',
+                      margin: '0 auto',
+                      border: '1px solid black',
+                      width: '150px',
+                      backgroundColor: 'white',
+                    }}
+                  />
+                ) : save}
 
                 <div className="flex space-x-6 content-around items-center mt-5 justify-start">
 
