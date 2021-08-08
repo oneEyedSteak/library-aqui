@@ -12,6 +12,6 @@ export default async (req, res) => {
     await mysql.end();
     return res.status(200).json({ message: 'Succesfully Updated' });
   } catch (error) {
-   console.log(error)
+    console.log(error);
   }
 };

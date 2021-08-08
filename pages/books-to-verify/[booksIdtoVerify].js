@@ -1,4 +1,3 @@
-
 import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
@@ -90,7 +89,7 @@ export default function RequestForm({ booksIdtoVerify }) {
 
                 />
               </label>
-              
+
               <div className="flex space-x-6 content-around items-center mt-6">
 
                 <label htmlFor="author" className="">
@@ -206,7 +205,6 @@ export default function RequestForm({ booksIdtoVerify }) {
                     disabled
                   />
                 </label>
-       
 
                 <label htmlFor="selectDosition" className="block mt-2">
                   <span className="block  text-xs font-bold text-gray-500 p">Verify</span>

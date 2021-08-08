@@ -2,9 +2,6 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
-import Popup from 'reactjs-popup';
-import SignaturePad from 'react-signature-canvas';
-import { useRef, useState } from 'react';
 import api from '../../lib/api';
 
 export const getServerSideProps = async (context) => {
@@ -23,14 +20,10 @@ export default function RequestForm({ book }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdate', payload);
 
-    alert(data.message);
+    alert(data.message); // eslint-disable-line no-alert
   };
   const [session] = useSession();
-  const [imageURL, setImageURL] = useState(null);
-  const sigCanvas = useRef({});
-  const clear = () => sigCanvas.current.clear();
 
-  const save = () => setImageURL(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
   return (
 
     <section className=" mx-auto  md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen ">
@@ -84,22 +77,7 @@ export default function RequestForm({ book }) {
 
               </div>
               <br />
-              <div className="flex space-x-6 content-around items-center mt-6">
-
-                <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">Book Reference:</span>
-                  <Field
-                    className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                    component="input"
-                    name="bookRef"
-                    type="text"
-                    placeholder="Set ID "
-                    required
-                  />
-                </label>
-
-              </div>
+              <div className="flex space-x-6 content-around items-center mt-6" />
 
               <label htmlFor="author" className="">
                 <span className="blockg hover:textColor-red text-xs font-bold text-gray-500 mb-1">Author</span>
@@ -185,20 +163,6 @@ export default function RequestForm({ book }) {
                   disabled
                 />
               </label>
-              {/* {imageURL ? (
-                <img
-                  name="signatureImage"
-                  src={imageURL}
-                  alt="signature"
-                  style={{
-                    display: 'block',
-                    margin: '0 auto',
-                    border: '1px solid black',
-                    width: '150px',
-                    backgroundColor: 'white',
-                  }}
-                />
-              ) : null} */}
 
               <div className="flex space-x-6 content-around items-center mt-10 justify-start">
 
@@ -248,57 +212,6 @@ export default function RequestForm({ book }) {
 
                 </button>
 
-                {/* <Popup
-                  modal
-                  trigger={(
-                    <button
-                      className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      a
-                      type="button"
-                    >
-                      {' '}
-                      Sign Here
-                    </button>
-          )}
-                  closeOnDocumentClick={false}
-                >
-                  {(close) => (
-                    <>
-                      <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
-                      <div className="space-x-2  justify-items-center ">
-                        <button
-                          className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-               text-white bg-indigo-600 hover:bg-indigo-700
-              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={clear}
-                        >
-                          clear
-                        </button>
-                        <button
-                          className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={close}
-                        >
-                          Close
-                        </button>
-                        <button
-                          className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                text-white bg-indigo-600 hover:bg-indigo-700
-               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                          type="button"
-                          onClick={save}
-                        >
-                          Save
-                        </button>
-                      </div>
-                    </>
-                  )}
-                </Popup> */}
               </div>
 
             </form>

@@ -20,7 +20,7 @@ export default function RequestForm({ bookIdtoCustodian }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/booktoCustodian', payload);
 
-    alert(data.message);
+    alert(data.message);// eslint-disable-line no-alert
   };
   const [session] = useSession();
   return (
@@ -149,7 +149,6 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     />
                   </label>
 
-              
                   <label htmlFor="edition" className="mt-6 ml">
                     <span className="block  text-xs font-bold text-gray-500 ">Edition</span>
                     <Field
@@ -164,7 +163,7 @@ export default function RequestForm({ bookIdtoCustodian }) {
                   </label>
 
                 </div>
-          
+
                 <br />
 
                 <label htmlFor="notereqform" className="">
@@ -180,13 +179,17 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     disabled
                   />
                 </label>
-                <small className="font-bold  block  text-xs text-gray-600  mr-2 block">Approved By:</small>
-                  <span className="font-thin block mt-2">
-                            President:    {bookIdtoCustodian.approvalPresident}
-                  </span>
-                  <span className="font-thin block mt-1">
-                             Finance: {bookIdtoCustodian.approvalPresident}
-                  </span>
+                <small className="font-bold  block  text-xs text-gray-600  mr-2 ">Approved By:</small>
+                <span className="font-thin block mt-2">
+                  President:
+                  {' '}
+                  {bookIdtoCustodian.approvalPresident}
+                </span>
+                <span className="font-thin block mt-1">
+                  Finance:
+                  {' '}
+                  {bookIdtoCustodian.approvalPresident}
+                </span>
 
                 <div className="flex space-x-6 content-around items-center mt-5 justify-start">
 

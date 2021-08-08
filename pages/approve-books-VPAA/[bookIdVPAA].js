@@ -20,7 +20,7 @@ export default function RequestForm({ bookVPAAId }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdateVPAA', payload);
 
-    alert(data.message);
+    alert(data.message);// eslint-disable-line no-alert
   };
   const [session] = useSession();
   return (
@@ -148,7 +148,6 @@ export default function RequestForm({ bookVPAAId }) {
                     disabled
                   />
                 </label>
-
                 <label htmlFor="edition" className="mt-6 ml">
                   <span className="block  text-xs font-bold text-gray-500 ">Edition</span>
                   <Field
@@ -193,7 +192,6 @@ export default function RequestForm({ bookVPAAId }) {
                     disabled
                   />
                 </label>
-
                 <label htmlFor="selectDosition" className="block mt-2">
                   <span className="block  text-xs font-bold text-gray-500 p">For Approval</span>
                   <Field name="approvalVpaa" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
@@ -205,9 +203,12 @@ export default function RequestForm({ bookVPAAId }) {
                   </Field>
                 </label>
               </div>
+              <label htmlFor="requesID" className="">
+                <span className="  text-xs font-bold text-gray-500 p">Dean Signature</span>
+                <img src={bookVPAAId.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+              </label>
 
               <label htmlFor="requesID" className="">
-                <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1" />
                 <Field
                   className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"

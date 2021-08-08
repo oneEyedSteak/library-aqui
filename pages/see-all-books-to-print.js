@@ -2,24 +2,24 @@ import Head from 'next/head';
 import mysql from '../providers/mysql';
 import validateSession from '../lib/session';
 
-import RequestedCardsPresident from '../components/RequestedCardsPresident';
+import BooksToPrint from '../components/BooksToPrint';
 
 export const getServerSideProps = async (context) => {
   try {
     const result = await
-    mysql.query('SELECT * FROM requestform WHERE statusPass = 1 AND approvalPresident = 0');
+    mysql.query('SELECT * FROM requestform WHERE approvalFinancePayment = 1 AND approvalDirector = 1 AND approvalVpaaPayment = 1');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
-      props: { booksDisplayPresident: post, session },
+      props: { booksToPrint: post, session },
     };
   } catch (error) {
     return { props: { post: false } };
   }
 };
-export default function seeAllBooksVPAA({ booksDisplayPresident }) {
-  console.log(booksDisplayPresident);
+export default function seeAllBooksCustodian({ booksToPrint }) {
+  console.log(booksToPrint);
 
   return (
     <>
@@ -42,11 +42,11 @@ export default function seeAllBooksVPAA({ booksDisplayPresident }) {
         >
           {
 
-booksDisplayPresident && booksDisplayPresident.map((reqbook) => (
-  <RequestedCardsPresident booksDisplayPresident={reqbook} />
-))
+                        booksToPrint && booksToPrint.map((reqbook) => (
+                          <BooksToPrint booksToPrint={reqbook} />
+                        ))
 
-          }
+                    }
         </div>
       </section>
     </>

@@ -47,7 +47,7 @@ export default function RequestForm({ account }) {
               component="input"
               name="requestee"
               type="hidden"
-              initialValue={account.fname + account.mname + account.lname}
+              initialValue={account.fname + account.lname}
             />
 
             <Field
@@ -89,7 +89,7 @@ export default function RequestForm({ account }) {
               </label>
 
               <label htmlFor="rush" className="mr-2">
-                <Field className="text-gray-500 font-bold  form-radio h-3 w-3 rounded-sm" name="rushornrush" component="input" type="radio" value="Rush" />
+                <Field className="text-gray-500 font-bold  form-radio h-3 w-3 rounded-sm" name="rushornrush" component="input" type="radio" value="Rush" Required />
                 <span className="  text-xs font-bold  text-gray-500 mb-1">Rush</span>
               </label>
 
@@ -211,17 +211,7 @@ export default function RequestForm({ account }) {
                   placeholder="Subject "
                 />
               </label>
-              {/* <label htmlFor="enumtitle" className="">
-                <span className="block  text-xs font-bold text-gray-500 mb-1">Existing Number of titles</span>
-                <Field
-                  className=" text-xs  focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                  component="input"
-                  name="enumtitle"
-                  type="text"
-                  placeholder="Existing Number of titles"
-                />
-              </label> */}
+
             </div>
 
             <div className="flex flex-row space-x-5 content-around items-center">
@@ -238,7 +228,7 @@ export default function RequestForm({ account }) {
               </label>
             </div>
 
-            <div className="flex flex-row space-x-3 content-around justify-start">
+            {/* <div className="flex flex-row space-x-3 content-around justify-start">
 
               <label htmlFor="dealer" className="mt-4">
                 <span className="  text-xs font-bold text-gray-500 mb-1">Dealer :</span>
@@ -274,9 +264,9 @@ export default function RequestForm({ account }) {
                   placeholder=" SI# "
                 />
               </label>
-            </div>
+            </div> */}
 
-            <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-start">
+            {/* <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-start">
               <label htmlFor="addedas" className="">
                 <span className="  text-xs font-bold  text-gray-500 mb-1">Added as --</span>
               </label>
@@ -316,7 +306,8 @@ export default function RequestForm({ account }) {
                 />
                 <span className="  text-xs font-bold  text-gray-500 mb-1"> Replacement</span>
               </label>
-            </div>
+            </div> */}
+            {/* <button type="button" onClick={() => window.print()}>Print this page</button> */}
 
             <div className="block text-right mt-5">
               <button

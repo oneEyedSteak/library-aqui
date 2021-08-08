@@ -2,7 +2,11 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
+import Popup from 'reactjs-popup';
+import { useRef, useState } from 'react';
+import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
+import dataURItoBlob from '../../lib/date-uri-to-blob';
 
 export const getServerSideProps = async (context) => {
   const { bookIdToRequest } = context.query;
@@ -17,10 +21,36 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdToRequest }) {
-  const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/booktoDirector', payload);
+  const [imageURL, setImageURL] = useState(null);
 
-    alert(data.message);
+  const handleOnSubmit = async (payload) => {
+    const { data } = await axios.post('/api/booktoDirector', {
+      ...payload,
+      imageURL,
+    });
+
+    alert(data.message); // eslint-disable-line no-alert
+  };
+  const sigCanvas = useRef({});
+  const clear = () => sigCanvas.current.clear();
+  const save = async () => {
+    try {
+      const blob = dataURItoBlob(sigCanvas.current.getTrimmedCanvas().toDataURL('image/png'));
+      const img = new File([blob], 'fileName.jpg', { type: 'image/jpeg', lastModified: new Date() });
+
+      const config = {
+        headers: { 'content-type': 'multipart/form-data' },
+      };
+
+      const formData = new FormData();
+      formData.append('file', img);
+
+      const { data } = await api.post('/api/upload', formData, config);
+
+      setImageURL(data.filePath);
+    } catch (error) {
+      alert('Error');// eslint-disable-line no-alert
+    }
   };
   const [session] = useSession();
   return (
@@ -57,7 +87,6 @@ export default function RequestForm({ bookIdToRequest }) {
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
                   <h1 className="text-xl mt 4 font-bold text-gray-600 ">Request Payment to Director of Libraries </h1>
-                  
 
                 </div>
 
@@ -90,6 +119,7 @@ export default function RequestForm({ bookIdToRequest }) {
 
                   />
                 </label>
+
                 <div className="flex space-x-6 content-around items-center mt-6">
 
                   <label htmlFor="author" className="">
@@ -150,7 +180,6 @@ export default function RequestForm({ bookIdToRequest }) {
                     />
                   </label>
 
-              
                   <label htmlFor="edition" className="mt-6 ml">
                     <span className="block  text-xs font-bold text-gray-500 ">Edition</span>
                     <Field
@@ -165,10 +194,23 @@ export default function RequestForm({ bookIdToRequest }) {
                   </label>
 
                 </div>
-          
-                <br />
 
-                <label htmlFor="notereqform" className="">
+                <br />
+                <label htmlFor="author" className="mb-3">
+                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1 mr-2 ">Number of Existing Titles: </span>
+                  <Field
+                    className="form-text  text-xs  font-bold  underline text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                             px-0 mb-2 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 border-gray-400"
+                    component="input"
+                    name="enumtitle"
+                    type="text"
+                    initialValue={bookIdToRequest.enumtitle}
+                    S
+                    disabled
+                  />
+                </label>
+
+                <label htmlFor="notereqform" className="mt-2">
                   <span className="block  text-xs font-bold text-gray-500 mb-1">Note:</span>
                   <Field
                     className="resize-none w-auto   border-0 block  text-xs font-bold text-gray-500  focus:outline-none
@@ -181,7 +223,75 @@ export default function RequestForm({ bookIdToRequest }) {
                     disabled
                   />
                 </label>
-                
+                <label htmlFor="requesID" className="">
+                  <span className="  text-xs font-bold text-gray-500 p">Dean Signature</span>
+                  <img src={bookIdToRequest.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                </label>
+                {imageURL ? (
+                  <img
+                    name="signatureImage"
+                    src={imageURL}
+                    alt="signature"
+                    style={{
+                      display: 'block',
+                      margin: '0 auto',
+                      border: '1px solid black',
+                      width: '150px',
+                      backgroundColor: 'white',
+                    }}
+                  />
+                ) : save}
+                <Popup
+                  modal
+                  trigger={(
+                    <button
+                      className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                      a
+                      type="button"
+                    >
+                      {' '}
+                      Sign Here
+                    </button>
+          )}
+                  closeOnDocumentClick={false}
+                >
+                  {(close) => (
+                    <>
+                      <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
+                      <div className="space-x-2  justify-items-center ">
+                        <button
+                          className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+               text-white bg-indigo-600 hover:bg-indigo-700
+              focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={clear}
+                        >
+                          clear
+                        </button>
+                        <button
+                          className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={close}
+                        >
+                          Close
+                        </button>
+                        <button
+                          className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                text-white bg-indigo-600 hover:bg-indigo-700
+               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                          type="button"
+                          onClick={save}
+                        >
+                          Save
+                        </button>
+                      </div>
+                    </>
+                  )}
+                </Popup>
 
                 <div className="flex space-x-6 content-around items-center mt-5 justify-start">
 
@@ -198,7 +308,6 @@ export default function RequestForm({ bookIdToRequest }) {
                     />
                   </label>
                 </div>
-
                 <label htmlFor="requesID" className="">
                   <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1" />
                   <Field
@@ -226,7 +335,6 @@ export default function RequestForm({ bookIdToRequest }) {
           />
         </>
       )}
-
     </section>
   );
 }

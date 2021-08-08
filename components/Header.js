@@ -69,7 +69,7 @@ export default function Header() {
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      See All Requested Books 
+                      See All Requested Books
                     </span>
                   </Link>
                 )}
@@ -111,7 +111,7 @@ export default function Header() {
                 )}
                 {['Acquisition', 'Admin'].includes(account.selectPosition) && (
                   <Link href="/see-all-verified-books">
-                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                    <span className=" hover:bg-gray-900 cursor-pointer sticky hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
                       Verified Books from Custodian
@@ -127,7 +127,6 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
-              
                 {['Admin'].includes(account.selectPosition) && (
                   <Link href="/registrationProfile">
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
@@ -165,8 +164,8 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
-                  <Link href="/requestform">
-                  <span className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                <Link href="/requestform">
+                  <span className=" sticky  hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
                     Request Your Books Here!
@@ -206,6 +205,22 @@ export default function Header() {
                     Sign Out
                   </span>
                 </button>
+                <label htmlFor="account" className="text-xs text-white">
+                  <small>
+                    {' '}
+                    ID:
+                    {account.id}
+                  </small>
+                  &nbsp;
+                  {account.fname}
+                  <small />
+                  &nbsp;
+                  {account.lname}
+                  <br />
+                  {account.selectPosition}
+                  <br />
+                  {account.selectDepartment}
+                </label>
               </>
             )}
           </div>
