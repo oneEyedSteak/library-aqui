@@ -2,30 +2,29 @@ import Head from 'next/head';
 import mysql from '../providers/mysql';
 import validateSession from '../lib/session';
 
-import RequestedCardsToCustodian from '../components/RequestedCardsToCustodian';
+import VerifiedBooks from '../components/VerifiedBooks';
 
 export const getServerSideProps = async (context) => {
     try {
         const result = await
-            mysql.query('SELECT * FROM requestform WHERE verifytocustodian = 0 AND (approvalFinance = 1 OR approvalPresident = 1 )');
+            mysql.query('SELECT * FROM requestform WHERE verified = 1 and sendtoDirector = 0');
         const session = await validateSession(context);
 
         const post = JSON.parse(JSON.stringify(result));
         return {
-            props: { booksDisplayToPurchase: post, session },
+            props: { verifiedBooks: post, session },
         };
     } catch (error) {
         return { props: { post: false } };
-        console.log(error)
     }
 };
-export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
-    console.log(booksDisplayToPurchase);
+export default function seeAllVerifiedBooks({ verifiedBooks }) {
+    console.log(verifiedBooks);
 
     return (
         <>
             <Head>
-                <title>Library Acquisition | Books Requested </title>
+                <title>Library Acquisition | Verified Books </title>
                 <meta name="keywords" content="someting" />
                 <link rel="icon" href="/icon.ico" />
             </Head>
@@ -35,7 +34,7 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
                     <img src="/1234.jpg" className="  min-w-full h-10/12 rounded-xl mx-autos" alt="1234" />
                 </div>
                 <h2 className=" bg-gray-500 text-gray-100 text-center w-3/4 mx-auto p-4 mt-5 rounded">
-                    All Requested Book
+                    All Verified Books from Custodian
                 </h2>
                 <div className="p-28 grid grid-cols-3 gap-1
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
@@ -43,8 +42,8 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
                 >
                     {
 
-                        booksDisplayToPurchase && booksDisplayToPurchase.map((reqbook) => (
-                            <RequestedCardsToCustodian booksDisplayToPurchase={reqbook} />
+                        verifiedBooks && verifiedBooks.map((reqbook) => (
+                            <VerifiedBooks verifiedBooks={reqbook} />
                         ))
 
                     }

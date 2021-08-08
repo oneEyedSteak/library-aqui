@@ -60,7 +60,7 @@ export default function Header() {
                     <span className="w-auto hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      See All Requested Books
+                      See all Requested Books From Departments
                     </span>
                   </Link>
                 )}
@@ -69,7 +69,7 @@ export default function Header() {
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      See All Requested Books-Dean
+                      See All Requested Books 
                     </span>
                   </Link>
                 )}
@@ -78,7 +78,7 @@ export default function Header() {
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      See All Requested Books-VPAA
+                      See All Requested Books
                     </span>
                   </Link>
                 )}
@@ -87,7 +87,7 @@ export default function Header() {
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium"
                     >
-                      See All Requested Books-Finance
+                      See All Requested Books Pricing
                     </span>
                   </Link>
                 )}
@@ -109,13 +109,25 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
-                <Link href="/requestform">
-                  <span className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
-                  px-3 py-2 rounded-md text-sm font-medium mr-2"
-                  >
-                    Request Your Books Here!
-                  </span>
-                </Link>
+                {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-verified-books">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Verified Books from Custodian
+                    </span>
+                  </Link>
+                )}
+                {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-director">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Request for Payments
+                    </span>
+                  </Link>
+                )}
+              
                 {['Admin'].includes(account.selectPosition) && (
                   <Link href="/registrationProfile">
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
@@ -125,6 +137,25 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
+                {['VPAA', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-payment-vpaa">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Requested Books for Payment
+                    </span>
+                  </Link>
+                )}
+                {['Finance', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-payment-finance">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Request for Payment
+                    </span>
+                  </Link>
+                )}
+
                 {['Custodian', 'Admin'].includes(account.selectPosition) && (
                   <Link href="/see-all-books-custodian">
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
@@ -134,9 +165,15 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
+                  <Link href="/requestform">
+                  <span className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Request Your Books Here!
+                  </span>
+                </Link>
               </>
             )}
-
             {!account && (
               <>
 

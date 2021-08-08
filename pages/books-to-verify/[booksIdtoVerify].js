@@ -214,7 +214,7 @@ export default function RequestForm({ booksIdtoVerify }) {
 
                     <option value=""> </option>
                     <option className="block text-xs font-bold text-gray-500" value="0">Existing</option>
-                    <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
+                    <option className="block text-xs font-bold text-gray-500" value="1">Verified</option>
                   </Field>
                 </label>
               </div>

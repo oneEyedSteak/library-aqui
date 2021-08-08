@@ -185,7 +185,7 @@ export default function RequestForm({ book }) {
                   disabled
                 />
               </label>
-              {imageURL ? (
+              {/* {imageURL ? (
                 <img
                   name="signatureImage"
                   src={imageURL}
@@ -198,7 +198,7 @@ export default function RequestForm({ book }) {
                     backgroundColor: 'white',
                   }}
                 />
-              ) : null}
+              ) : null} */}
 
               <div className="flex space-x-6 content-around items-center mt-10 justify-start">
 
@@ -248,7 +248,7 @@ export default function RequestForm({ book }) {
 
                 </button>
 
-                <Popup
+                {/* <Popup
                   modal
                   trigger={(
                     <button
@@ -298,7 +298,7 @@ export default function RequestForm({ book }) {
                       </div>
                     </>
                   )}
-                </Popup>
+                </Popup> */}
               </div>
 
             </form>

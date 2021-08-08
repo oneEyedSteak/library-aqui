@@ -7,7 +7,7 @@ import RequestedCardsCustodian from '../components/RequestedCardsCustodian';
 export const getServerSideProps = async (context) => {
     try {
         const result = await
-            mysql.query('SELECT * FROM requestform WHERE verifytocustodian = 1 ');
+            mysql.query('SELECT * FROM requestform WHERE verifytocustodian = 1 AND verified = 0');
         const session = await validateSession(context);
 
         const post = JSON.parse(JSON.stringify(result));

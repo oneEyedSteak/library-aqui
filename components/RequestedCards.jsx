@@ -136,7 +136,7 @@ export default function BookCards({ requestBook }) {
               <p className=" font-thin">
                 {new Date(requestBook.date).toDateString()}
               </p>
-              <Link href={`/enter-books/${requestBook.requestID}`}>
+              <Link href={`/approve-books-acquisition/${requestBook.requestID}`}>
                 <button
                   type="button"
                   className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
