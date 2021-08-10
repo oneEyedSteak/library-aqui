@@ -6,7 +6,7 @@ import validateSession from '../lib/session';
 export const getServerSideProps = async (context) => {
   try {
     const result = await
-    mysql.query('SELECT * FROM requestform WHERE approvalVpaaPayment = 1 AND approvalDirector = 1 AND approvalFinance = 0');
+    mysql.query('SELECT * FROM requestform WHERE approvalVpaaPayment = 1 AND approvalDirector = 1 AND approvalFinancePayment = 0');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
