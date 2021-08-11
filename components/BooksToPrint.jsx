@@ -58,14 +58,14 @@ export default function BooksDirector({ booksToPrint }) {
             <p className=" font-thin">
               {new Date(booksToPrint.date).toDateString()}
             </p>
-            <Link href={`/request-payment-finance/${booksToPrint.requestID}`}>
+            <Link href={`/books-to-print/${booksToPrint.requestID}`}>
               <button
                 type="button"
                 className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
                      text-white bg-indigo-600 hover:bg-indigo-700
                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
               >
-                Update Payment Request
+                Print Request
               </button>
             </Link>
 

@@ -118,6 +118,15 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
+                    {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-to-print">
+                    <span className=" hover:bg-gray-900 cursor-pointer sticky hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Print Request
+                    </span>
+                  </Link>
+                )}
                 {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
                   <Link href="/see-all-books-director">
                     <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
