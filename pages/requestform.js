@@ -156,6 +156,7 @@ export default function RequestForm({ account }) {
                   name="pubdate"
                   type="date"
                   placeholder="#"
+                  Required
                 />
               </label>
             </div>

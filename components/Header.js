@@ -208,11 +208,14 @@ export default function Header() {
                   className="mr-2 bg-gray-700 p-1 rounded-full text-gray-400 hover:text-white
                 focus:outline-none ring-1 focus:ring-offset-1 focus:ring-offset-gray-700 focus:ring-white"
                 >
+                  <Link href="/">
+
                   <span className="cursor-pointer hover:text-gray-900
                 text-gray-300 px-3 py-2 rounded-md text-sm font-medium "
                   >
                     Sign Out
                   </span>
+                  </Link>
                 </button>
                 <label htmlFor="account" className="text-xs text-white">
                   <small>
