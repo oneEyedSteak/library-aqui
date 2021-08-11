@@ -173,6 +173,24 @@ export default function Header() {
                     </span>
                   </Link>
                 )}
+                 {[ 'Faculty', 'Dean'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-track">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Track your Book
+                    </span>
+                  </Link>
+                )}
+                  {[ 'Faculty', 'Dean','Acquisition'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-track-librarian">
+                    <span className=" hover:bg-gray-900 cursor-pointer hover:text-white text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      Track  
+                    </span>
+                  </Link>
+                )}
                 <Link href="/requestform">
                   <span className=" sticky  hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
