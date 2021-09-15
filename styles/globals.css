@@ -14,6 +14,12 @@ a {
 * {
   box-sizing: border-box;
 }
+.signatureCanvas{
+  border: 2px solid black;
+  width: 100%;
+  min-height: 200%;
+  background-color:whitesmoke;
+}
 
 section {
   padding: 3rem;

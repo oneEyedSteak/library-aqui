@@ -5,23 +5,24 @@ import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
 
 export const getServerSideProps = async (context) => {
-  const { bookId } = context.query;
-  const { data } = await api.get(`/api/books/${bookId}`);
+  const { bookIdFinance } = context.query;
+  const { data } = await api.get(`/api/books/${bookIdFinance}`);
 
   console.log(data);
 
   return {
-    props: { book: data },
+    props: { bookIdFinance: data },
 
   };
 };
 
-export default function RequestForm({ book }) {
+export default function RequestForm({ bookIdFinance }) {
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookUpdate', payload);
+    const { data } = await axios.post('/api/bookUpdateFinance', payload);
 
     alert(data.message);
   };
+
   const [session] = useSession();
   return (
 
@@ -56,18 +57,18 @@ export default function RequestForm({ book }) {
 
                 <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                 <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                <h1 className="text-xl mt 4 font-bold text-gray-600 ">Library Acquisition Entry of Books</h1>
+                <h1 className="text-xl mt 4 font-bold text-gray-600 ">Library Acquisition Approval Books</h1>
 
               </div>
 
               <div className="flex space-x-6 content-around items-center mt-10 justify-end">
 
                 <label htmlFor="date" className="block ">
-                  <span className="block  text-xs font-bold  text-gray-500 mb-1">Entry Date</span>
+                  <span className="block  text-xs font-bold  text-gray-500 mb-1">Approved Date</span>
                   <Field
                     className="text-xs font-bold text-gray-500 placeholder-gray-500  w-min placeholder-opacity-50 border-0  border-b-1 focus:outline-none focus:ring-0 focus:border-black  border-gray-300 shadow-sm
                                   leading-none focus:shadow-outline  mr-4"
-                    name="entryDate"
+                    name="approvalFinanceDate"
                     component="input"
                     type="date"
                     required
@@ -76,18 +77,31 @@ export default function RequestForm({ book }) {
 
               </div>
               <br />
+              <label htmlFor="author" className="">
+                <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">User ID</span>
+                <Field
+                  className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                  component="input"
+                  name="userID"
+                  type="text"
+                  initialValue={bookIdFinance.userID}
+                  disabled
+
+                />
+              </label>
               <div className="flex space-x-6 content-around items-center mt-6">
 
                 <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">Book Reference:</span>
+                  <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1">Name</span>
                   <Field
                     className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                     component="input"
-                    name="bookRef"
+                    name="requestee"
                     type="text"
-                    placeholder="Set ID "
-                    required
+                    initialValue={bookIdFinance.requestee}
+                    disabled
                   />
                 </label>
 
@@ -102,7 +116,7 @@ export default function RequestForm({ book }) {
                   name="Author"
                   type="text"
                   placeholder="Author"
-                  initialValue={book.authorName}
+                  initialValue={bookIdFinance.authorName}
                   disabled
                 />
               </label>
@@ -116,7 +130,7 @@ export default function RequestForm({ book }) {
                   name="Title"
                   type="text"
                   placeholder="Title"
-                  initialValue={book.title}
+                  initialValue={bookIdFinance.title}
                   disabled
                 />
               </label>
@@ -131,7 +145,7 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="NumberOfCopies"
                     type="text"
-                    initialValue={book.copvol}
+                    initialValue={bookIdFinance.copvol}
                     disabled
                   />
                 </label>
@@ -144,14 +158,25 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="Edition"
                     type="text"
-                    initialValue={book.edition}
-                    value={book.edition}
+                    initialValue={bookIdFinance.edition}
                     disabled
                   />
                 </label>
 
               </div>
               <br />
+              <label htmlFor="edition" className="mt-6 mb-">
+                <span className="block  text-xs font-bold text-gray-500 ">Price</span>
+                <Field
+                  className="focus:placeholder-gray-400 text-xs font-bold text-gray-500 placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
+                                        block w-36  mt-0 mb-3 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                  component="input"
+                  name="price"
+                  type="text"
+                  initialValue={bookIdFinance.price}
+                  disabled
+                />
+              </label>
 
               <label htmlFor="notereqform" className="">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Note:</span>
@@ -160,9 +185,9 @@ export default function RequestForm({ book }) {
                                  appearance-none  focus:ring-0 focus:border-black focus:placeholder-gray-500
                                  placeholder-gray-500 placeholder-opacity-50 "
                   component="textarea"
-                  name="noteEntry"
+                  name="noteDeanbook"
                   type="input"
-                  initialValue={book.notereqform}
+                  initialValue={bookIdFinance.notereqform}
                   disabled
                 />
               </label>
@@ -177,18 +202,18 @@ export default function RequestForm({ book }) {
                     component="input"
                     name="publicationDate"
                     type="text"
-                    initialValue={new Date(book.pubdate).toDateString()}
+                    initialValue={new Date(bookIdFinance.pubdate).toDateString()}
                     disabled
                   />
                 </label>
 
                 <label htmlFor="selectDosition" className="block mt-2">
-                  <span className="block  text-xs font-bold text-gray-500 p">Select Status</span>
-                  <Field name="status" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
+                  <span className="block  text-xs font-bold text-gray-500 p">For Approval</span>
+                  <Field name="approvalFinance" component="select" className="  text-xs font-bold text-gray-500 rounded-md border-gray-300  mt-1 pr-36 ">
 
                     <option value=""> </option>
                     <option className="block text-xs font-bold text-gray-500" value="0">On Going</option>
-                    <option className="block text-xs font-bold text-gray-500" value="1">Added</option>
+                    <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
 
                   </Field>
                 </label>
@@ -202,7 +227,7 @@ export default function RequestForm({ book }) {
                   component="input"
                   name="requestID"
                   type="hidden"
-                  initialValue={book.requestID}
+                  initialValue={bookIdFinance.requestID}
                 />
               </label>
               <div className="block text-right mt-5">
@@ -210,6 +235,7 @@ export default function RequestForm({ book }) {
                   type="submit"
                   className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+
                 >
                   Update Request
 

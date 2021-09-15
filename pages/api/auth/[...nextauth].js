@@ -24,7 +24,7 @@ const options = {
           }
           return null;
         } catch (error) {
-          console.log(error);
+          document.write(message('User not Found'));
         }
         return this.authorize;
       },
