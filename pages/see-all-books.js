@@ -1,7 +1,10 @@
 import Head from 'next/head';
+import { useMemo } from 'react';
+import Link from 'next/link';
 import validateSession from '../lib/session';
 import api from '../lib/api';
 import RequestedCards from '../components/RequestedCards';
+import ReactTable from '../components/table';
 
 export const getServerSideProps = async (context) => {
   const { data } = await api.get('/api/postRequestBooks');
@@ -14,6 +17,53 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function seeAllBooks({ requestBook }) {
+  const columns = useMemo(
+    () => [
+      {
+        Header: 'Request ID',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Request Date',
+        accessor: 'date',
+      },
+      {
+        Header: 'Is Rush?',
+        accessor: 'rushornrush',
+      },
+      {
+        Header: 'Athor Name',
+        accessor: 'authorName',
+      },
+      {
+        Header: 'Status',
+        accessor: 'status',
+        Cell: ({ row: { values } }) => (
+          <div>
+            {values.status ? 'Active' : 'In Active'}
+          </div>
+        ),
+      },
+      {
+        Header: () => null,
+        accessor: 'action',
+        Cell: ({ row: { values } }) => (
+          <Link href={`/approve-books-acquisition/${values.requestID}`}>
+            <button
+              type="button"
+              className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                                     text-white bg-indigo-600 hover:bg-indigo-700
+                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Update Request
+            </button>
+          </Link>
+        ),
+      },
+    ],
+    [],
+  );
+
   return (
 
     <>
@@ -37,13 +87,7 @@ export default function seeAllBooks({ requestBook }) {
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
          xl:grid-cols-4"
         >
-          {
-            requestBook && requestBook.map((reqbook) => (
-              <RequestedCards requestBook={reqbook} />
-            ))
-
-          }
-
+          <ReactTable data={requestBook} columns={columns} />
         </div>
       </section>
     </>

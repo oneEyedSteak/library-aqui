@@ -23,7 +23,7 @@ const Home = ({ booksDisplay }) => {
         <link rel="icon" href="/icon.ico" />
 
       </Head>
-      <section className="max-w-screen  from-blue-900 to-yellow-600 bg-gradient-to-br  min-h-screen mx-auto ">
+      <section className="max-w-screen flex items-center justify-center mt-20  bg-white  min-h-screen mx-auto ">
 
         <div className=" mx-auto  min-w-full  sm:px-6 lg:px-8">
           <img src="/1234.jpg" className="  min-w-full h-10/12 rounded-xl mx-autos" alt="1234" />

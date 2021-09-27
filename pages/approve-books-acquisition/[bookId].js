@@ -26,7 +26,7 @@ export default function RequestForm({ book }) {
 
   return (
 
-    <section className=" mx-auto  md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen ">
+    <section className=" mx-auto  md:flex bg-gradient-to-br from-blue-900 to-yellow-600 min-h-screen">
 
       <Head>
         <title>Library Acquisition | Entry of Books </title>

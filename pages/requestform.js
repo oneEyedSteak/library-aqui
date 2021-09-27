@@ -161,7 +161,6 @@ export default function RequestForm({ account }) {
               </label>
             </div>
             <div className="flex space-x-20 content-around items-center mx-auto  mt-3">
-
               <label htmlFor="chargedto" className="">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Publisher Name</span>
                 <Field
@@ -185,7 +184,6 @@ export default function RequestForm({ account }) {
                 />
               </label>
             </div>
-
             <div className="mt-7">
               <label htmlFor="chargedto" className=" h-48">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Charge to</span>
@@ -199,7 +197,6 @@ export default function RequestForm({ account }) {
                 />
               </label>
             </div>
-
             <div className="flex  justify-end">
               <label htmlFor="subjectr" className="">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Subject</span>
@@ -212,9 +209,7 @@ export default function RequestForm({ account }) {
                   placeholder="Subject "
                 />
               </label>
-
             </div>
-
             <div className="flex flex-row space-x-5 content-around items-center">
               <label htmlFor="notereqform" className="">
                 <span className="block  text-xs font-bold text-gray-500 mb-1">Note:</span>
@@ -228,88 +223,6 @@ export default function RequestForm({ account }) {
                 />
               </label>
             </div>
-
-            {/* <div className="flex flex-row space-x-3 content-around justify-start">
-
-              <label htmlFor="dealer" className="mt-4">
-                <span className="  text-xs font-bold text-gray-500 mb-1">Dealer :</span>
-                <Field
-                  className="  text-xs w-1/10 form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                             px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                  component="input"
-                  name="dealer"
-                  type="text"
-                  placeholder="Dealer"
-                />
-              </label>
-
-              <label htmlFor="dated" className="mt-4">
-                <span className="  text-xs font-bold text-gray-500 mb-1">Dated: </span>
-                <Field
-                  className="  text-xs form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                             mb-2 bg-transparent border-0 px-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                  component="input"
-                  name="dated"
-                  type="text"
-                  placeholder=" Date"
-                />
-              </label>
-              <label htmlFor="SI#:" className="mt-4">
-                <span className="  text-xs font-bold text-gray-500 mb-1">SI#:</span>
-                <Field
-                  className="  text-xs w-auto form-text focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                             px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                  component="input"
-                  name="sinumb"
-                  type="text"
-                  placeholder=" SI# "
-                />
-              </label>
-            </div> */}
-
-            {/* <div className="mt-4 flex flex-row space-x-4 content-around items-center justify-start">
-              <label htmlFor="addedas" className="">
-                <span className="  text-xs font-bold  text-gray-500 mb-1">Added as --</span>
-              </label>
-
-              <label htmlFor="nrush" className="ml-1">
-                <Field
-                  className=" text-xs text-gray-500
-                                form-radio h-3 w-3 rounded-sm "
-                  name="addedAs"
-                  component="input"
-                  type="radio"
-                  value="New Copy"
-                />
-                <span className="  text-xs font-bold  text-gray-500 mb-1">New Copy</span>
-              </label>
-
-              <label htmlFor="nrush" className=" ml-1">
-                <Field
-                  className=" text-xs text-gray-500
-                                form-radio h-3 w-3 rounded-sm "
-                  name="addedAs"
-                  component="input"
-                  type="radio"
-                  value="New Edition"
-                />
-                <span className="  text-xs font-bold  text-gray-500 mb-1 mr-1 ">New Edition</span>
-              </label>
-
-              <label htmlFor="nrush" className="mr-1">
-                <Field
-                  className="ml-6 text-xs text-gray-500
-                                form-radio h-3 w-3 rounded-sm "
-                  name="addedAs"
-                  component="input"
-                  type="radio"
-                  value="Replacement"
-                />
-                <span className="  text-xs font-bold  text-gray-500 mb-1"> Replacement</span>
-              </label>
-            </div> */}
-            {/* <button type="button" onClick={() => window.print()}>Print this page</button> */}
-
             <div className="block text-right mt-5">
               <button
                 type="submit"
