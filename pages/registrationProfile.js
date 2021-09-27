@@ -2,14 +2,19 @@ import { Form, Field } from 'react-final-form';
 import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import Link from 'next/dist/client/link';
+import { toast } from 'react-toastify';
 
 import axios from 'axios';
 
 export default function RegistrationForm() {
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/register', payload);
+    try {
+      const { data } = await axios.post('/api/register', payload);
 
-    alert(data.message);
+      toast.success('Registration Success');
+    } catch (error) {
+      toast.error('Error in Registration');
+    }
   };
   const [session] = useSession();
 
