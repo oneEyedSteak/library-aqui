@@ -75,22 +75,22 @@ export default function RequestForm({ account }) {
 
             </div>
 
-            <div className="flex space-y-6 justify-end mb-4">
+            <div className="flex space-y-8 justify-end">
 
               <label htmlFor="date" className="block mr-4">
                 <span className="block  text-xs  text-gray-500 mb-1">Requested Date</span>
                 <Field
                   className="text-gray-400 rounded-md border-gray-300  w-full
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  bg-gray-50"
+                  focus:placeholder-gray-701 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  "
                   name="date"
                   component="input"
                   type="date"
-                  Required
+                  required
                 />
               </label>
 
               <label htmlFor="rush" className="">
-                <Field className="text-gray-500   form-radio h-3 w-3 rounded-sm" name="rushornrush" component="input" type="radio" value="Rush" Required />
+                <Field className="text-gray-500   form-radio h-3 w-3 rounded-sm" name="rushornrush" component="input" type="radio" value="Rush" required />
                 <span className="  text-xs  text-gray-500 mb-1">Rush</span>
               </label>
 
@@ -102,8 +102,7 @@ export default function RequestForm({ account }) {
 
             {/* Grid Starts here */}
 
-            <div className=" grid grid-cols-3 row-2  w-full  space-y-2 rows-2 ">
-
+            <div className=" grid grid-cols-3  w-full  gap-4 rows-2 ">
 
               <label htmlFor="author" className="">
                 <span className="block hover:textColor-red text-sm mt-1  text-gray-500 mb-">Author</span>
@@ -117,7 +116,7 @@ export default function RequestForm({ account }) {
               </label>
 
               <label htmlFor="title" className=" ">
-                <span className="block  text-xs  text-gray-500 mt-">Title</span>
+                <span className="block  text-xs  text-gray-500 mt-2">Title</span>
                 <Field
                   className="mt- rounded-md border-gray-300 shadow-sm w-full
                 focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50  text-gray-500 bg-gray-50"
@@ -129,7 +128,7 @@ export default function RequestForm({ account }) {
               </label>
               <div>
                 <label htmlFor="chargedto" className="">
-                  <span className="block  text-xs  text-gray-500 mt-">Publisher Name</span>
+                  <span className="block  text-xs  text-gray-500 mt-2">Publisher Name</span>
                   <Field
                     className="mt- rounded-md border-gray-300 shadow-sm w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50 text-gray-500 bg-gray-50"
@@ -139,7 +138,6 @@ export default function RequestForm({ account }) {
                   />
                 </label>
               </div>
-
               <div className=" col-start-1 col-span-2">
                 <label htmlFor="pbadress" className="">
                   <span className="block hover:textColor-red text-xs  text-gray-500 mb-">Publisher Address</span>
@@ -161,14 +159,14 @@ export default function RequestForm({ account }) {
                   component="input"
                   name="pubdate"
                   type="date"
-                  Required
+                  required
                 />
               </label>
             </div>
 
             {/* griid ends here */}
 
-            <div className="grid grid-cols-3  space-y-2 mt-9 ">
+            <div className="grid grid-cols-3  gap-4 mt-8 ">
               <label htmlFor="edition" className="">
                 <span className=" text-xs  text-gray-500 ">Edition</span>
                 <Field
@@ -179,8 +177,9 @@ export default function RequestForm({ account }) {
                   type="text"
                 />
               </label>
+
               <div className="col-span-1">
-                <label htmlFor="copvol" className=" ">
+                <label htmlFor="copvol" className="mt-3">
                   <span className=" block text-xs  text-gray-500">Copies/Volumes</span>
                   <Field
                     className="text-gray-500 rounded-md border-gray-300  w-full
@@ -196,7 +195,7 @@ export default function RequestForm({ account }) {
                 <label htmlFor="chargedto" className=" ">
                   <span className="  text-xs  text-gray-500 mb-">Charge to</span>
                   <Field
-                    className="text-gray-500 w-full rounded-md border-gray-300 
+                    className="text-gray-500 w-full rounded-md border-gray-300
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                     component="input"
                     name="chargeto"
@@ -223,7 +222,7 @@ export default function RequestForm({ account }) {
               <label htmlFor="notereqform" className="">
                 <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
                 <Field
-                  className="h-auto w-60  text-sm text-gray-400 rounded-md border-gray-300  
+                  className="h-auto w-60  text-sm text-gray-400 rounded-md border-gray-300
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50  "
                   component="textarea"
                   name="notereqform"

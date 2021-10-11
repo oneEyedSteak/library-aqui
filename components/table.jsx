@@ -42,7 +42,7 @@ const Table = ({
         ))}
       </thead>
       <tbody
-        className="bg-white divide-y divide-gray-200 text-sm
+        className="bg-white divide-y divide-gray-200 text-xs
                   dark:bg-base-dark dark:divide-gray-600"
         {...getTableBodyProps()}
       >

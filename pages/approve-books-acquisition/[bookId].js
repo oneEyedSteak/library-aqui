@@ -51,7 +51,7 @@ export default function RequestForm({ book }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" px-14 pt-8 pb-8 bg-white rounded-md my-16 + mx-auto min-h-screen w-full">
+              <form onSubmit={handleSubmit} className=" px-14 pt-8 pb-8 bg-white rounded-md my-16 shadow-lg mx-auto min-h-screen w-full">
 
                 <div className="flex-shrink-0 flex content-around items-center">
 
@@ -63,7 +63,7 @@ export default function RequestForm({ book }) {
                 <label htmlFor="requesID" className="">
                   <span className="blockg hover:textColor-red  text-xs font-bold text-gray-500 mb-1" />
                   <Field
-                    className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                    className="form-text  text-xs  font-bold  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                     component="input"
                     name="requestID"
@@ -77,7 +77,7 @@ export default function RequestForm({ book }) {
                   <label htmlFor="date" className="block ">
                     <span className="text-xs text-gray-500">Entry Date</span>
                     <Field
-                      className=" text-gray-500 rounded-md border-gray-300  w-full
+                      className=" text-gray-500 rounded-md  border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="entryDate"
                       component="input"
@@ -89,7 +89,7 @@ export default function RequestForm({ book }) {
                 </div>
                 <br />
 
-                <div className="grid grid-cols-3 space-x-6 shadow-sm border-1 mt-6">
+                <div className="grid grid-cols-3 space-x-6  border-1 mt-6   ">
                   <label htmlFor="author" className="">
                     <span className="text-xs text-gray-500 mb-1">Author</span>
                     <Field
@@ -180,28 +180,32 @@ export default function RequestForm({ book }) {
                 </div>
 
                 <div className="grid-cols-2 mt-4 space-y-1.5  justify-end">
-                <label htmlFor="selectDosition" className=" ">
-                  <span className="block  text-xs text-gray-500 p">For Approval</span>
-                  <Field name="status" component="select" className="  text-gray-500 rounded-md border-gray-300  w-1/4
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50 ">
+                  <label htmlFor="selectDosition" className=" ">
+                    <span className="block  text-xs text-gray-500 p">For Approval</span>
+                    <Field
+                      name="status"
+                      component="select"
+                      className="  text-gray-500 rounded-md border-gray-300  w-1/4
+                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50 "
+                    >
 
-                    <option value=""> </option>
-                    <option className="block text-xs font-bold text-gray-400" value="0">On Going</option>
-                    <option className="block text-xs font-bold text-gray-400" value="1">Approved</option>
-                  </Field>
-                </label>
-                <label htmlFor="edition" className="mt-16">
-                  <span className="  block text-xs  text-gray-500 ">Price</span>
-                  <Field
-                    className=" text-gray-500 rounded-md border-gray-300  w-auto
+                      <option value=""> </option>
+                      <option className="block text-xs  text-gray-400" value="0">On Going</option>
+                      <option className="block text-xs  text-gray-400" value="1">Approved</option>
+                    </Field>
+                  </label>
+                  <label htmlFor="edition" className="mt-16">
+                    <span className="  block text-xs  text-gray-500 ">Price</span>
+                    <Field
+                      className=" text-gray-500 rounded-md border-gray-300  w-auto
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  bg-gray-50"
-                    component="input"
-                    name="price"
-                    type="text"
-                    placeholder="Enter Price"
-                  />
-                </label>
-          
+                      component="input"
+                      name="price"
+                      type="text"
+                      placeholder="Enter Price"
+                    />
+                  </label>
+
                 </div>
                 <div className=" text-right mt-5">
                   <button

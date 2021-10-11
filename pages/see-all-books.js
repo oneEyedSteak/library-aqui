@@ -3,19 +3,16 @@ import { useMemo } from 'react';
 import Link from 'next/link';
 import validateSession from '../lib/session';
 import api from '../lib/api';
-import RequestedCards from '../components/RequestedCards';
 import ReactTable from '../components/table';
 
 export const getServerSideProps = async (context) => {
   const { data } = await api.get('/api/postRequestBooks');
 
   const session = await validateSession(context);
-
   return {
     props: { requestBook: data, session },
   };
 };
-
 export default function seeAllBooks({ requestBook }) {
   const columns = useMemo(
     () => [
@@ -26,6 +23,11 @@ export default function seeAllBooks({ requestBook }) {
       {
         Header: 'Request Date',
         accessor: 'date',
+        Cell: ({ row: { values } }) => (
+          <div>
+            {new Date(values.date).toDateString()}
+          </div>
+        ),
       },
       {
         Header: 'Is Rush?',
@@ -45,7 +47,7 @@ export default function seeAllBooks({ requestBook }) {
         ),
       },
       {
-        Header: () => null,
+        Header: () => 'Action',
         accessor: 'action',
         Cell: ({ row: { values } }) => (
           <Link href={`/approve-books-acquisition/${values.requestID}`}>
@@ -85,7 +87,7 @@ export default function seeAllBooks({ requestBook }) {
         </div>
         <div className="p-28 grid grid-cols-3 gap-1
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
-         xl:grid-cols-4"
+         xl:grid-cols-4 mx-auto"
         >
           <ReactTable data={requestBook} columns={columns} />
         </div>
