@@ -26,7 +26,7 @@ export default function RegistrationForm() {
         <link rel="icon" href="/icon.ico" />
 
       </Head>
-      <section className="mx-auto p-6 bg-gray-200 min-h-screen">
+      <section className="mx-auto pr-10 pl-10 pt-10 bg-base min-h-screen">
         {!session && (
         <>
           <div className=" mx-auto p-10 md:flex bg-white h-1/5 border-blue-900 border-1 rou">
@@ -49,7 +49,7 @@ export default function RegistrationForm() {
           <Form
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit} className=" p-6 bg-white rounded-md mx-auto w-auto h-auto pr-10 pl-10 pt-10 p">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8  bg-white rounded-md my-16 shadow-md mx-auto w-auto min-h-screen">
 
                 <div className="content-around justify-center  flex items-center">
                   <img className="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />

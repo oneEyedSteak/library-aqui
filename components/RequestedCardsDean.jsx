@@ -4,7 +4,7 @@ export default function RequestedCardsDean({ booksDeanDisplay }) {
   return (
     <div className="md:container md:mx-aut ">
       <div className=" w-full lg:max-w-full lg:flex flex text-sm">
-        <div className="border-2 rounded-l border-gray-400 lg:border-l-1 lg:border-t\
+        <div className="border-2 rounded-l border-gray-400 lg:border-l-1 lg:border-t
    lg:border-gray-400 bg-white  lg:rounded-b-1
     lg:rounded-r p-4 flex flex-col justify-between leading-normal"
         >
@@ -59,6 +59,7 @@ export default function RequestedCardsDean({ booksDeanDisplay }) {
             <p className=" font-thin">
               {new Date(booksDeanDisplay.date).toDateString()}
             </p>
+            
             <Link href={`/approve-books-dean/${booksDeanDisplay.requestID}`}>
               <button
                 type="button"

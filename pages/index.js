@@ -41,7 +41,7 @@ const Home = ({ booksDisplay }) => {
             See Whats new!
           </h2>
         </div>
-        <div className="p-28 grid grid-cols-3 gap-1
+        {/* <div className="p-28 grid grid-cols-3 gap-1
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
          xl:grid-cols-4"
         >
@@ -54,7 +54,7 @@ const Home = ({ booksDisplay }) => {
               }
             </>
           )}
-        </div>
+        </div> */}
       </section>
 
     </>

@@ -1,8 +1,10 @@
-import Head from 'next/head';
-import mysql from '../providers/mysql';
 import validateSession from '../lib/session';
+import mysql from '../providers/mysql';
+import ReactTable from '../components/table';
+import { useMemo } from 'react';
+import Head from 'next/head';
+import Link from 'next/link';
 
-import RequestedCardsCustodian from '../components/RequestedCardsCustodian';
 
 export const getServerSideProps = async (context) => {
   try {
@@ -19,35 +21,120 @@ export const getServerSideProps = async (context) => {
   }
 };
 export default function seeAllBooksCustodian({ booksToVerify }) {
+
   console.log(booksToVerify);
+  const postRequestedBooks = useMemo(
+    () => [
+      {
+        Header: 'Request ID',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Requested Date',
+        accessor: 'date', // accessor is the "key" in the data
+        Cell: ({ row: { values } }) => (
+          <div>
+            {new Date(values.date).toDateString()}
+          </div>
+        ),
+      },
+      {
+        Header: 'Author',
+        accessor: 'authorName', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Title',
+        accessor: 'title', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Publish Date',
+        accessor: 'pubdate', // accessor is the "key" in the data
+        Cell: ({ row: { values } }) => (
+          <div>
+            {new Date(values.pubdate).toDateString()}
+          </div>
+        ),
+
+      },
+      {
+        Header: 'User ID',
+        accessor: 'userID', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Requested By',
+        accessor: 'requestee', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Position',
+        accessor: 'selectPosition', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Department',
+        accessor: 'selectDepartment', // accessor is the "key" in the data
+      },
+    
+      {
+        Header: 'Note',
+        accessor: 'notereqform', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Approved By Finance',
+        accessor: 'approvalFinance', // accessor is the "key" in the data
+
+      },
+      {
+        Header: 'Approved By President',
+        accessor: 'approvalPresident', // accessor is the "key" in the data
+
+      },
+    
+      {
+        Header: () => 'Action',
+        accessor: 'action',
+        Cell: ({ row: { values } }) => (
+            <Link href={`/books-to-verify/${values.requestID}`}>
+
+          <div className="  bg-gray-100  text-center  border border-transparent shadow-sm text-sm  rounded-md
+                       hover:bg-base-700
+                    focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer text-gray-600
+                flex "
+              >
+                          Update Request
+
+                {' '}
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                </svg>
+              </div>
+        </Link>
+        ),
+      },
+    ],
+    [],
+  );
 
   return (
     <>
       <Head>
-        <title>Library Acquisition | Books Requested </title>
+        <title>Library Acquisition |All Books Requested </title>
         <meta name="keywords" content="someting" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <section className="max-w-screen from-blue-900 to-yellow-600 bg-gradient-to-br  min-h-screen mx-auto ">
+      <section className="max-w-screen bg-base min-h-screen mx-auto ">
 
-        <div className=" mx-auto  min-w-full  sm:px-6 lg:px-8">
-          <img src="/1234.jpg" className="  min-w-full h-10/12 rounded-xl mx-autos" alt="1234" />
-        </div>
-        <h2 className=" bg-gray-500 text-gray-100 text-center w-3/4 mx-auto p-4 mt-5 rounded">
-          All Requested Book
-        </h2>
-        <div className="p-28 grid grid-cols-3 gap-1
-        sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
-         xl:grid-cols-4"
-        >
-          {
 
-                        booksToVerify && booksToVerify.map((reqbook) => (
-                          <RequestedCardsCustodian booksToVerify={reqbook} />
-                        ))
+      <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+     
 
-                    }
-        </div>
+        <div className="text-xs shadow-md w-full mt-10 p">
+                  <label htmlFor="selectDepartment" className="block ">
+                    <span className="block  text-xs  text-gray-500 "> All Books</span>
+
+                    <ReactTable data={booksToVerify} columns={postRequestedBooks} />
+                  </label>
+                </div>
+        </form>
+
       </section>
     </>
   );

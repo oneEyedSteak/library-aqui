@@ -30,26 +30,12 @@ export default function RequestForm({ account }) {
         onSubmit={handleOnSubmit}
         render={({ handleSubmit }) => (
 
-          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w- mx-auto h-auto w-3/5 shadow-lg ">
+          <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-4 bg-white rounded-md my-16 w- mx-auto h-auto w-full shadow-md ">
 
             {/* //hidden stuff starts here */}
-            <Field
-              className="form-text text-xs font-bold text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-              component="input"
-              name="userID"
-              type="hidden"
-              initialValue={account.id}
-            />
-            <Field
-              className="form-text text-xs font-bold text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-              component="input"
-              name="requestee"
-              type="hidden"
-              initialValue={account.fname + account.lname}
-            />
+         
 
+          
             <Field
               className="form-text text-xs font-bold text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
@@ -68,19 +54,19 @@ export default function RequestForm({ account }) {
             />
             {/* Hidden stuff ends here */}
 
-            <div className="flex-shrink-0 flex content-around items-center">
+            <div className=" flex content-around items-center p-4">
               <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
               <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-              <h1 className="text-xl mt-4  text-gray-600 ">Library Acquisition Request Form</h1>
+              <h1 className="text-xl  text-gray-500 ">Library Acquisition Request Form</h1>
 
             </div>
 
-            <div className="flex space-y-8 justify-end">
+            <div className="flex space-y-8 justify-end p-4 ">
 
               <label htmlFor="date" className="block mr-4">
-                <span className="block  text-xs  text-gray-500 mb-1">Requested Date</span>
+                <span className="  text-xs  text-gray-500 mb-1 ">Requested Date</span>
                 <Field
-                  className="text-gray-400 rounded-md border-gray-300  w-full
+                  className="block text-gray-400 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-701 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  "
                   name="date"
                   component="input"
@@ -100,61 +86,95 @@ export default function RequestForm({ account }) {
               </label>
             </div>
 
-            {/* Grid Starts here */}
 
-            <div className=" grid grid-cols-3  w-full  gap-4 rows-2 ">
+            <div className=" grid grid-cols-3 row-3  gap-x-4 gap-y-6 p-4 border-1 ">
+            <div className="row-start-1 ">
+            <label htmlFor="date" className="block mr-4">
+            <span className="  text-xs  text-gray-500 mb-1">User ID</span>
 
-              <label htmlFor="author" className="">
-                <span className="block hover:textColor-red text-sm mt-1  text-gray-500 mb-">Author</span>
+            <Field
+              className="block text-gray-500 rounded-md  w-auto
+              focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+              component="input"
+              name="userID"
+              type="text"
+              initialValue={account.id}
+              disabled
+
+            />
+              </label>
+              <label htmlFor="date" className="block mr-4">
+            <span className="  text-xs  text-gray-500 mb-1">Name</span>
+
+              <Field
+              className="block text-gray-500 rounded-md  w-auto
+              focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+              component="input"
+              name="requestee"
+              type="text"
+              initialValue={account.fname + account.lname}
+              disabled
+            />
+              </label>
+      
+            </div>
+
+         
+            <div className="row-start-2 ">
+            <label htmlFor="author" className="">
+                <span className=" hover:textColor-red text-sm   text-gray-500 mb-">Author</span>
                 <Field
-                  className="mt- rounded-md border-gray-300 shadow-sm w-full
+                  className="block rounded-md border-gray-300 shadow-sm w-2/4
                 focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 text-gray-500 bg-gray-50"
                   component="input"
                   name="authorName"
                   type="text"
+                  placeholder="Authors Name"
                 />
               </label>
 
               <label htmlFor="title" className=" ">
-                <span className="block  text-xs  text-gray-500 mt-2">Title</span>
+                <span className="  text-xs  text-gray-500 ">Title</span>
                 <Field
-                  className="mt- rounded-md border-gray-300 shadow-sm w-full
+                  className=" rounded-md border-gray-300 shadow-sm w-full
                 focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50  text-gray-500 bg-gray-50"
                   component="input"
                   name="title"
                   type="text"
+                  placeholder="Books' Title"
 
                 />
               </label>
-              <div>
-                <label htmlFor="chargedto" className="">
-                  <span className="block  text-xs  text-gray-500 mt-2">Publisher Name</span>
+              <label htmlFor="chargedto" className="">
+                  <span className="  text-xs  text-gray-500 ">Publisher Name</span>
                   <Field
-                    className="mt- rounded-md border-gray-300 shadow-sm w-full
+                    className="block rounded-md border-gray-300 shadow-sm w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-500 placeholder-opacity-50 text-gray-500 bg-gray-50"
                     component="input"
                     name="pubName"
                     type="text"
+                  placeholder="Name of the Publisher"
+
                   />
                 </label>
-              </div>
-              <div className=" col-start-1 col-span-2">
-                <label htmlFor="pbadress" className="">
-                  <span className="block hover:textColor-red text-xs  text-gray-500 mb-">Publisher Address</span>
+  
+            </div>
+            <div className="row-start-2   ">
+          
+            <label htmlFor="pbadress" className="">
+                  <span className=" hover:textColor-red text-xs  text-gray-500 mb-">Publisher Address</span>
                   <Field
-                    className="mt- rounded-md border-gray-300 shadow-sm w-full
+                    className="block rounded-md border-gray-300 shadow-sm w-full
                 focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 text-gray-500 bg-gray-50"
                     component="input"
                     name="pubAddress"
                     type="text"
                   />
                 </label>
-              </div>
-
-              <label htmlFor="pdate" className="mt-">
-                <span className=" block text-xs text-gray-500">Publication Date</span>
+                <label htmlFor="pdate" className="mt-">
+                <span className="  text-xs text-gray-500">Publish Date</span>
                 <Field
-                  className="  rounded-md border-gray-300  w-full
+                  className=" block rounded-md border-gray-300  w-2/4
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 text-gray-500 bg-gray-50"
                   component="input"
                   name="pubdate"
@@ -162,52 +182,30 @@ export default function RequestForm({ account }) {
                   required
                 />
               </label>
-            </div>
-
-            {/* griid ends here */}
-
-            <div className="grid grid-cols-3  gap-4 mt-8 ">
               <label htmlFor="edition" className="">
                 <span className=" text-xs  text-gray-500 ">Edition</span>
                 <Field
-                  className=" text-gray-500 rounded-md border-gray-300  w-full
+                  className="block text-gray-500 rounded-md border-gray-300  w-3/4
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                   component="input"
                   name="edition"
                   type="text"
+                  placeholder="Book's Edition"
+
                 />
               </label>
+             
+                
+        
+            </div>
 
-              <div className="col-span-1">
-                <label htmlFor="copvol" className="mt-3">
-                  <span className=" block text-xs  text-gray-500">Copies/Volumes</span>
-                  <Field
-                    className="text-gray-500 rounded-md border-gray-300  w-full
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
-                    component="input"
-                    name="copvol"
-                    type="text"
-                  />
-                </label>
-              </div>
 
-              <div className="col-start-1 col-span-2">
-                <label htmlFor="chargedto" className=" ">
-                  <span className="  text-xs  text-gray-500 mb-">Charge to</span>
-                  <Field
-                    className="text-gray-500 w-full rounded-md border-gray-300
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
-                    component="input"
-                    name="chargeto"
-                    type="text"
-                  />
-                </label>
-              </div>
-              <div className="col-start-2">
-                <label htmlFor="subjectr" className="">
+         
+            <div className="row-start-2 ">
+            <label htmlFor="subjectr" className="">
                   <span className=" text-xs text-gray-500">Subject</span>
                   <Field
-                    className=" text-gray-500 rounded-md border-gray-300  w-full
+                    className="block text-gray-500 rounded-md border-gray-300  w-auto
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                     component="input"
                     name="subject"
@@ -215,22 +213,54 @@ export default function RequestForm({ account }) {
                     placeholder="Subject "
                   />
                 </label>
+         
+              <label htmlFor="copvol" className="">
+                  <span className=" block text-xs  text-gray-500">Copies/Volumes</span>
+                  <Field
+                    className="text-gray-500 rounded-md border-gray-300  w-full
+                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                    component="input"
+                    name="copvol"
+                    type="number"
+                  placeholder="Number of Copies"
 
-              </div>
+                  />
+                </label>
+                <label htmlFor="chargedto" className=" ">
+                  <span className="  text-xs  text-gray-500 ">Charge to</span>
+                  <Field
+                    className="text-gray-500 w-full rounded-md border-gray-300
+                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                    component="input"
+                    name="chargeto"
+                    type="text"
+                  placeholder="Charge to"
+
+                  />
+                </label>
+               
+
+            
             </div>
-            <div className="flex justify-end space-x-5 content-end items-end">
-              <label htmlFor="notereqform" className="">
+            <div className="row-start-3 ">
+            <label htmlFor="notereqform" className="">
                 <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
                 <Field
-                  className="h-auto w-60  text-sm text-gray-400 rounded-md border-gray-300
+                  className=" resize-none h-full w-full  text-sm text-gray-400 rounded-md border-gray-300
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50  "
                   component="textarea"
                   name="notereqform"
                   type="input"
                 />
               </label>
+                </div>
+          
+           
+        
             </div>
-            <div className="block text-right mt-5">
+
+   
+            <div className="block text-right mt-5 p-4">
               <button
                 type="submit"
                 className=" mx-auto text-center py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md

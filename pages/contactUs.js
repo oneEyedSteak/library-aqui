@@ -8,7 +8,7 @@ const ContactUs = () => (
       <link rel="icon" href="/icon.ico" />
     </Head>
 
-    <section className="from-blue-900 to-yellow-600 bg-gradient-to-br  min-h-screen mx-auto">
+    <section className="bg-base min-h-screen mx-auto">
 
       <h1>CONTACTUS</h1>
     </section>

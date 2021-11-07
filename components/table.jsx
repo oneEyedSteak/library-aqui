@@ -27,7 +27,7 @@ const Table = ({
                 <th
                   // eslint-disable-next-line react/jsx-props-no-spreading
                   {...column.getHeaderProps({
-                    className: column.className || `text-gray-900 dark:text-white px-6 py-3 text-left text-xs
+                    className: column.className || `text-gray-600 dark:text-white px-6 py-3 text-left text-xs
                       uppercase tracking-wider dark:bg-primary-dark cursor-pointer`,
                   })}
                 >

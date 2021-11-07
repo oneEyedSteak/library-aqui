@@ -58,7 +58,7 @@ export default function RequestForm({ bookDean }) {
 
   return (
 
-    <section className=" mx-auto  md:flex bg-base to-yellow-600 min-h-screen ">
+    <section className=" mx-auto  md:flex bg-base  min-h-screen ">
 
       <Head>
         <title>Library Acquisition | Entry of Books </title>
@@ -83,36 +83,48 @@ export default function RequestForm({ bookDean }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16  shadow-sm mx-auto w-3/5 min-h-screen ">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16  shadow-md mx-auto w-full min-h-screen ">
 
-                <div className="flex-shrink-0 flex content-around items-center">
+                <div className="flex-shrink-0 flex content-around items-center p-8
+                ">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl mt-4 text-gray-600 ">Library Acquisition Entry of Books</h1>
+                  <h1 className="text-xl  text-gray-600 ">Library Acquisition Entry of Books</h1>
 
                 </div>
 
-                <div className="flex space-x-6 content-around items-center mt-10 justify-end">
-
+                <div className="flex space-x-6 content-around items-center justify-end p-8">
                   <label htmlFor="date" className="block ">
-                    <span className="block  text-xs  text-gray-500 mb-1">Approved Date</span>
+                    <span className="block  text-xs  text-gray-500 ">Approved Date</span>
                     <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 text-xs bg-gray-50 mr-4"
+                      className="text-gray-500 rounded-md  w-full
+                      focus:placeholder-gray-700 focus:border-gray-500 cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="approvalDateDean"
                       component="input"
                       type="date"
                       required
                     />
                   </label>
-
                 </div>
-                <br />
-                <div className="flex space-x-6 content-around items-center mt-6">
 
+                <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
+
+                <div className="row-start-1">
+                <label htmlFor="author" className="">
+                      <span className="block hover:textColor-red  text-xs  text-gray-500 ">User ID</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        component="input"
+                        name="userID"
+                        type="text"
+                        initialValue={bookDean.userID}
+                        disabled
+                      />
+                    </label>
                   <label htmlFor="author" className="">
-                    <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">Name</span>
+                    <span className="block hover:textColor-red  text-xs  text-gray-500">Name</span>
                     <Field
                       className="text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -123,24 +135,11 @@ export default function RequestForm({ bookDean }) {
                       disabled
                     />
                   </label>
-                  <label htmlFor="author" className="">
-                    <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="userID"
-                      type="Hidden"
-                      initialValue={bookDean.userID}
-                      disabled
-                    />
-                  </label>
-                </div>
+                  </div>
+                  <div className="row-start-1 col-span-2">
 
-                <div className="grid grid-cols-4 space-y-3">
-
-                  <div  className="  col-span-3">
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs  text-gray-500 mb-1">Author</span>
+                      <span className="block hover:textColor-red text-xs  text-gray-500">Author</span>
                       <Field
                         className=" text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  border-0 bg-gray-50"
@@ -151,11 +150,8 @@ export default function RequestForm({ bookDean }) {
                         disabled
                       />
                     </label>
-                  </div>
-
-                  <div className="col-start-1  col-span-2">
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs text-gray-500 mx-1 mt-2">Title</span>
+                      <span className="block hover:textColor-red text-xs text-gray-500  ">Title</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  border-0 bg-gray-50"
@@ -166,7 +162,9 @@ export default function RequestForm({ bookDean }) {
                         disabled
                       />
                     </label>
-                    <label htmlFor="edition" className="">
+                  </div>
+                  <div className="row-start-2 gap-y-4">
+                  <label htmlFor="edition" className="">
                       <span className="block  text-xs text-gray-500 ">Number of Copies</span>
                       <Field
                         className=" text-gray-500 rounded-md border-gray-300  w-full
@@ -178,11 +176,9 @@ export default function RequestForm({ bookDean }) {
                         disabled
                       />
                     </label>
-                  </div>
 
-                  <div className="col-start-1 col-span-1 ">
 
-                    <label htmlFor="edition" className="mt-6 ml">
+                    <label htmlFor="edition" className="">
                       <span className="block  text-xs text-gray-500 ">Edition</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
@@ -194,14 +190,24 @@ export default function RequestForm({ bookDean }) {
                         disabled
                       />
                     </label>
+                          
+         
 
                   </div>
-                </div>
-
-                <br />
-                <div className="grid-cols-2">
-                  
-                <label htmlFor="notereqform" className="">
+                  <div className="row-start-2 col-span-2">
+                  <label htmlFor="publicationDate" className="">
+                    <span className="block  text-xs  text-gray-500 ">Publication Date</span>
+                    <Field
+                      className="text-s focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
+                                        block w-36 px-0  text-gray-500  mt-0 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                      component="input"
+                      name="publicationDate"
+                      type="text"
+                      initialValue={new Date(bookDean.pubdate).toDateString()}
+                      disabled
+                    />
+                  </label>
+                  <label htmlFor="notereqform" className="">
                   <span className="block  text-xs text-gray-500 mb-">Note:</span>
                   <Field
                     className="resize-none  text-gray-500 rounded-md border-gray-300 w-full
@@ -213,6 +219,24 @@ export default function RequestForm({ bookDean }) {
                     disabled
                   />
                 </label>
+                  </div>
+                  <div className="row-start-3 ">
+                  
+                  <label htmlFor="selectDosition" className=" ">
+                    <span className="block  text-xs text-gray-500 p">Select Status</span>
+                    <Field name="approvalDean" component="select" className="  text-gray-500 rounded-md border-gray-300  w-2/4
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50  " required>
+
+                      <option value=""> </option>
+                      <option className="block text-xs font-bold text-gray-500" value="0">On Going</option>
+                      <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
+
+                    </Field>
+                  </label>
+                  </div>
+                  
+                  <div className="row-start-4 ">
+      
                 {imageURL ? (
                   <img
                     name="signatureImage"
@@ -228,8 +252,7 @@ export default function RequestForm({ bookDean }) {
                     }}
                   />
                 ) : save}
-                </div>
-
+                
                 <Popup
                   modal
                   trigger={(
@@ -239,13 +262,14 @@ export default function RequestForm({ bookDean }) {
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                       a
                       type="button"
-                    >
+                    required>
                       {' '}
                       Sign Here
                     </button>
                   )}
                   closeOnDocumentClick={false}
                 >
+                  
                   {(close) => (
                     <>
                       <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
@@ -282,41 +306,14 @@ export default function RequestForm({ bookDean }) {
                   )}
                 </Popup>
 
-           
-
-     
-          
-
-                <div className="flex space-x-6 content-around items-center mt-10 justify-end">
-
-                  <label htmlFor="publicationDate" className="mt-6 ml">
-                    <span className="block  text-xs  text-gray-500 ">Publication Date</span>
-                    <Field
-                      className="text-s focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
-                                        block w-36 px-0 font-bold text-gray-500  mt-0 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
-                      component="input"
-                      name="publicationDate"
-                      type="text"
-                      initialValue={new Date(bookDean.pubdate).toDateString()}
-                      disabled
-                    />
-                  </label>
-
-                  <label htmlFor="selectDosition" className="block mt-2">
-                    <span className="block  text-xs text-gray-500 p">Select Status</span>
-                    <Field name="approvalDean" component="select" className="  text-gray-500 rounded-md border-gray-300  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50  ">
-
-                      <option value=""> </option>
-                      <option className="block text-xs font-bold text-gray-500" value="0">On Going</option>
-                      <option className="block text-xs font-bold text-gray-500" value="1">Approved</option>
-
-                    </Field>
-                  </label>
+                </div>
+                
                 </div>
 
+
+
                 <label htmlFor="requesID" className="">
-                  <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1" />
+                  <span className="block hover:textColor-red  text-xs  text-gray-500 mb-1" />
                   <Field
                     className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"

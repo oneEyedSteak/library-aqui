@@ -26,51 +26,8 @@ const HeaderMenu = ({ account }) => (
         )}
       </>
       )}
-      {account && (
-      <>
-        {['Dean', 'Admin'].includes(account.selectPosition) && (
-        <>
-          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
-            <div className="block items-center">
-              <Link href="/see-all-books-dean">
-                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-600 px-auto mx-auto
-                   text-sm  font-bold"
-                >
-                  All Requested Books
-                </span>
-              </Link>
-              <div className="mt-1">
-                <p className=" text-gray-800 font-thin text-sm">See all requested </p>
-              </div>
-            </div>
-          </ul>
-        </>
-        )}
-      </>
-      )}
-      {account && (
-      <>
-        {['VPAA', 'Admin'].includes(account.selectPosition) && (
-        <>
-          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
-            <div className="block items-center">
-              <Link href="/see-all-books-vpaa">
-                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
-                   text-sm font-medium"
-                >
-                  All Requested Books
-                </span>
-              </Link>
-              <div className="mt-1">
-                <p className=" text-gray-800 font-thin italic text-sm">See all requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
-              </div>
-            </div>
-          </ul>
-        </>
-        )}
-      </>
-      )}
+
+     
       {account && (
       <>
         {['Acquisition', 'Admin'].includes(account.selectPosition) && (
