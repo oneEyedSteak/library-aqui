@@ -13,7 +13,7 @@ export const getServerSideProps = async () => {
 };
 
 export default function TotalCost({ totalCost }) {
-  console.log(totalCost)
+  console.log(totalCost);
   const columns = useMemo(
     () => [
       {

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import React from 'react';
 
 export default function seeAllVerifiedBooks() {
   return (
@@ -8,7 +9,8 @@ export default function seeAllVerifiedBooks() {
         <meta name="keywords" content="someting" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      <section className="max-w-screen bg-base min-h-screen mx-auto " />
+
     </>
+
   );
 }

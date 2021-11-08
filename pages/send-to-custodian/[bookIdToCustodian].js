@@ -66,7 +66,7 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     <span className="block  text-xs   text-gray-500 ">Send to Custodian Date</span>
                     <Field
                       className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 
+                      focus:placeholder-gray-700 focus:border-gray-500
                       cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="sendToCustodianDate"
                       component="input"
@@ -77,133 +77,132 @@ export default function RequestForm({ bookIdtoCustodian }) {
 
                 </div>
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
-                <div className="row-start-1">
-                <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">User ID</span>
-                  <Field
-                    className="text-gray-500 rounded-md  w-full
+                  <div className="row-start-1">
+                    <label htmlFor="author" className="">
+                      <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">User ID</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                    component="input"
-                    name="userID"
-                    type="text"
-                    initialValue={bookIdtoCustodian.userID}
-                    disabled
+                        component="input"
+                        name="userID"
+                        type="text"
+                        initialValue={bookIdtoCustodian.userID}
+                        disabled
+                      />
+                    </label>
 
-                  />
-                </label>
-
-                  <label htmlFor="author" className="">
-                    <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">Name</span>
-                    <Field
-                      className="text-gray-500 rounded-md  w-full
+                    <label htmlFor="author" className="">
+                      <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">Name</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                      component="input"
-                      name="requestee"
-                      type="text"
-                      initialValue={bookIdtoCustodian.requestee}
-                      disabled
-                    />
-                  </label>
-                </div>
-                <div className="row-start-1 col-span-2">
+                        component="input"
+                        name="requestee"
+                        type="text"
+                        initialValue={bookIdtoCustodian.requestee}
+                        disabled
+                      />
+                    </label>
+                  </div>
+                  <div className="row-start-1 col-span-2">
 
-                <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Author</span>
-                  <Field
-                    className=" text-gray-500 rounded-md  w-full
+                    <label htmlFor="author" className="">
+                      <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Author</span>
+                      <Field
+                        className=" text-gray-500 rounded-md  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                    component="input"
-                    name="Author"
-                    type="text"
-                    placeholder="Author"
-                    initialValue={bookIdtoCustodian.authorName}
-                    disabled
-                  />
-                </label>
-                <label htmlFor="author" className="">
-                  <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Title</span>
-                  <Field
-                    className="text-gray-500 rounded-md  w-full
+                        component="input"
+                        name="Author"
+                        type="text"
+                        placeholder="Author"
+                        initialValue={bookIdtoCustodian.authorName}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="author" className="">
+                      <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Title</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                    component="input"
-                    name="Title"
-                    type="text"
-                    placeholder="Title"
-                    initialValue={bookIdtoCustodian.title}
-                    disabled
-                  />
-                </label>
-                </div>
-                <div className="row-start-2 gap-y-4">
-                  
-                <label htmlFor="edition" className="">
-                    <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
-                    <Field
-                      className=" text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                      component="input"
-                      name="NumberOfCopies"
-                      type="text"
-                      initialValue={bookIdtoCustodian.copvol}
-                      disabled
-                    />
-                  </label>
+                        component="input"
+                        name="Title"
+                        type="text"
+                        placeholder="Title"
+                        initialValue={bookIdtoCustodian.title}
+                        disabled
+                      />
+                    </label>
+                  </div>
+                  <div className="row-start-2 gap-y-4">
 
-                  <label htmlFor="edition" className="">
-                    <span className="block  text-xs  text-gray-500 ">Edition</span>
-                    <Field
-                      className="text-gray-500 rounded-md  w-full
+                    <label htmlFor="edition" className="">
+                      <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
+                      <Field
+                        className=" text-gray-500 rounded-md  w-full
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                      component="input"
-                      name="Edition"
-                      type="text"
-                      initialValue={bookIdtoCustodian.edition}
-                      disabled
-                    />
-                  </label>
-               
-                </div>
-                <div className="row-start-3 gap-y-4">
-                <small className="  block  text-xs text-gray-500  mr-2 ">Approved By:</small>
-                <span className=" text-xs block mt-2 text-gray-500">
-                  President:
-                  {' '}
-                  {bookIdtoCustodian.approvalPresident}
-                </span>
-                <span className=" text-xs block mt-1 text-gray-500">
-                  Finance:
-                  {' '}
-                  {bookIdtoCustodian.approvalPresident}
-                </span>
-                </div>
-                <div className="row-start-2 col-span-2">
-                <label htmlFor="publicationDate" className="">
-                    <span className="block  text-xs text-gray-500  ">Publication Date</span>
-                    <Field
-                      className="text-gray-500 rounded-md  w-full
+                        component="input"
+                        name="NumberOfCopies"
+                        type="text"
+                        initialValue={bookIdtoCustodian.copvol}
+                        disabled
+                      />
+                    </label>
+
+                    <label htmlFor="edition" className="">
+                      <span className="block  text-xs  text-gray-500 ">Edition</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                      component="input"
-                      name="publicationDate"
-                      type="text"
-                      initialValue={new Date(bookIdtoCustodian.pubdate).toDateString()}
-                      disabled
-                    />
-                  </label>
-                  <label htmlFor="notereqform" className="">
-                  <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
-                  <Field
-                    className="resize-none text-gray-500 rounded-md  w-full  h-full
+                        component="input"
+                        name="Edition"
+                        type="text"
+                        initialValue={bookIdtoCustodian.edition}
+                        disabled
+                      />
+                    </label>
+
+                  </div>
+                  <div className="row-start-3 gap-y-4">
+                    <small className="  block  text-xs text-gray-500  mr-2 ">Approved By:</small>
+                    <span className=" text-xs block mt-2 text-gray-500">
+                      President:
+                      {' '}
+                      {bookIdtoCustodian.approvalPresident}
+                    </span>
+                    <span className=" text-xs block mt-1 text-gray-500">
+                      Finance:
+                      {' '}
+                      {bookIdtoCustodian.approvalPresident}
+                    </span>
+                  </div>
+                  <div className="row-start-2 col-span-2">
+                    <label htmlFor="publicationDate" className="">
+                      <span className="block  text-xs text-gray-500  ">Publication Date</span>
+                      <Field
+                        className="text-gray-500 rounded-md  w-full
+                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        component="input"
+                        name="publicationDate"
+                        type="text"
+                        initialValue={new Date(bookIdtoCustodian.pubdate).toDateString()}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="notereqform" className="">
+                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <Field
+                        className="resize-none text-gray-500 rounded-md  w-full  h-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                    component="textarea"
-                    name="noteDeanbook"
-                    type="input"
-                    initialValue={bookIdtoCustodian.notereqform}
-                    disabled
-                  />
-                </label>      
-                </div>
-                
-                <Field
+                        component="textarea"
+                        name="noteDeanbook"
+                        type="input"
+                        initialValue={bookIdtoCustodian.notereqform}
+                        disabled
+                      />
+                    </label>
+                  </div>
+
+                  <Field
                     className="resize-none text-gray-500 rounded-md  w-full  h-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
                     component="textarea"
@@ -212,14 +211,10 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     initialValue={bookIdtoCustodian.requestID}
                     disabled
                   />
-       
-                requestID
-         
-           
+
+                  requestID
+
                 </div>
-
-         
-
 
                 <div className="block text-right p-8">
                   <button

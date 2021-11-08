@@ -7,7 +7,7 @@ export const getServerSideProps = async (context) => {
   try {
     const { account } = await validateSession(context);
 
-    const result = await mysql.query(`SELECT * FROM requestform `);
+    const result = await mysql.query('SELECT * FROM requestform ');
 
     const post = JSON.parse(JSON.stringify(result));
     return {

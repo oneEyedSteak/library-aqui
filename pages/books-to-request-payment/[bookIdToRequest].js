@@ -7,14 +7,10 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
-import validateSession from '../../lib/session';
-
 
 export const getServerSideProps = async (context) => {
   const { bookIdToRequest } = context.query;
   const { data } = await api.get(`/api/bookstorequest/${bookIdToRequest}`);
-
-
 
   console.log();
 
@@ -184,7 +180,7 @@ export default function RequestForm({ bookIdToRequest, account }) {
                         disabled
                       />
                     </label>
-                 
+
                     <label htmlFor="edition" className="mt-6 ml">
                       <span className="block  text-xs  text-gray-500 ">Edition</span>
                       <Field
@@ -223,7 +219,6 @@ export default function RequestForm({ bookIdToRequest, account }) {
                         disabled
                       />
                     </label>
-                  
 
                   </div>
                   <div className="row-start-2 col-span-2">
@@ -240,24 +235,22 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       />
                     </label>
 
-                      <label htmlFor="notereqform" className="mt-2">
-                        <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
-                        <Field
-                          className="resize-none text-gray-500 rounded-md  w-full h-full
+                    <label htmlFor="notereqform" className="mt-2">
+                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <Field
+                        className="resize-none text-gray-500 rounded-md  w-full h-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50 "
-                          component="textarea"
-                          name="noteDeanbook"
-                          type="input"
-                          initialValue={bookIdToRequest.notereqform}
-                          disabled
-                        />
-                      </label>
+                        component="textarea"
+                        name="noteDeanbook"
+                        type="input"
+                        initialValue={bookIdToRequest.notereqform}
+                        disabled
+                      />
+                    </label>
 
                   </div>
                   <div className="row-start-3">
 
-                  
-                    
                     {imageURL ? (
                       <img
                         name="signatureImage"
@@ -327,7 +320,6 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       )}
                     </Popup>
                   </div>
-
 
                 </div>
 

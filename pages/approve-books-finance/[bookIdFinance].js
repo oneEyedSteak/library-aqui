@@ -72,57 +72,57 @@ export default function RequestForm({ bookIdFinance }) {
                       component="input"
                       type="date"
                       required
+                      initialValue={new Date().toDateInputValue()}
+
                     />
                   </label>
 
                 </div>
-          
-      
+
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 mt-1 ">
 
-                <div className="row-start-1">
-                <label htmlFor="author" className="">
-                  <span className=" hover:textColor-red  text-xs  text-gray-500">User ID</span>
-                  <Field
-                    className="block text-gray-500 rounded-md border-gray-300  w-full
+                  <div className="row-start-1">
+                    <label htmlFor="author" className="">
+                      <span className=" hover:textColor-red  text-xs  text-gray-500">User ID</span>
+                      <Field
+                        className="block text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                    component="input"
-                    name="userID"
-                    type="text"
-                    initialValue={bookIdFinance.userID}
-                    disabled
+                        component="input"
+                        name="userID"
+                        type="text"
+                        initialValue={bookIdFinance.userID}
+                        disabled
+                      />
+                    </label>
 
-                  />
-                </label>
-
-                <label htmlFor="author" className="">
-                    <span className="hover:textColor-red  text-xs  text-gray-500 ">Name</span>
-                    <Field
-                      className=" block text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="author" className="">
+                      <span className="hover:textColor-red  text-xs  text-gray-500 ">Name</span>
+                      <Field
+                        className=" block text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="requestee"
-                      type="text"
-                      initialValue={bookIdFinance.requestee}
-                      disabled
-                    />
-                  </label>
+                        component="input"
+                        name="requestee"
+                        type="text"
+                        initialValue={bookIdFinance.requestee}
+                        disabled
+                      />
+                    </label>
 
-                </div>
-                <div className="row-start-1 col-span-2">
-                <label htmlFor="author" className="">
-                    <span className="block hover:textColor-red text-xs  text-gray-500 ">Author</span>
-                    <Field
-                      className=" text-gray-500 rounded-md border-gray-300  w-full
+                  </div>
+                  <div className="row-start-1 col-span-2">
+                    <label htmlFor="author" className="">
+                      <span className="block hover:textColor-red text-xs  text-gray-500 ">Author</span>
+                      <Field
+                        className=" text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="Author"
-                      type="text"
-                      placeholder="Author"
-                      initialValue={bookIdFinance.authorName}
-                      disabled
-                    />
-                  </label>
+                        component="input"
+                        name="Author"
+                        type="text"
+                        placeholder="Author"
+                        initialValue={bookIdFinance.authorName}
+                        disabled
+                      />
+                    </label>
                     <label htmlFor="author" className="">
                       <span className="block hover:textColor-red text-xs  text-gray-500 ">Title</span>
                       <Field
@@ -139,61 +139,60 @@ export default function RequestForm({ bookIdFinance }) {
                   </div>
 
                   <div className="row-start-2 ">
-                  <label htmlFor="edition" className="">
-                    <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
-                    <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="edition" className="">
+                      <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="NumberOfCopies"
-                      type="text"
-                      initialValue={bookIdFinance.copvol}
-                      disabled
-                    />
-                  </label>
+                        component="input"
+                        name="NumberOfCopies"
+                        type="text"
+                        initialValue={bookIdFinance.copvol}
+                        disabled
+                      />
+                    </label>
 
-                  <label htmlFor="edition" className=" ml">
-                    <span className="block  text-xs  text-gray-500 ">Edition</span>
-                    <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="edition" className=" ml">
+                      <span className="block  text-xs  text-gray-500 ">Edition</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="Edition"
-                      type="text"
-                      initialValue={bookIdFinance.edition}
-                      disabled
-                    />
-                  </label>
-                      <label htmlFor="edition" className="">
-                  <span className="block  text-xs  text-gray-500 ">Price</span>
-                  <Field
-                    className="text-gray-500 rounded-md border-gray-300  w-auto
+                        component="input"
+                        name="Edition"
+                        type="text"
+                        initialValue={bookIdFinance.edition}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="edition" className="">
+                      <span className="block  text-xs  text-gray-500 ">Price</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-auto
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                    component="input"
-                    name="price"
-                    type="text"
-                    initialValue={bookIdFinance.price}
-                    disabled
-                  />
-                </label>
+                        component="input"
+                        name="price"
+                        type="text"
+                        initialValue={bookIdFinance.price}
+                        disabled
+                      />
+                    </label>
 
+                  </div>
 
-                </div>
-                
                   <div className="row-start-2 col-span-2">
 
-                  <label htmlFor="publicationDate" className=" ">
-                    <span className="block  text-xs  text-gray-500 ">Publication Date</span>
-                    <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-auto
+                    <label htmlFor="publicationDate" className=" ">
+                      <span className="block  text-xs  text-gray-500 ">Publication Date</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-auto
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="publicationDate"
-                      type="text"
-                      initialValue={new Date(bookIdFinance.pubdate).toDateString()}
-                      disabled
-                    />
-                  </label>
+                        component="input"
+                        name="publicationDate"
+                        type="text"
+                        initialValue={new Date(bookIdFinance.pubdate).toDateString()}
+                        disabled
+                      />
+                    </label>
                     <label htmlFor="notereqform" className="">
                       <span className="block  text-xs  text-gray-500 ">Note:</span>
                       <Field
@@ -206,28 +205,29 @@ export default function RequestForm({ bookIdFinance }) {
                         disabled
                       />
                     </label>
-                    
-                 
+
                   </div>
                   <div className="row-start-3 col-span-2">
 
-                  <label htmlFor="selectDosition" className="block ">
-                  <span className="block  text-xs  text-gray-500 p">For Approval</span>
-                  <Field name="approvalFinance" component="select" required className="   mb-2 text-gray-500 rounded-md border-gray-300  w-1/4
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50">
+                    <label htmlFor="selectDosition" className="block ">
+                      <span className="block  text-xs  text-gray-500 p">For Approval</span>
+                      <Field
+                        name="approvalFinance"
+                        component="select"
+                        required
+                        className="   mb-2 text-gray-500 rounded-md border-gray-300  w-1/4
+                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                      >
 
-                    <option value="">Enter Status </option>
-                    <option className="block text-xs text-gray-500" value="0">On Going</option>
-                    <option className="block text-xs  text-gray-500" value="1">Approved</option>
+                        <option value="">Enter Status </option>
+                        <option className="block text-xs text-gray-500" value="0">On Going</option>
+                        <option className="block text-xs  text-gray-500" value="1">Approved</option>
 
-                  </Field>
-                </label>
+                      </Field>
+                    </label>
+                  </div>
                 </div>
-                </div>
 
-             
-            
-               
                 <label htmlFor="requesID" className="">
                   <span className="block hover:textColor-red  text-xs  text-gray-500 " />
                   <Field
@@ -242,7 +242,7 @@ export default function RequestForm({ bookIdFinance }) {
                 <div className="block text-right p-8 ">
                   <button
                     type="submit"
-                    className="cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm 
+                    className="cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm
                   font-medium rounded-md text-white bg-secondary hover:bg-indigo-700
                           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
 

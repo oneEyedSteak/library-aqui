@@ -92,7 +92,6 @@ export default function RequestForm({ booksIdtoVerify }) {
                       />
                     </label>
 
-
                     <label htmlFor="author" className="">
                       <span className="block hover:textColor-red  text-xs x text-gray-500 mb-1">Name</span>
                       <Field
@@ -180,8 +179,13 @@ export default function RequestForm({ booksIdtoVerify }) {
                     </label>
                     <label htmlFor="selectDosition" className="block">
                       <span className="block  text-xs  text-gray-500 p">Verify</span>
-                      <Field name="verified" component="select" className=" text-gray-500 rounded-md  w-4/6
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50" required>
+                      <Field
+                        name="verified"
+                        component="select"
+                        className=" text-gray-500 rounded-md  w-4/6
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50"
+                        required
+                      >
 
                         <option value=""> Select status </option>
                         <option className=" text-xs text-gray-500" value="0">Existing</option>
@@ -205,7 +209,6 @@ export default function RequestForm({ booksIdtoVerify }) {
                       />
                     </label>
 
-
                     <label htmlFor="notereqform" className="">
                       <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
                       <Field
@@ -218,20 +221,18 @@ export default function RequestForm({ booksIdtoVerify }) {
                         disabled
                       />
                     </label>
-                   
 
                   </div>
                   <Field
-                        className="text-gray-500 rounded-md  w-full h-full
+                    className="text-gray-500 rounded-md  w-full h-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-                        component="input"
-                        name="requestID"
-                        type="hidden"
-                        initialValue={booksIdtoVerify.requestID}
-                      />
+                    component="input"
+                    name="requestID"
+                    type="hidden"
+                    initialValue={booksIdtoVerify.requestID}
+                  />
                 </div>
 
-          
                 <div className="block text-right mt-5 p-8 ">
                   <button
                     type="submit"

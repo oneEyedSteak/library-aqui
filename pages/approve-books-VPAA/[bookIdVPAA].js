@@ -5,20 +5,17 @@ import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
 
 export const getServerSideProps = async (context) => {
-  try{
+  try {
     const { bookIdVPAA } = context.query;
     const { data } = await api.get(`/api/vpaabooks/${bookIdVPAA}`);
-  
-  
+
     return {
       props: { bookVPAAId: data },
-  
-    };
-  }
-  catch(error) {
-console.log(error)
-  }
 
+    };
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export default function RequestForm({ bookVPAAId }) {
@@ -77,12 +74,12 @@ export default function RequestForm({ bookVPAAId }) {
                       name="approvalDateVPAA"
                       component="input"
                       type="date"
+                      initialValue={new Date().toDateInputValue()}
                       required
                     />
                   </label>
 
                 </div>
-
 
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1">
                   <div className="row-start-1">
@@ -130,7 +127,7 @@ export default function RequestForm({ bookVPAAId }) {
                         disabled
                       />
                     </label>
-                    
+
                     <label htmlFor="author" className="">
                       <span className=" block hover:textColor-red text-xs  text-gray-500 ">Title</span>
                       <Field
@@ -146,7 +143,6 @@ export default function RequestForm({ bookVPAAId }) {
                     </label>
 
                   </div>
-
 
                   <div className="row-start-2">
                     <label htmlFor="edition" className=" ml">
@@ -175,12 +171,12 @@ export default function RequestForm({ bookVPAAId }) {
                           disabled
                         />
                       </label>
-                   
+
                     </div>
 
                   </div>
                   <div className="row-start-2 col-span-2 ">
-                  <label htmlFor="publicationDate" className=" mb-2">
+                    <label htmlFor="publicationDate" className=" mb-2">
                       <span className="block  text-xs  text-gray-500 ">Publication Date</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-auto
@@ -204,43 +200,50 @@ export default function RequestForm({ bookVPAAId }) {
                         disabled
                       />
                     </label>
-                    </div>
+                  </div>
 
-                    <div className="row-start-3">
-                    
-                      <label htmlFor="requesID" className="">
-                    <span className="  text-xs text-gray-500 p">Dean Signature</span>
-                    <img src={bookVPAAId.signatureDean}
-                      alt="College Dean Signature" width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
-                  </label>
+                  <div className="row-start-3">
+
+                    <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <img
+                        src={bookVPAAId.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />
+                    </label>
                   </div>
 
                   <div className="row-start-4">
-                  <label htmlFor="selectDosition" className="block mb-2 ">
-                        <span className="block  text-xs  text-gray-500 p">For Approval</span>
-                        <Field name="approvalVpaa" component="select" className=" text-gray-500 rounded-md border-1 border-gray-300  w-full
-                   bg-gray-50">
+                    <label htmlFor="selectDosition" className="block mb-2 ">
+                      <span className="block  text-xs  text-gray-500 p">For Approval</span>
+                      <Field
+                        name="approvalVpaa"
+                        component="select"
+                        className=" text-gray-500 rounded-md border-1 border-gray-300  w-full
+                   bg-gray-50"
+                      >
 
-                          <option value=""> </option>
-                          <option className="block text-xs  text-gray-500" value="0">On Going</option>
-                          <option className="block text-xs  text-gray-500" value="1">Approved</option>
+                        <option value=""> </option>
+                        <option className="block text-xs  text-gray-500" value="0">On Going</option>
+                        <option className="block text-xs  text-gray-500" value="1">Approved</option>
 
-                        </Field>
-                      </label>
+                      </Field>
+                    </label>
                   </div>
 
-                    </div>
-                    <Field
-              className="block text-gray-500 rounded-md  w-auto
+                </div>
+                <Field
+                  className="block text-gray-500 rounded-md  w-auto
               focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
-              component="input"
-              name="requestID"
-              type="hidden"
-              initialValue={bookVPAAId.requestID}
-              disabled
-
-            />
-      
+                  component="input"
+                  name="requestID"
+                  type="hidden"
+                  initialValue={bookVPAAId.requestID}
+                  disabled
+                />
 
                 <div className="block text-right p-8 ">
                   <button

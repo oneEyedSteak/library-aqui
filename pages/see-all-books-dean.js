@@ -1,11 +1,9 @@
-import validateSession from '../lib/session';
-import mysql from '../providers/mysql';
-import ReactTable from '../components/table';
 import { useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
-
-
+import validateSession from '../lib/session';
+import mysql from '../providers/mysql';
+import ReactTable from '../components/table';
 
 export const getServerSideProps = async (context) => {
   try {
@@ -74,30 +72,30 @@ export default function seeAllBooksDean({ booksDeanDisplay }) {
         Header: 'Department',
         accessor: 'selectDepartment', // accessor is the "key" in the data
       },
-    
+
       {
         Header: 'Note',
         accessor: 'notereqform', // accessor is the "key" in the data
       },
-    
+
       {
         Header: () => 'Action',
         accessor: 'action',
         Cell: ({ row: { values } }) => (
           <Link href={`/approve-books-dean/${values.requestID}`}>
-          <div className="  bg-gray-100  text-center  border border-transparent shadow-sm text-sm  rounded-md
+            <div className="  bg-gray-100  text-center  border border-transparent shadow-sm text-sm  rounded-md
                        hover:bg-base-700
                     focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer text-gray-600
                 flex "
-              >
-                          Update Request
+            >
+              Update Request
 
-                {' '}
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                </svg>
-              </div>
-        </Link>
+              {' '}
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+              </svg>
+            </div>
+          </Link>
         ),
       },
     ],
@@ -123,13 +121,13 @@ export default function seeAllBooksDean({ booksDeanDisplay }) {
           </div>
 
           <div className="text-xs shadow-md w-full mt-10 p">
-                  <label htmlFor="selectDepartment" className="block ">
-                    <span className="block  text-xs  text-gray-500 "> All Books</span>
+            <label htmlFor="selectDepartment" className="block ">
+              <span className="block  text-xs  text-gray-500 "> All Books</span>
 
-                    <ReactTable data={booksDeanDisplay} columns={postRequestedBooks} />
-                  </label>
-                </div>
-       
+              <ReactTable data={booksDeanDisplay} columns={postRequestedBooks} />
+            </label>
+          </div>
+
         </form>
       </section>
     </>

@@ -83,15 +83,15 @@ export default function RequestForm({ book }) {
                       component="input"
                       type="date"
                       required
+                      initialValue={new Date().toDateInputValue()}
                     />
                   </label>
-
                 </div>
 
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 mt-1">
 
-                <div className="row-start-1">
-                <label htmlFor="author" className="">
+                  <div className="row-start-1">
+                    <label htmlFor="author" className="">
                       <span className=" hover:textColor-red  text-xs  text-gray-500 ">User ID</span>
                       <Field
                         className="block text-gray-500 rounded-md  w-full
@@ -103,141 +103,139 @@ export default function RequestForm({ book }) {
                         disabled
                       />
                     </label>
-                  <label htmlFor="author" className="">
-                    <span className=" hover:textColor-red  text-xs  text-gray-500 ">Name</span>
-                    <Field
-                      className="block text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="author" className="">
+                      <span className=" hover:textColor-red  text-xs  text-gray-500 ">Name</span>
+                      <Field
+                        className="block text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="requestee"
-                      type="text"
-                      initialValue={book.requestee}
-                      disabled
-                    />
-                  </label>
-                </div>
+                        component="input"
+                        name="requestee"
+                        type="text"
+                        initialValue={book.requestee}
+                        disabled
+                      />
+                    </label>
+                  </div>
 
-                <div className="row-start-1 col-span-2">
-                <label htmlFor="author" className="">
-                    <span className="text-xs text-gray-500  ">Author</span>
-                    <Field
-                      className="block text-gray-500 rounded-md border-gray-300  w-full
+                  <div className="row-start-1 col-span-2">
+                    <label htmlFor="author" className="">
+                      <span className="text-xs text-gray-500  ">Author</span>
+                      <Field
+                        className="block text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="Author"
-                      type="text"
-                      initialValue={book.authorName}
-                      disabled
-                    />
-                  </label>
-                  <label htmlFor="author" className="">
-                    <span className="text-xs text-gray-500 ">Title</span>
-                    <Field
-                      className=" block text-gray-500 rounded-md border-gray-300  w-full
-                  focus:border-gray-500 placeholder-gray-700 border-0 bg-gray-50"
-                      component="input"
-                      name="Title"
-                      type="text"
-                      initialValue={book.title}
-                      disabled
-                    />
-                  </label>
-                </div>
+                        component="input"
+                        name="Author"
+                        type="text"
+                        initialValue={book.authorName}
+                        disabled
+                      />
+                    </label>
 
-                <div className="row-start-2 ">
-                <label htmlFor="edition" className="">
-                    <span className="text-xs text-gray-500  ">Number of Copies</span>
-                    <Field
-                      className=" text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="author" className="">
+                      <span className="text-xs text-gray-500 ">Title</span>
+                      <Field
+                        className=" block text-gray-500 rounded-md border-gray-300  w-full
+                  focus:border-gray-500 placeholder-gray-700 border-0 bg-gray-50"
+                        component="input"
+                        name="Title"
+                        type="text"
+                        initialValue={book.title}
+                        disabled
+                      />
+                    </label>
+                  </div>
+
+                  <div className="row-start-2 ">
+                    <label htmlFor="edition" className="">
+                      <span className="text-xs text-gray-500  ">Number of Copies</span>
+                      <Field
+                        className=" text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="NumberOfCopies"
-                      type="text"
-                      initialValue={book.copvol}
-                      disabled
-                    />
-                  </label>
-                  <label htmlFor="edition" className="">
-                    <span className="  text-xs text-gray-500 ">Edition</span>
-                    <Field
-                      className=" text-gray-500 rounded-md border-gray-300  w-full
+                        component="input"
+                        name="NumberOfCopies"
+                        type="text"
+                        initialValue={book.copvol}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="edition" className="">
+                      <span className="  text-xs text-gray-500 ">Edition</span>
+                      <Field
+                        className=" text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="Edition"
-                      type="text"
-                      initialValue={book.edition}
-                      value={book.edition}
-                      disabled
-                    />
-                  </label>
-                </div>
+                        component="input"
+                        name="Edition"
+                        type="text"
+                        initialValue={book.edition}
+                        value={book.edition}
+                        disabled
+                      />
+                    </label>
+                  </div>
 
                   <div className="row-start-2 col-span-2">
 
-                  <label htmlFor="publicationDate" className="">
-                    <span className="  text-xs  text-gray-500 ">Publication Date</span>
-                    <Field
-                      className=" block text-gray-500 rounded-md border-gray-300  w-auto
+                    <label htmlFor="publicationDate" className="">
+                      <span className="  text-xs  text-gray-500 ">Publication Date</span>
+                      <Field
+                        className=" block text-gray-500 rounded-md border-gray-300  w-auto
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="publicationDate"
-                      type="text"
-                      initialValue={new Date(book.pubdate).toDateString()}
-                      disabled
-                    />
-                  </label>
-                <label htmlFor="notereqform" className="">
-                  <span className="  text-xs text-gray-500 mb-1">Note:</span>
-                  <Field
-                    className="resize-none text-gray-500 rounded-md border-gray-300  w-full 
+                        component="input"
+                        name="publicationDate"
+                        type="text"
+                        initialValue={new Date(book.pubdate).toDateString()}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="notereqform" className="">
+                      <span className="  text-xs text-gray-500 mb-1">Note:</span>
+                      <Field
+                        className="resize-none text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                    component="textarea"
-                    name="noteEntry"
-                    type="input"
-                    initialValue={book.notereqform}
-                    disabled
-                  />
-                </label>
-                </div>
-                <div className="row-start-3">
-                <label htmlFor="edition" className="mt-16">
-                    <span className="  block text-xs  text-gray-500 ">Price</span>
-                    <Field
-                      required
-                      className=" mb-2 text-gray-500 rounded-md border-gray-300  w-auto
+                        component="textarea"
+                        name="noteEntry"
+                        type="input"
+                        initialValue={book.notereqform}
+                        disabled
+                      />
+                    </label>
+                  </div>
+                  <div className="row-start-3">
+                    <label htmlFor="edition" className="mt-16">
+                      <span className="  block text-xs  text-gray-500 ">Price</span>
+                      <Field
+                        required
+                        className=" mb-2 text-gray-500 rounded-md border-gray-300  w-auto
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  bg-gray-50"
-                      component="input"
-                      name="price"
-                      type="text"
-                      placeholder="Enter Price"
-                    />
-                  </label>
-                  <label htmlFor="selectDosition" className=" ">
-                    <span className="block  text-xs text-gray-500 p">For Approval</span>
-                    <Field
-                      required
-                      name="status"
-                      component="select"
-                      className=" mb-2 text-gray-500 rounded-md border-gray-300  w-2/4
+                        component="input"
+                        name="price"
+                        type="text"
+                        placeholder="Enter Price"
+                      />
+                    </label>
+                    <label htmlFor="selectDosition" className=" ">
+                      <span className="block  text-xs text-gray-500 p">For Approval</span>
+                      <Field
+                        required
+                        name="status"
+                        component="select"
+                        className=" mb-2 text-gray-500 rounded-md border-gray-300  w-2/4
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50 "
-                    >
+                      >
 
-                      <option value="">Enter Status </option>
-                      <option className="block text-xs  text-gray-400" value="0">On Going</option>
-                      <option className="block text-xs  text-gray-400" value="1">Approved</option>
-                    </Field>
-                  </label>
+                        <option value="">Enter Status </option>
+                        <option className="block text-xs  text-gray-400" value="0">On Going</option>
+                        <option className="block text-xs  text-gray-400" value="1">Approved</option>
+                      </Field>
+                    </label>
+                  </div>
+
                 </div>
 
-                </div>
-
-
-
-    
                 <div className=" text-right mt-5 p-8">
                   <button
                     type="submit"
-                    className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm 
+                    className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm
                     font-medium rounded-md text-white bg-secondary hover:bg-indigo-700
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >

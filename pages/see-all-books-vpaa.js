@@ -1,9 +1,9 @@
-import validateSession from '../lib/session';
-import mysql from '../providers/mysql';
-import ReactTable from '../components/table';
 import { useMemo } from 'react';
 import Head from 'next/head';
 import Link from 'next/link';
+import validateSession from '../lib/session';
+import mysql from '../providers/mysql';
+import ReactTable from '../components/table';
 
 export const getServerSideProps = async (context) => {
   try {
@@ -122,7 +122,6 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
             <h1 className="text-xl  text-gray-600 ">All Requested Books</h1>
 
           </div>
-
 
           <div className="text-xs shadow-md w-full mt-10 p">
             <label htmlFor="selectDepartment" className="block ">

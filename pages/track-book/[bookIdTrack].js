@@ -51,7 +51,6 @@ export default function RequestForm({ bookIdTrack }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-
               <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 shadow-md w-full mx-auto h-auto  ">
 
                 <div className="flex-shrink-0 flex content-around items-center">
@@ -79,7 +78,7 @@ export default function RequestForm({ bookIdTrack }) {
                     <span className="block  text-xs text-gray-500 ">Requested Date</span>
                     <Field
                       className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 
+                        focus:placeholder-gray-700 focus:border-gray-500
                         cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="date"
                       component="input"
@@ -89,7 +88,6 @@ export default function RequestForm({ bookIdTrack }) {
                       disabled
                     />
                   </label>
-
 
                 </div>
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
@@ -397,12 +395,8 @@ export default function RequestForm({ bookIdTrack }) {
                         </label>
                       )}
 
-
                     </div>
                   </div>
-
-
-
 
                 </div>
 

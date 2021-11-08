@@ -1,14 +1,9 @@
 import Head from 'next/head';
+import { useMemo } from 'react';
+import Link from 'next/link';
 import mysql from '../providers/mysql';
 import validateSession from '../lib/session';
-import { useMemo } from 'react';
-import api from '../lib/api';
 import ReactTable from '../components/table';
-import Link from 'next/link';
-
-
-
-import RequestedCardsPresident from '../components/RequestedCardsPresident';
 
 export const getServerSideProps = async (context) => {
   try {
@@ -77,7 +72,7 @@ export default function seeAllBooksVPAA({ booksDisplayPresident }) {
         Header: 'Price',
         accessor: 'price',
       },
-  
+
       {
         Header: 'Approved By Dean',
         accessor: 'approvalDean', // accessor is the "key" in the data
@@ -96,12 +91,12 @@ export default function seeAllBooksVPAA({ booksDisplayPresident }) {
           </div>
         ),
       },
-    
+
       {
         Header: () => 'Action',
         accessor: 'action',
         Cell: ({ row: { values } }) => (
-            <Link href={`/approve-books-president/${values.requestID}`}>
+          <Link href={`/approve-books-president/${values.requestID}`}>
 
             <button
               type="button"
@@ -125,26 +120,25 @@ export default function seeAllBooksVPAA({ booksDisplayPresident }) {
         <meta name="keywords" content="someting" />
         <link rel="icon" href="/icon.ico" />
       </Head>
-      
+
       <section className="max-w-screen bg-base min-h-screen mx-auto ">
 
-      <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+        <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
 
-       
-      <div className="flex-shrink-0 flex content-around items-center">
+          <div className="flex-shrink-0 flex content-around items-center">
 
-<img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-<img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-<h1 className="text-xl  text-gray-600 ">Approved Books by Finance</h1>
+            <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+            <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+            <h1 className="text-xl  text-gray-600 ">Approved Books by Finance</h1>
 
-</div>
-        <div className="text-xs shadow-md w-full mt-10 ">
-        <span className="block  text-xs  text-gray-500 "> All Books</span>
+          </div>
+          <div className="text-xs shadow-md w-full mt-10 ">
+            <span className="block  text-xs  text-gray-500 "> All Books</span>
 
-          <ReactTable data={booksDisplayPresident} columns={columns} />
-        </div>
+            <ReactTable data={booksDisplayPresident} columns={columns} />
+          </div>
         </form>
-  
+
       </section>
     </>
   );

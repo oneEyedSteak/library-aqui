@@ -48,8 +48,6 @@ export default function RequestForm({ bookIdToPrint }) {
       {session && (
         <>
 
-
-
           <Head>
             <title>Library Acquisition | Request Form </title>
             <meta name="keywords" content="someting" />
@@ -73,7 +71,7 @@ export default function RequestForm({ bookIdToPrint }) {
                     <span className="block  text-xs  text-gray-500 mb-1">Requested Date</span>
                     <Field
                       className="form-text text-xs  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none 
+                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none
                             focus:ring-0 focus:border-black border-gray-400"
                       name="date"
                       component="input"
@@ -87,28 +85,26 @@ export default function RequestForm({ bookIdToPrint }) {
                     <span className="block  text-xs  text-gray-500 mb-1">Rush or Not Rush</span>
                     <Field
                       className="form-text text-xs  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none 
+                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none
                             focus:ring-0 focus:border-black border-gray-400"
                       name="rushornrush"
                       component="input"
                       type="text"
                       Required
                       initialValue={bookIdToPrint.rushornrush}
-disabled
+                      disabled
                     />
                   </label>
-
 
                 </div>
 
                 <span className="blockg hover:textColor-red text-xs  text-gray-500 mb-1"> Requested By</span>
 
-
                 <label htmlFor="title" className="mt-2 ">
                   <span className="block mt-2 text-xs  text-gray-500 ">ID#</span>
                   <Field
                     className="form-text text-xs  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                          block px-0 mb-2 bg-transparent border-0 border-b-2 
+                          block px-0 mb-2 bg-transparent border-0 border-b-2
                           appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                     component="input"
                     name="userID"
@@ -119,10 +115,9 @@ disabled
                   />
                 </label>
 
-
                 <Field
                   className="form-text text-xs  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-      block px-0 mb-2 bg-transparent border-0 border-b-2 
+      block px-0 mb-2 bg-transparent border-0 border-b-2
       appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                   component="input"
                   name="requestee"
@@ -130,7 +125,6 @@ disabled
                   initialValue={bookIdToPrint.requestee}
                   disabled
                 />
-
 
                 <Field
                   className="form-text text-xs  text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
@@ -177,7 +171,6 @@ disabled
                     placeholder="Title"
                     initialValue={bookIdToPrint.title}
                     disabled
-                
 
                   />
                 </label>
@@ -274,29 +267,54 @@ disabled
 
                   <label htmlFor="requesID" className="mt-6">
                     <span className="  text-xs  text-gray-500 p">Dean Signature</span>
-                    <img src={bookIdToPrint.signatureDean} alt="College Dean Signature"
-                      width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
+                    <img
+                      src={bookIdToPrint.signatureDean}
+                      alt="College Dean Signature"
+                      width="100"
+                      height="100"
+                      className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    />
                   </label>
                   <label htmlFor="requesID" className="">
                     <span className="  text-xs text-gray-500 p">Acquisition Signature</span>
-                    <img src={bookIdToPrint.signatureAcquisition}
-                      alt="College Dean Signature" width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
+                    <img
+                      src={bookIdToPrint.signatureAcquisition}
+                      alt="College Dean Signature"
+                      width="100"
+                      height="100"
+                      className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    />
                   </label>
                   <label htmlFor="requesID" className="">
                     <span className="  text-xs text-gray-500 p">VPAA Signature</span>
-                    <img src={bookIdToPrint.signatureVPAA}
-                      alt="College Dean Signature" width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
+                    <img
+                      src={bookIdToPrint.signatureVPAA}
+                      alt="College Dean Signature"
+                      width="100"
+                      height="100"
+                      className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    />
                   </label>
                   <label htmlFor="requesID" className="">
                     <span className="  text-xs text-gray-500 p">Finance Signature</span>
-                    <img src={bookIdToPrint.signatureFinance}
-                      alt="College Dean Signature" width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
+                    <img
+                      src={bookIdToPrint.signatureFinance}
+                      alt="College Dean Signature"
+                      width="100"
+                      height="100"
+                      className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    />
                   </label>
 
                   <label htmlFor="requesID" className="">
                     <span className="  text-xs text-gray-500 p">Director Signature</span>
-                    <img src={bookIdToPrint.signtureDirector}
-                      alt="College Dean Signature" width="100" height="100" className=" mt-2 border-solid border-4 border-gray-blue-900" />
+                    <img
+                      src={bookIdToPrint.signtureDirector}
+                      alt="College Dean Signature"
+                      width="100"
+                      height="100"
+                      className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    />
                   </label>
                 </div>
 
@@ -387,8 +405,15 @@ disabled
                 </div>
 
                 <div className="block text-right mt-5">
-                  <button type="button" className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700
-                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" onClick={() => window.print()} >Print this page</button>
+                  <button
+                    type="button"
+                    className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700
+                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    onClick={() => window.print()}
+                  >
+                    Print this page
+
+                  </button>
 
                 </div>
 

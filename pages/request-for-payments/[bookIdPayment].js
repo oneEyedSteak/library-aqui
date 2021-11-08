@@ -96,7 +96,7 @@ export default function RequestForm({ bookIdPayment }) {
                     <span className="block  text-xs   text-gray-500 mb-1">Aprrove Date</span>
                     <Field
                       className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 
+                      focus:placeholder-gray-700 focus:border-gray-500
                       cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="approvalDateDirector"
                       component="input"
@@ -184,7 +184,7 @@ export default function RequestForm({ bookIdPayment }) {
                         disabled
                       />
                     </label>
-                    
+
                     <label htmlFor="edition" className=" ml">
                       <span className="block  text-xs  text-gray-500 ">Edition</span>
                       <Field
@@ -212,7 +212,7 @@ export default function RequestForm({ bookIdPayment }) {
                     </label>
 
                   </div>
-                  
+
                   <div className="row-start-2 col-span-2">
 
                     <label htmlFor="publicationDate" className=" ml">
@@ -243,9 +243,9 @@ export default function RequestForm({ bookIdPayment }) {
 
                   </div>
                   <div className="row-start-3">
-                  <span className="block  text-xs  text-gray-500 mb-1">Approved by: </span>
+                    <span className="block  text-xs  text-gray-500 mb-1">Approved by: </span>
 
-                  <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="text-xs block  text-gray-500 mt-2">
                       President:
                       {' '}
                       {bookIdPayment.approvalPresident}
@@ -259,95 +259,93 @@ export default function RequestForm({ bookIdPayment }) {
                   </div>
                   <div className="row-start-4 ">
 
-                  <div className="flex space-x-2 ">
+                    <div className="flex space-x-2 ">
 
-                  <label htmlFor="requesID" className="">
-                    <span className="  text-xs  text-gray-500 p">Dean Signature</span>
-                    <img src={bookIdPayment.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
-                  </label>
+                      <label htmlFor="requesID" className="">
+                        <span className="  text-xs  text-gray-500 p">Dean Signature</span>
+                        <img src={bookIdPayment.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
+                      </label>
 
-                  < label htmlFor="requesID" className="">
-                    <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
-                    <img src={bookIdPayment.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
-                  </label>
+                      <label htmlFor="requesID" className="">
+                        <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
+                        <img src={bookIdPayment.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
+                      </label>
 
-                  </div>
+                    </div>
 
                   </div>
                   <div className="row-start-5 ">
-                  {imageURL ? (
-                    <img
-                      name="signatureImage"
-                      src={imageURL}
-                      alt="signature"
-                      style={{
-                        display: 'block',
-                        margin: '0',
-                        border: '1px solid black',
-                        width: '150px',
-                        backgroundColor: 'white',
-                        height: '100px',
+                    {imageURL ? (
+                      <img
+                        name="signatureImage"
+                        src={imageURL}
+                        alt="signature"
+                        style={{
+                          display: 'block',
+                          margin: '0',
+                          border: '1px solid black',
+                          width: '150px',
+                          backgroundColor: 'white',
+                          height: '100px',
 
-                      }}
-                    />
-                  ) : save}
-                  <Popup
-                    modal
-                    trigger={(
-                      <button
-                        className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                        }}
+                      />
+                    ) : save}
+                    <Popup
+                      modal
+                      trigger={(
+                        <button
+                          className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
                 text-white bg-indigo-600 hover:bg-indigo-700
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                        a
-                        type="button"
-                      >
-                        {' '}
-                        Sign Here
-                      </button>
+                          a
+                          type="button"
+                        >
+                          {' '}
+                          Sign Here
+                        </button>
                     )}
-                    closeOnDocumentClick={false}
-                  >
-                    {(close) => (
-                      <>
-                        <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
-                        <div className="space-x-2  justify-items-center ">
-                          <button
-                            className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                      closeOnDocumentClick={false}
+                    >
+                      {(close) => (
+                        <>
+                          <SignaturePad ref={sigCanvas} canvasProps={{ className: 'signatureCanvas' }} />
+                          <div className="space-x-2  justify-items-center ">
+                            <button
+                              className="mx-auto mt-3 pr-4 text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
                text-white bg-indigo-600 hover:bg-indigo-700
               focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            type="button"
-                            onClick={clear}
-                          >
-                            clear
-                          </button>
-                          <button
-                            className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                              type="button"
+                              onClick={clear}
+                            >
+                              clear
+                            </button>
+                            <button
+                              className=" mx-auto mt-3 pr-2  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
                 text-white bg-indigo-600 hover:bg-indigo-700
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            type="button"
-                            onClick={close}
-                          >
-                            Close
-                          </button>
-                          <button
-                            className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                              type="button"
+                              onClick={close}
+                            >
+                              Close
+                            </button>
+                            <button
+                              className=" mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
                 text-white bg-indigo-600 hover:bg-indigo-700
                focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                            type="button"
-                            onClick={save}
-                          >
-                            Save
-                          </button>
-                        </div>
-                      </>
-                    )}
-                  </Popup>
+                              type="button"
+                              onClick={save}
+                            >
+                              Save
+                            </button>
+                          </div>
+                        </>
+                      )}
+                    </Popup>
 
                   </div>
 
-
-                 </div>
-         
+                </div>
 
                 <label htmlFor="requesID" className="">
                   <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1" />
@@ -360,8 +358,6 @@ export default function RequestForm({ bookIdPayment }) {
                     initialValue={bookIdPayment.requestID}
                   />
                 </label>
-
-
 
                 <div className="block text-right mt-5 p-8">
                   <button

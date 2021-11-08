@@ -72,40 +72,42 @@ export default function RequestForm({ bookIdPresident }) {
                       component="input"
                       type="date"
                       required
+                      initialValue={new Date().toDateInputValue()}
+
                     />
                   </label>
 
                 </div>
-         
+
                 <div className="grid grid-cols-3 gap-4  border-1  p-8">
-                <div className="row-start-1 col-span-1">
+                  <div className="row-start-1 col-span-1">
 
-                <label htmlFor="author" className="">
-                  <span className="block hover:textColor-red  text-xs text-gray-500 ">User ID</span>
-                  <Field
-                    className="text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="author" className="">
+                      <span className="block hover:textColor-red  text-xs text-gray-500 ">User ID</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                    component="input"
-                    name="userID"
-                    type="text"
-                    initialValue={bookIdPresident.userID}
-                    disabled
-                  />
-                </label>
+                        component="input"
+                        name="userID"
+                        type="text"
+                        initialValue={bookIdPresident.userID}
+                        disabled
+                      />
+                    </label>
 
-                  <label htmlFor="author" className="">
-                    <span className="block hover:textColor-red  text-xs  text-gray-500 ">Name</span>
-                    <Field
-                      className="text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="author" className="">
+                      <span className="block hover:textColor-red  text-xs  text-gray-500 ">Name</span>
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="requestee"
-                      type="text"
-                      initialValue={bookIdPresident.requestee}
-                      disabled
-                    />
-                  </label>
-                </div>
+                        component="input"
+                        name="requestee"
+                        type="text"
+                        initialValue={bookIdPresident.requestee}
+                        disabled
+                      />
+                    </label>
+                  </div>
 
                   <div className="row-start-1 col-span-2">
                     <label htmlFor="author" className="">
@@ -135,22 +137,22 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
-                  
+
                   </div>
                   <div className="row-start-2">
-                  <label htmlFor="edition" className="">
-                    <span className="block  text-xs text-gray-500 ">Number of Copies</span>
-                    <Field
-                      className="  text-gray-500 rounded-md border-gray-300  w-full
+                    <label htmlFor="edition" className="">
+                      <span className="block  text-xs text-gray-500 ">Number of Copies</span>
+                      <Field
+                        className="  text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
-                      component="input"
-                      name="NumberOfCopies"
-                      type="text"
-                      initialValue={bookIdPresident.copvol}
-                      disabled
-                    />
-                  </label>
-                  <label htmlFor="edition" className=" ">
+                        component="input"
+                        name="NumberOfCopies"
+                        type="text"
+                        initialValue={bookIdPresident.copvol}
+                        disabled
+                      />
+                    </label>
+                    <label htmlFor="edition" className=" ">
                       <span className="block  text-xs  text-gray-500 ">Edition</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
@@ -162,7 +164,7 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
-                    
+
                     <label htmlFor="edition" className="">
                       <span className="block  text-xs  text-gray-500 ">Price:</span>
                       <Field
@@ -178,7 +180,7 @@ export default function RequestForm({ bookIdPresident }) {
 
                   </div>
                   <div className="row-start-2 col-span-2">
-                  <label htmlFor="publicationDate" className="">
+                    <label htmlFor="publicationDate" className="">
                       <span className="block  text-xs text-gray-500 ">Publication Date</span>
                       <Field
                         className="text-s focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
@@ -203,14 +205,18 @@ export default function RequestForm({ bookIdPresident }) {
                       />
                     </label>
                   </div>
-          
 
                   <div className="col-span-1 row-start-6">
 
                     <label htmlFor="selectDosition" className="block ">
                       <span className="block  text-xs text-gray-500 ">For Approval</span>
-                      <Field required name="approvalPresident" component="select" className="  text-gray-500 rounded-md border-gray-300  w-full
-                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-1 bg-gray-50 ">
+                      <Field
+                        required
+                        name="approvalPresident"
+                        component="select"
+                        className="  text-gray-500 rounded-md border-gray-300  w-full
+                  focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-1 bg-gray-50 "
+                      >
 
                         <option value="">Enter Status </option>
                         <option className="block text-xs  text-gray-500" value="0">On Going</option>

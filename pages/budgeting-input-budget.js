@@ -1,10 +1,10 @@
 import Head from 'next/head';
 import { Form, Field } from 'react-final-form';
-import { useMemo } from 'react';
+import React, { useMemo } from 'react';
 import axios from 'axios';
-import Link from 'next/link';
 import api from '../lib/api';
 import ReactTable from '../components/table';
+import BudgetForm from './budget-form';
 
 export const getServerSideProps = async () => {
   const { data: cost } = await api.get('/api/totalCost');
@@ -28,12 +28,15 @@ export default function SignIn({ totalCost, totalBudget }) {
       },
       {
         Header: 'Total Budget',
-        accessor: 'budget', // accessor is the "key" in the data
+        accessor: 'sum(budget)', //
+        Cell: ({ row: { values } }) => `₱${values['sum(budget)']}`, // accessor is the "key" in the data
       },
+
     ],
     [],
   );
 
+  console.log(totalCost);
   const postCost = useMemo(
     () => [
       {
@@ -44,6 +47,11 @@ export default function SignIn({ totalCost, totalBudget }) {
         Header: 'Total Cost',
         accessor: 'sum(price)', // accessor is the "key" in the data
         Cell: ({ row: { values } }) => `₱${values['sum(price)']}`,
+      },
+      {
+        Header: () => 'Action',
+        accessor: 'action',
+        Cell: ({ row: { values } }) => <BudgetForm selectDepartment={values.selectDepartment} />,
       },
     ],
     [],
@@ -70,7 +78,16 @@ export default function SignIn({ totalCost, totalBudget }) {
           render={({ handleSubmit }) => (
 
             <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w- mx-auto h-auto w-4/5 shadow-lg ">
-
+              {/* MODAL ENDS HERE */}
+              {/* <Field
+                className="text-gray-500 rounded-md  border-gray-300  w-auto
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                name="dateAdded"
+                component="input"
+                type="hidden"
+                initialValue={new Date().toDateInputValue()}
+                required
+              /> */}
               <div className="flex-shrink-0 flex content-around items-center">
 
                 <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
@@ -83,7 +100,7 @@ export default function SignIn({ totalCost, totalBudget }) {
                 <div className="">
                   <label htmlFor="selectDepartment" className="block p">
                     <span className="block  text-xs  text-gray-500 p">Select Department</span>
-                    <Field name="selectDepartment" component="select" className="rounded-md  text-xs  text-gray-500 border-gray-300 space -space-y-1 w-full mt-1">
+                    <Field name="selectDepartment" component="select" className="rounded-md  text-xs  text-gray-500 border-gray-300 space -space-y-1 w-full mt-1" required>
                       <option value="">Select Department</option>
                       <option className="text-xs  text-gray-500" value="College of Agriculture">College of Agriculture</option>
                       <option className="text-xs  text-gray-500" value="College of Arts & Sciences">College of Arts & Sciences</option>
@@ -114,6 +131,7 @@ export default function SignIn({ totalCost, totalBudget }) {
                       component="input"
                       type="number"
                       placeholder="₱"
+                      required
                     />
                   </label>
 
@@ -121,12 +139,12 @@ export default function SignIn({ totalCost, totalBudget }) {
                     type="submit"
                     className="  mx-auto text-center  cursor-pointer py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md
                 text-white bg-secondary hover:bg-indigo-700
-                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 "
                   >
                     Add
                   </button>
                 </div>
-                <div className="text-xs shadow-md">
+                <div className="text-xs shadow-md ">
                   <label htmlFor="selectDepartment" className="block ">
                     <span className="block  text-xs  text-gray-500 "> Budget</span>
 

@@ -1,13 +1,9 @@
 import Head from 'next/head';
+import { useMemo } from 'react';
+import Link from 'next/link';
 import mysql from '../providers/mysql';
 import validateSession from '../lib/session';
-import { useMemo } from 'react';
-import api from '../lib/api';
 import ReactTable from '../components/table';
-import Link from 'next/link';
-
-
-import RequestedCardsToCustodian from '../components/RequestedCardsToCustodian';
 
 export const getServerSideProps = async (context) => {
   try {
@@ -77,7 +73,7 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
         Header: 'Price',
         accessor: 'price',
       },
-  
+
       {
         Header: 'Approved By Dean',
         accessor: 'approvalDean', // accessor is the "key" in the data
@@ -96,13 +92,12 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
           </div>
         ),
       },
-    
+
       {
         Header: () => 'Action',
         accessor: 'action',
         Cell: ({ row: { values } }) => (
           <Link href={`/send-to-custodian/${values.requestID}`}>
-
 
             <button
               type="button"
@@ -135,12 +130,11 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
           All Requested Book
         </h2>
         <div className="text-xs shadow-md w-full mt-10 ">
-        <span className="block  text-xs  text-gray-500 "> All Books</span>
+          <span className="block  text-xs  text-gray-500 "> All Books</span>
 
           <ReactTable data={booksDisplayToPurchase} columns={columns} />
         </div>
-  
-       
+
       </section>
     </>
   );
