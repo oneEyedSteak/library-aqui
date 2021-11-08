@@ -25,7 +25,7 @@ const BudgetForm = ({ selectDepartment }) => {
   }, []);
 
   // Handle form submission
-  const handleOnSubmit = async (payload) => {
+  const handleOnSubmit = async () => {
     const { data: result } = await api.post('/api/saveBudget', {
       subtracted: data.subtracted,
       selectDepartment,
