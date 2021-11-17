@@ -56,7 +56,20 @@ const BudgetForm = ({ selectDepartment }) => {
 
                   <form onSubmit={handleSubmit} className="p-12 bg-white rounded-md my-16 w- mx-auto  w-full shadow-sm min-h-full  ">
                     <div className="grid grid-cols-3 gap-2">
-
+                    <label htmlFor="selectDepartment" className="block p">
+                        <span className="block  text-xs  text-gray-500 p">Total Cost</span>
+                        <Field
+                          className="text-xs mt-2 w-auto text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
+              placeholder-opacity-100 rounded-md border-gray-300   shadow-lg   "
+                          name="totalCost"
+                          component="input"
+                          type="number"
+                          placeholder="₱"
+                          disabled
+                          initialValue={data.totalCost || 0}
+                        />
+     
+                      </label>
                       <label htmlFor="selectDepartment" className="block p">
                         <span className="block  text-xs  text-gray-500 p">Total Budget</span>
                         <Field
@@ -69,21 +82,9 @@ const BudgetForm = ({ selectDepartment }) => {
                           disabled
                           initialValue={data.totalBudget || 0}
                         />
+                                           <span className="  text-2xl  text-gray-500 p">=</span>
                       </label>
-                      <label htmlFor="selectDepartment" className="block p">
-                        <span className="block  text-xs  text-gray-500 p">Total Cost</span>
-                        <Field
-                          className="text-xs mt-2 w-auto text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
-              placeholder-opacity-100 rounded-md border-gray-300   shadow-lg   "
-                          name="totalCost"
-                          component="input"
-                          type="number"
-                          placeholder="₱"
-                          disabled
-                          initialValue={data.totalCost || 0}
-                        />
-                        <span className="  text-2xl  text-gray-500 p">=</span>
-                      </label>
+                    
                       <label htmlFor="selectDepartment" className="block p">
                         <span className="block  text-   text-gray-500 p">Remaining Budget</span>
                         <Field

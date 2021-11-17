@@ -23,7 +23,11 @@ export default function RequestForm({ book }) {
     alert(data.message); // eslint-disable-line no-alert
   };
   const [session] = useSession();
-
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
   return (
 
     <section className=" mx-auto  md:flex bg-base min-h-screen">
@@ -73,14 +77,15 @@ export default function RequestForm({ book }) {
                 </label>
 
                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
-
+  {/* {/* entryDate is ApprovalDateAcquisition */ }
                   <label htmlFor="date" className="block ">
-                    <span className="text-xs  text-gray-500">Entry Date</span>
+                    <span className="text-xs  text-gray-500">Approval Date</span>
                     <Field
                       className=" text-gray-500 rounded-md  border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                       name="entryDate"
                       component="input"
+                      
                       type="date"
                       required
                       initialValue={new Date().toDateInputValue()}

@@ -17,6 +17,14 @@ export default function RequestForm({ account }) {
 
     alert(data.message);// eslint-disable-line no-alert
   };
+
+  
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
   return (
 
     <section className=" mx-auto  md:flex bg-base  min-h-screen ">
@@ -65,11 +73,13 @@ export default function RequestForm({ account }) {
                 <span className="  text-xs  text-gray-500 mb-1 ">Requested Date</span>
                 <Field
                   className="block text-gray-400 rounded-md border-gray-300  w-full
-                  focus:placeholder-gray-701 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  "
+                  focus:placeholder-gray-701 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50  cursor-pointer"
                   name="date"
                   component="input"
                   type="date"
                   required
+                  initialValue={new Date().toDateInputValue()}
+
                 />
               </label>
 

@@ -54,6 +54,13 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
     }
   };
   const [session] = useSession();
+
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
   return (
 
     <section className=" mx-auto  md:flex bg-base min-h-screen ">
@@ -101,6 +108,8 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
                       component="input"
                       type="date"
                       required
+                      initialValue={new Date().toDateInputValue()}
+
                     />
                   </label>
                 </div>
@@ -203,12 +212,12 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
                     <span className="font-thin block ">
                       President:
                       {' '}
-                      {bookIdPaymentVPAA.approvalPresident}
+                      {bookIdPaymentVPAA.approvalPresident ? 'Yes' : 'No'}
                     </span>
                     <span className="font-thin block ">
                       Finance:
                       {' '}
-                      {bookIdPaymentVPAA.approvalPresident}
+                      {bookIdPaymentVPAA.approvalPresident? 'Yes' : 'No'}
                     </span>
                   </div>
                   <div className="row-start-2 col-span-2">

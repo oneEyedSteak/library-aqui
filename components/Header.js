@@ -55,7 +55,7 @@ export default function Header() {
 
             {account && (
             <>
-              {['Acquisition', 'Admin', 'Acquisition', 'Director of Libraries'].includes(account.selectPosition) && (
+              {['Acquisition', 'Admin', 'Acquisition'].includes(account.selectPosition) && (
               <button
                 type="button"
                 className=" block py-2 px-2 lg:p-2 text-sm lg:text-base font-medium hover:bg-gray-400 hover:text-gray-700"
@@ -77,6 +77,40 @@ export default function Header() {
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
                     All Requested Books
+                  </span>
+                </Link>
+              </>
+              )}
+                   {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-approved-director">
+                  <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Approved Books
+                  </span>
+                </Link>
+              </>
+              )}
+                  {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
+        <>
+              <Link href="/see-all-books-director">
+                <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                >
+                  Request for Payments
+                </span>
+              </Link>
+          
+        </>
+        )}
+                  {['VPAA', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-approved-vpaa">
+                  <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Approved Books
                   </span>
                 </Link>
               </>
@@ -107,6 +141,19 @@ export default function Header() {
                   </Link>
                 </>
                 )}
+                  {['Dean', 'Admin'].includes(account.selectPosition) && (
+                <>
+                  <Link href="/see-all-approved-dean">
+                    <div className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                    >
+                      Approved Books
+
+                    </div>
+
+                  </Link>
+                </>
+                )}
               {['President', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-books-president">
@@ -114,6 +161,18 @@ export default function Header() {
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
                     Approve Books From Finance
+                  </div>
+
+                </Link>
+              </>
+              )}
+                   {['President', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-approved-president">
+                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Approved Books 
                   </div>
 
                 </Link>
@@ -133,6 +192,20 @@ export default function Header() {
                 </Link>
               </>
               )}
+                 {['Finance', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-approved-finance
+"
+                >
+                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Approved Books
+                  </div>
+
+                </Link>
+              </>
+              )}
               <Link href="/see-all-books-track">
                 <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
@@ -146,6 +219,15 @@ export default function Header() {
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                 >
                   Track
+                </div>
+              </Link>
+              )}
+                  {['Acquisition'].includes(account.selectPosition) && (
+              <Link href="/see-all-approved-acquisition">
+                <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                >
+                  Approved Books
                 </div>
               </Link>
               )}

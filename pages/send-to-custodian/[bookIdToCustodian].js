@@ -23,6 +23,14 @@ export default function RequestForm({ bookIdtoCustodian }) {
     alert(data.message);// eslint-disable-line no-alert
   };
   const [session] = useSession();
+
+  
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
   return (
 
     <section className=" mx-auto  md:flex bg-base min-h-screen ">
@@ -63,7 +71,7 @@ export default function RequestForm({ bookIdtoCustodian }) {
                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
 
                   <label htmlFor="date" className="block ">
-                    <span className="block  text-xs   text-gray-500 ">Send to Custodian Date</span>
+                    <span className="block  text-xs   text-gray-500 ">Sent Date</span>
                     <Field
                       className="text-gray-500 rounded-md  w-full
                       focus:placeholder-gray-700 focus:border-gray-500
@@ -72,6 +80,8 @@ export default function RequestForm({ bookIdtoCustodian }) {
                       component="input"
                       type="date"
                       required
+                      initialValue={new Date().toDateInputValue()}
+
                     />
                   </label>
 

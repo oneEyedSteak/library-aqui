@@ -39,7 +39,7 @@ export default function RequestForm({ bookIdToPrint }) {
             <span className="
          text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
             >
-              Please Sign In First
+              Please Sign In First1
             </span>
           </div>
         </>
@@ -76,7 +76,7 @@ export default function RequestForm({ bookIdToPrint }) {
                       name="date"
                       component="input"
                       type="text"
-                      Required
+                      disabled
                       initialValue={new Date(bookIdToPrint.date).toDateString()}
 
                     />

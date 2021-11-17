@@ -27,6 +27,13 @@ export default function RequestForm({ bookVPAAId }) {
     alert(data.message);// eslint-disable-line no-alert
   };
   const [session] = useSession();
+
+  Date.prototype.toDateInputValue = (function() {
+    var local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0,10);
+});
+
   return (
 
     <section className=" mx-auto  md:flex bg-base  min-h-screen ">

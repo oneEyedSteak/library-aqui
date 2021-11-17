@@ -10,7 +10,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-auto sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="justify-center items-center block">
               <Link href="/see-all-books">
-                <span className="hover:bg-gray-300 cursor-pointer font-bold hover:text-gray-700 text-gray-600 px-auto mx-auto
+                <span className="hover:bg-gray-300 cursor-pointer font-bold hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm "
                 >
                   See all requested books From Departments
@@ -18,7 +18,6 @@ const HeaderMenu = ({ account }) => (
               </Link>
               <div className="mt-1">
                 <p className=" text-gray-800 font-thin   italic text-sm">All requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
               </div>
             </div>
           </ul>
@@ -35,7 +34,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="block items-center">
               <Link href="/see-all-verified-books">
-                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Verified Books from Custodian
@@ -43,7 +42,75 @@ const HeaderMenu = ({ account }) => (
               </Link>
               <div className="mt-1">
                 <p className=" text-gray-800 font-thin italic text-sm">All requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
+              </div>
+            </div>
+          </ul>
+        </>
+        )}
+      </>
+      )}
+         {account && (
+      <>
+        {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+        <>
+          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+            <div className="block items-center">
+              <Link href="/see-all-entry-form">
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                   text-sm font-medium"
+                >
+                 Update Requested Books
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">Entry of Books</p>
+                <p className=" text-gray-800 font-medium text-xs">Updating Requested Books</p>
+              </div>
+            </div>
+          </ul>
+        </>
+        )}
+      </>
+      )}
+        {account && (
+      <>
+        {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+        <>
+          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+            <div className="block items-center">
+              <Link href="/see-all-arrived-books">
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                   text-sm font-medium"
+                >
+                 All Arrived Books
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">All Books Arrived</p>
+                <p className=" text-gray-800 font-medium text-xs">Purchased Books</p>
+              </div>
+            </div>
+          </ul>
+        </>
+        )}
+      </>
+      )}
+       {account && (
+      <>
+        {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+        <>
+          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+            <div className="block items-center">
+              <Link href="/see-all-confirmed-books">
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                   text-sm font-medium"
+                >
+                 All Confirmed Books
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">Ready to Release</p>
+                <p className=" text-gray-800 font-medium text-xs"></p>
               </div>
             </div>
           </ul>
@@ -58,7 +125,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0  lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="block items-center">
               <Link href="/see-all-books-to-print">
-                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Print Request
@@ -66,7 +133,6 @@ const HeaderMenu = ({ account }) => (
               </Link>
               <div className="mt-1">
                 <p className=" text-gray-800 font-thin italic text-sm">All requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
               </div>
             </div>
           </ul>
@@ -81,7 +147,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="block items-center">
               <Link href="/see-all-books-topurchase">
-                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Books to Verify
@@ -89,7 +155,6 @@ const HeaderMenu = ({ account }) => (
               </Link>
               <div className="mt-1">
                 <p className=" text-gray-800 font-thin italic text-sm">All requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
               </div>
             </div>
           </ul>
@@ -99,25 +164,7 @@ const HeaderMenu = ({ account }) => (
       )}
       {account && (
       <>
-        {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
-        <>
-          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
-            <div className="block items-center">
-              <Link href="/see-all-books-director">
-                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
-                   text-sm font-medium"
-                >
-                  Request for Payments
-                </span>
-              </Link>
-              <div className="mt-1">
-                <p className=" text-gray-800 font-thin italic text-sm">All requested books coming from all Department</p>
-                <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p>
-              </div>
-            </div>
-          </ul>
-        </>
-        )}
+    
       </>
       )}
       {account && (
@@ -127,7 +174,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="block items-center">
               <Link href="/registrationProfile">
-                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Register
@@ -151,7 +198,7 @@ const HeaderMenu = ({ account }) => (
             <div className="block items-center">
 
               <Link href="/see-all-books-payment-vpaa">
-                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Requested Books for Payment
@@ -175,7 +222,7 @@ const HeaderMenu = ({ account }) => (
             <div className="block items-center">
 
               <Link href="/see-all-books-payment-finance">
-                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
                 >
                   Request for Payment
@@ -198,7 +245,7 @@ const HeaderMenu = ({ account }) => (
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
             <div className="block items-center" />
             <Link href="/see-all-books-custodian">
-              <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-gray-800 px-auto mx-auto
+              <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
                    text-sm font-medium"
               >
                 Books to Verify
@@ -213,6 +260,45 @@ const HeaderMenu = ({ account }) => (
         )}
       </>
       )}
+        {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+        <>
+          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+            <div className="block items-center">
+              <Link href="/budgeting-input-budget">
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                   text-sm font-medium"
+                >
+                Budgeting
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">Go to Budgeting</p>
+              </div>
+            </div>
+          </ul>
+        </>
+        )}
+            {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+        <>
+          <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+            <div className="block items-center">
+              <Link href="/see-all-total-cost">
+                <span className=" hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                   text-sm font-medium"
+                >
+                Total Cost 
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">Go to Total Cost</p>
+              <p className=" text-gray-800 font-medium text-xs">See all Total cost of Books per Department</p>
+
+              </div>
+            </div>
+          </ul>
+        </>
+        )}
+      
     </div>
   </div>
 );
