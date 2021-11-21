@@ -206,6 +206,34 @@ export default function Header() {
                 </Link>
               </>
               )}
+                 {['VPAA', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-books-payment-vpaa
+"
+                >
+                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                   Books request Payment
+                  </div>
+
+                </Link>
+              </>
+              )}
+                {['Finance', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-books-payment-finance
+"
+                >
+                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                   Books request Payment
+                  </div>
+
+                </Link>
+              </>
+              )}
               <Link href="/see-all-books-track">
                 <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"

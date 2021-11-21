@@ -117,7 +117,7 @@ export default function seeAllBooksFinance({ booksDisplayDirector }) {
         Header: () => 'Action',
         accessor: 'action',
         Cell: ({ row: { values } }) => (
-          <Link href={`/books-to-request-payment/${values.requestID}`}>
+          <Link href={`/request-for-payments/${values.requestID}`}>
 
             <button
               type="button"
