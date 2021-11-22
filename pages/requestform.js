@@ -1,6 +1,8 @@
 import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import validateSession from '../lib/session';
 
 export const getServerSideProps = async (context) => {
@@ -12,18 +14,25 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ account }) {
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0, 10);
+  });
+
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/requestform', payload);
 
-    alert(data.message);// eslint-disable-line no-alert
+    toast.success('Request Sent!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
   };
-
-  
-  Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
-    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
 
   return (
 

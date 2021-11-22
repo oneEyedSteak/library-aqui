@@ -2,7 +2,9 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
+import { toast } from 'react-toastify';
 import api from '../../lib/api';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async (context) => {
   const { bookIdToCustodian } = context.query;
@@ -19,17 +21,23 @@ export const getServerSideProps = async (context) => {
 export default function RequestForm({ bookIdtoCustodian }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/booktoCustodian', payload);
-
-    alert(data.message);// eslint-disable-line no-alert
+    toast.success('Request Sucess!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
   };
   const [session] = useSession();
 
-  
-  Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
+    return local.toJSON().slice(0, 10);
+  });
 
   return (
 
@@ -221,8 +229,6 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     initialValue={bookIdtoCustodian.requestID}
                     disabled
                   />
-
-                
 
                 </div>
 

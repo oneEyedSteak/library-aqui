@@ -1,12 +1,21 @@
 import Link from 'next/link';
 import { signOut, useSession } from 'next-auth/client';
 import { Fragment, useState } from 'react';
+import useSWR from 'swr';
+import isEmpty from 'lodash/isEmpty';
 import HeaderMenu from './HeaderMenu';
 
 export default function Header() {
   const [session] = useSession();
   const [open, setOpen] = useState(false);
   const { account } = session || {};
+
+  const { data: activities } = useSWR('/api/activities', {
+    refreshInterval: 10000,
+  });
+
+  console.log('activities', activities);
+
   console.log(account);
 
   return (
@@ -59,10 +68,12 @@ export default function Header() {
               <button
                 type="button"
                 className=" block py-2 px-2 lg:p-2 text-sm lg:text-base font-medium hover:bg-gray-400 hover:text-gray-700"
-                onClick={() => setOpen(!open)}
+                onClick={async () => {
+                  setOpen(!open);
+                }}
               >
                 Menu
-
+                {!isEmpty(activities) && <div className="p-3 bg-red-500">{activities.length}</div>}
               </button>
               )}
             </>
@@ -81,7 +92,7 @@ export default function Header() {
                 </Link>
               </>
               )}
-                   {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
+              {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-approved-director">
                   <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
@@ -92,19 +103,19 @@ export default function Header() {
                 </Link>
               </>
               )}
-                  {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
-        <>
-              <Link href="/see-all-books-director">
-                <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+              {['Director of Libraries', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-books-director">
+                  <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
-                >
-                  Request for Payments
-                </span>
-              </Link>
-          
-        </>
-        )}
-                  {['VPAA', 'Admin'].includes(account.selectPosition) && (
+                  >
+                    Request for Payments
+                  </span>
+                </Link>
+
+              </>
+              )}
+              {['VPAA', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-approved-vpaa">
                   <span className="hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
@@ -141,19 +152,19 @@ export default function Header() {
                   </Link>
                 </>
                 )}
-                  {['Dean', 'Admin'].includes(account.selectPosition) && (
-                <>
-                  <Link href="/see-all-approved-dean">
-                    <div className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+              {['Dean', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-approved-dean">
+                  <div className=" hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
-                    >
-                      Approved Books
+                  >
+                    Approved Books
 
-                    </div>
+                  </div>
 
-                  </Link>
-                </>
-                )}
+                </Link>
+              </>
+              )}
               {['President', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-books-president">
@@ -166,13 +177,13 @@ export default function Header() {
                 </Link>
               </>
               )}
-                   {['President', 'Admin'].includes(account.selectPosition) && (
+              {['President', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-approved-president">
                   <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
-                    Approved Books 
+                    Approved Books
                   </div>
 
                 </Link>
@@ -192,7 +203,7 @@ export default function Header() {
                 </Link>
               </>
               )}
-                 {['Finance', 'Admin'].includes(account.selectPosition) && (
+              {['Finance', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-approved-finance
 "
@@ -206,7 +217,7 @@ export default function Header() {
                 </Link>
               </>
               )}
-                 {['VPAA', 'Admin'].includes(account.selectPosition) && (
+              {['VPAA', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-books-payment-vpaa
 "
@@ -214,26 +225,26 @@ export default function Header() {
                   <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
-                   Books request Payment
+                    Books request Payment
                   </div>
 
                 </Link>
               </>
               )}
                 {['Finance', 'Admin'].includes(account.selectPosition) && (
-              <>
-                <Link href="/see-all-books-payment-finance
+                <>
+                  <Link href="/see-all-books-payment-finance
 "
-                >
-                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
-                  px-3 py-2 rounded-md text-sm font-medium mr-2"
                   >
-                   Books request Payment
-                  </div>
+                    <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                    >
+                      Books request Payment
+                    </div>
 
-                </Link>
-              </>
-              )}
+                  </Link>
+                </>
+                )}
               <Link href="/see-all-books-track">
                 <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
@@ -250,7 +261,7 @@ export default function Header() {
                 </div>
               </Link>
               )}
-                  {['Acquisition'].includes(account.selectPosition) && (
+              {['Acquisition'].includes(account.selectPosition) && (
               <Link href="/see-all-approved-acquisition">
                 <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
@@ -363,7 +374,7 @@ text-gray-900 px-3 py-2 rounded-md text-sm font-medium "
       </nav>
       {open && (
       <>
-        <HeaderMenu account={account} />
+        <HeaderMenu account={account} activities={activities} />
         <div className="dropdown-overlay" onClick={() => setOpen(false)} role="presentation" />
       </>
       )}
