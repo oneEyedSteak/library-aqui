@@ -18,7 +18,7 @@ export const getServerSideProps = async (context) => {
 
 export default function EnterBook({ booksToEnter }) {
     const handleOnSubmit = async (payload) => {
-        const { data } = await axios.post('/api/bookentryUpdate', payload);
+        const { data } = await axios.post('/api/bookPublish', payload);
 
         alert(data.message);
     };
@@ -210,9 +210,7 @@ export default function EnterBook({ booksToEnter }) {
                                             >
 
                                                 <option value=""> Select Status </option>
-                                                <option className=" text-xs text-gray-500" value="0">Processing</option>
-                                                <option className=" text-xs text-gray-500" value="1">Arrived</option>
-                                                <option className=" text-xs text-gray-500" value="2">Confirmed</option>
+                                                <option className=" text-xs text-gray-500" value="3">Publish</option>
 
                                             </Field>
                                         </label>

@@ -126,6 +126,8 @@ export default function seeAllEntryForm({ entryBooks }) {
                      {values.status  === 0 && 'Processing'}
           {values.status  === 1 && 'Arrived'}
           {values.status  === 2 && 'Checked'}
+          {values.status  === 3 && 'Published'}
+
           </div>
         ),
       },
