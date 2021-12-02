@@ -203,6 +203,20 @@ export default function Header() {
                 </Link>
               </>
               )}
+              {['Publisher', 'Admin'].includes(account.selectPosition) && (
+              <>
+                <Link href="/see-all-books-publisher
+"
+                >
+                  <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                  >
+                    Publish Books
+                  </div>
+
+                </Link>
+              </>
+              )}
               {['Finance', 'Admin'].includes(account.selectPosition) && (
               <>
                 <Link href="/see-all-approved-finance
