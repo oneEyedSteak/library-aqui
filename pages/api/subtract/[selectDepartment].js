@@ -10,7 +10,7 @@ export default async (req, res) => {
     const totalBudget = budget.totalBudget || 0;
     const totalCost = cost.totalCost || 0;
 
-    const subtracted = totalCost - totalBudget  ;
+    const subtracted =  totalBudget - totalCost  ;
     console.log(selectDepartment, totalBudget, totalCost);
 
     return res.json({

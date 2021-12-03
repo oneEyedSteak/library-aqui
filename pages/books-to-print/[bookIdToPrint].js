@@ -6,7 +6,7 @@ import api from '../../lib/api';
 
 export const getServerSideProps = async (context) => {
   const { bookIdToPrint } = context.query;
-  const { data } = await api.get(`/api/presidentbooks/${bookIdToPrint}`);
+  const { data } = await api.get(`/api/booktoprint/${bookIdToPrint}`);
 
   console.log(data);
 

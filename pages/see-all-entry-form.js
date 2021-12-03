@@ -9,8 +9,7 @@ export const getServerSideProps = async (context) => {
   try {
     const { account } = await validateSession(context);
 
-    const result = await mysql.query(`SELECT * FROM requestform WHERE approvalPresident = 1 AND
-    approvalDirector = 1 and approvalFinance = 1 AND approvalAcqui = 1 `);
+    const result = await mysql.query(`SELECT * FROM requestform WHERE approvalFinancePayment = 1 AND approvalDirector = 1 AND approvalVpaaPayment = 1 AND approvalVpaa = 1 AND status = 0 AND status = 0 `);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
