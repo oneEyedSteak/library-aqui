@@ -76,14 +76,40 @@ export default function seeAllBooksCustodian({ booksToVerify }) {
         accessor: 'notereqform', // accessor is the "key" in the data
       },
       {
+        Header: 'Approved By VPAA',
+        accessor: 'approvalVpaa', // accessor is the "key" in the data
+        Cell: ({ row: { values } }) => (
+          <div>
+            {values.approvalVpaa ? 'Yes' : 'No'}
+          </div>
+        ),
+      },
+      {
         Header: 'Approved By Finance',
         accessor: 'approvalFinance', // accessor is the "key" in the data
-
+        Cell: ({ row: { values } }) => (
+          <div>
+            {values.approvalFinance ? 'Yes' : 'No'}
+          </div>
+        ),
       },
       {
         Header: 'Approved By President',
         accessor: 'approvalPresident', // accessor is the "key" in the data
-
+        Cell: ({ row: { values } }) => (
+          <div>
+            {values.approvalPresident ? 'Yes' : 'No'}
+          </div>
+        ),
+      },
+      {
+        Header: 'Approved By Dean',
+        accessor: 'approvalDean', // accessor is the "key" in the data
+        Cell: ({ row: { values } }) => (
+          <div>
+            {values.approvalDean ? 'Yes' : 'No'}
+          </div>
+        ),
       },
 
       {
