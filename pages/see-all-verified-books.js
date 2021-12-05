@@ -8,7 +8,7 @@ import ReactTable from '../components/table';
 export const getServerSideProps = async (context) => {
   try {
     const result = await
-    mysql.query('SELECT * FROM requestform WHERE verified = 1 and sendtoDirector = 0');
+    mysql.query('SELECT * FROM requestform WHERE verified = 1 ');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
