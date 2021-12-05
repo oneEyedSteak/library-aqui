@@ -185,12 +185,13 @@ export default function RequestForm({ bookIdtoCustodian }) {
                     <span className=" text-xs block mt-2 text-gray-500">
                       President:
                       {' '}
-                      {bookIdtoCustodian.approvalPresident}
+                      {bookIdtoCustodian.approvalPresident ? 'Yes' : 'No'}
+
                     </span>
                     <span className=" text-xs block mt-1 text-gray-500">
                       Finance:
                       {' '}
-                      {bookIdtoCustodian.approvalPresident}
+                      {bookIdtoCustodian.approvalFinance ? 'Yes' : 'No'}
                     </span>
                   </div>
                   <div className="row-start-2 col-span-2">

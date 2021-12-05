@@ -257,12 +257,14 @@ export default function RequestForm({ bookIdPayment }) {
                     <span className="text-xs block  text-gray-500 mt-2">
                       President:
                       {' '}
-                      {bookIdPayment.approvalPresident}
+                      {bookIdPayment.approvalPresident ? 'Yes' : 'No'}
+
                     </span>
                     <span className="text-xs  block  text-gray-500 mt-1">
                       Finance:
                       {' '}
-                      {bookIdPayment.approvalPresident}
+                      {bookIdPayment.approvalFinance ? 'Yes' : 'No'}
+                      
                     </span>
 
                   </div>

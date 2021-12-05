@@ -213,11 +213,13 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
                       President:
                       {' '}
                       {bookIdPaymentVPAA.approvalPresident ? 'Yes' : 'No'}
+
                     </span>
                     <span className="font-thin block ">
                       Finance:
                       {' '}
-                      {bookIdPaymentVPAA.approvalPresident? 'Yes' : 'No'}
+                      {bookIdPaymentVPAA.approvalFinance ? 'Yes' : 'No'}
+
                     </span>
                   </div>
                   <div className="row-start-2 col-span-2">
