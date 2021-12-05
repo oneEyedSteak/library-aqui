@@ -10,7 +10,7 @@ import ReactTable from '../components/table';
 export const getServerSideProps = async (context) => {
   try {
     const result = await
-    mysql.query('SELECT * FROM requestform WHERE approvalVpaaPayment = 0 and approvalDirector = 1');
+      mysql.query('SELECT * FROM requestform WHERE approvalVpaaPayment = 0 and approvalDirector = 1');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
@@ -108,7 +108,7 @@ export default function seeAllBooksFinance({ booksDisplayVPAA }) {
                                      text-white bg-indigo-600 hover:bg-indigo-700
                                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-             Send to Finance
+              Send to Finance
             </button>
           </Link>
         ),
@@ -126,23 +126,23 @@ export default function seeAllBooksFinance({ booksDisplayVPAA }) {
       </Head>
       <section className="max-w-screen bg-base min-h-screen mx-auto ">
 
-<form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+        <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
 
-  <div className="flex-shrink-0 flex content-around items-center">
+          <div className="flex-shrink-0 flex content-around items-center">
 
-    <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-    <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-    <h1 className="text-xl  text-gray-600 ">Approved Books by Finance</h1>
+            <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+            <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+            <h1 className="text-xl  text-gray-600 ">Approved Books by Finance</h1>
 
-  </div>
-  <div className="text-xs shadow-md w-full mt-10 ">
-    <span className="block  text-xs  text-gray-500 "> All Books</span>
+          </div>
+          <div className="text-xs shadow-md w-full mt-10 ">
+            <span className="block  text-xs  text-gray-500 "> All Books</span>
 
-    <ReactTable data={booksDisplayVPAA} columns={columns} />
-  </div>
-</form>
+            <ReactTable data={booksDisplayVPAA} columns={columns} />
+          </div>
+        </form>
 
-</section>
+      </section>
     </>
   );
 }
