@@ -303,27 +303,31 @@ export default function RequestForm({ bookIdTrack }) {
                     <span className="text-xs block  text-gray-500 mt-2">
                       Finance:
                       {' '}
-                      {bookIdTrack.approvalFinance}
+                      {bookIdTrack.approvalFinance ? '✓' : 'No'}
+
                     </span>
                     <span className="text-xs block  text-gray-500 mt-2">
                       Dean:
                       {' '}
-                      {bookIdTrack.approvalDean}
+                      {bookIdTrack.approvalDean ? '✓' : 'No'}
+
                     </span>
                     <span className="text-xs block  text-gray-500 mt-2">
                       President:
                       {' '}
-                      {bookIdTrack.approvalPresident}
+                      {bookIdTrack.approvalPresident ? '✓' : 'No'}
+
                     </span>
                     <span className="text-xs block  text-gray-500 mt-2">
                       VPAA:
                       {' '}
-                      {bookIdTrack.approvalVpaa}
+                      {bookIdTrack.approvalVpaa ? '✓' : 'No'}
+
                     </span>
                     <span className="text-xs block  text-gray-500 mt-2">
                       Director:
                       {' '}
-                      {bookIdTrack.approvalDirector}
+                      {bookIdTrack.approvalDirector ? '✓' : 'No'}
                     </span>
                   </div>
                   <div className="row-start-3 border-b">
