@@ -223,7 +223,7 @@ export default function EnterBook({ booksToEnter }) {
                                                 <option value=""> Select Status </option>
                                                 <option className=" text-xs text-gray-500" value="0">Processing</option>
                                                 <option className=" text-xs text-gray-500" value="1">Arrived</option>
-                                                <option className=" text-xs text-gray-500" value="2">Confirmed</option>
+                                                
 
                                             </Field>
                                         </label>
