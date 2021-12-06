@@ -111,7 +111,7 @@ export default function RequestForm({ bookDean, account }) {
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">Library Acquisition Entry of Books</h1>
+                  <h1 className="text-xl  text-gray-600 ">Approve Books</h1>
 
                 </div>
 
@@ -287,6 +287,10 @@ export default function RequestForm({ bookDean, account }) {
                         }}
                       />
                     ) : save}
+                         <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                         {account.fname + " " + account.lname}
+                        </div>
+                    
 
                     <Popup
                       modal

@@ -333,8 +333,16 @@ export default function RequestForm({ bookIdPayment, account }) {
                           height: '100px',
 
                         }}
+                        
                       />
-                    ) : save}
+                      
+                   
+                    )  : save}
+                        <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                      {account.fname + " " + account.lname}
+                     </div>
+                 
+                       
                     <Popup
                       modal
                       trigger={(

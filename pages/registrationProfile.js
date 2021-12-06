@@ -147,6 +147,7 @@ export default function RegistrationForm() {
                     <option className="text-xs font-bold text-gray-500" value="College of Law">College of Law</option>
                     <option className="text-xs font-bold text-gray-500" value="College of Medicine">College of Medicine</option>
                     <option className="text-xs font-bold text-gray-500" value="College of Theology">College of Theology</option>
+                    <option className="text-xs font-bold text-gray-500" value="College of Theology">Admin</option>
                   </Field>
                 </label>
 
@@ -159,7 +160,7 @@ export default function RegistrationForm() {
                       <option className="text-xs font-bold text-gray-500" value="Librarian">Librarian</option>
                       <option className="text-xs font-bold text-gray-500" value="Acquisition">Acquisition</option>
                       <option className="text-xs font-bold text-gray-500" value="Faculty">Faculty</option>
-                      <option className="text-xs font-bold text-gray-500" value="Boss">Boss</option>
+                      <option className="text-xs font-bold text-gray-500" value="VPAA">VPAA</option>
                       <option className="text-xs font-bold text-gray-500" value=">Director of Library">Director of Library</option>
                     </Field>
                   </label>
