@@ -3,6 +3,8 @@ import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import Link from 'next/dist/client/link';
 import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 import axios from 'axios';
 
@@ -11,9 +13,26 @@ export default function RegistrationForm() {
     try {
       const { data } = await axios.post('/api/register', payload);
 
-      toast.success('Registration Success');
+      
+    toast.success('Registration Success!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
     } catch (error) {
-      toast.error('Error in Registration');
+      toast.error('Registration Error!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   const [session] = useSession();
