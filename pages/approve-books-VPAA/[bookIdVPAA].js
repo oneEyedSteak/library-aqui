@@ -3,14 +3,20 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
+import validateSession from '../../lib/session';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
 
 export const getServerSideProps = async (context) => {
   try {
     const { bookIdVPAA } = context.query;
     const { data } = await api.get(`/api/vpaabooks/${bookIdVPAA}`);
+    const { account } = await validateSession(context);
 
     return {
-      props: { bookVPAAId: data },
+      props: { bookVPAAId: data, account: account },
 
     };
   } catch (error) {
@@ -18,13 +24,23 @@ export const getServerSideProps = async (context) => {
   }
 };
 
-export default function RequestForm({ bookVPAAId }) {
+export default function RequestForm({ bookVPAAId, account }) {
   console.log(bookVPAAId);
 
   const handleOnSubmit = async (payload) => {
+
     const { data } = await axios.post('/api/bookUpdateVPAA', payload);
 
-    alert(data.message);// eslint-disable-line no-alert
+    toast.success(' Update Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   const [session] = useSession();
 
@@ -207,11 +223,12 @@ export default function RequestForm({ bookVPAAId }) {
                         disabled
                       />
                     </label>
+                  
                   </div>
 
                   <div className="row-start-3">
 
-                    <label htmlFor="requesID" className="">
+                  <label htmlFor="requesID" className="">
                       <span className="  text-xs text-gray-500 p">Dean Signature</span>
                       <img
                         src={bookVPAAId.signatureDean}
@@ -219,8 +236,24 @@ export default function RequestForm({ bookVPAAId }) {
                         width="100"
                         height="100"
                         className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookVPAAId.deanName}
+                        </div>
+
+                    </label>
+                    <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="vpaaName"
+                        type="hidden"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
                       />
                     </label>
+                    
                   </div>
 
                   <div className="row-start-4">
@@ -231,8 +264,8 @@ export default function RequestForm({ bookVPAAId }) {
                         component="select"
                         className=" text-gray-500 rounded-md border-1 border-gray-300  w-full
                    bg-gray-50"
+                   required
                       >
-
                         <option value=""> </option>
                         <option className="block text-xs  text-gray-500" value="0">On Going</option>
                         <option className="block text-xs  text-gray-500" value="1">Approved</option>

@@ -144,7 +144,6 @@ export default function seeAllVerifiedBooks({ verifiedBooks }) {
 
           <div className="text-xs shadow-md w-full mt-10 ">
             <span className="block  text-xs  text-gray-500 "> All Books</span>
-
             <ReactTable data={verifiedBooks} columns={columns} />
           </div>
         </form>

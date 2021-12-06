@@ -3,6 +3,8 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async (context) => {
   const { bookIdPresident } = context.query;
@@ -20,7 +22,16 @@ export default function RequestForm({ bookIdPresident }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdatePresident', payload);
 
-    alert(data.message);
+    toast.success('Update Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   Date.prototype.toDateInputValue = (function() {
     var local = new Date(this);
@@ -182,7 +193,7 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
-
+            
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
@@ -209,6 +220,7 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
+            
                   </div>
 
                   <div className="col-span-1 row-start-6">
@@ -221,6 +233,7 @@ export default function RequestForm({ bookIdPresident }) {
                         component="select"
                         className="  text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-1 bg-gray-50 "
+                  required
                       >
 
                         <option value="">Enter Status </option>

@@ -7,20 +7,25 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
+import validateSession from '../../lib/session';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdDean } = context.query;
   const { data } = await api.get(`/api/deanbooks/${bookIdDean}`);
+  const { account } = await validateSession(context);
 
   console.log(data);
 
   return {
-    props: { bookDean: data },
+    props: { bookDean: data, account:account },
 
   };
 };
 
-export default function RequestForm({ bookDean }) {
+export default function RequestForm({ bookDean, account }) {
   const [imageURL, setImageURL] = useState(null);
 
   const handleOnSubmit = async (payload) => {
@@ -29,7 +34,16 @@ export default function RequestForm({ bookDean }) {
       imageURL,
     });
 
-    alert(data.message); // eslint-disable-line no-alert
+    toast.success('Update Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
 
   const sigCanvas = useRef({});
@@ -198,7 +212,17 @@ export default function RequestForm({ bookDean }) {
                         disabled
                       />
                     </label>
-
+                    <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="deanName"
+                        type="hidden"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">

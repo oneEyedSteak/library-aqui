@@ -3,10 +3,10 @@ import mysql from '../../providers/mysql';
 export default async (req, res) => {
   try {
     const {
-      approvalDateDean, requestID, approvalDean, imageURL,
+      approvalDateDean, requestID, approvalDean, imageURL, deanName, 
     } = req.body;
 
-    await mysql.query(`UPDATE requestform SET approvalDean=('${approvalDean}'), approvalDateDean=('${approvalDateDean}'), signatureDean=('${imageURL}') WHERE requestID=('${requestID}')`);
+    await mysql.query(`UPDATE requestform SET approvalDean=('${approvalDean}'), approvalDateDean=('${approvalDateDean}'), signatureDean=('${imageURL}'), deanName = ('${deanName}') WHERE requestID=('${requestID}')`);
 
     await mysql.end();
     console.log();

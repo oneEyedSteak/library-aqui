@@ -2,9 +2,10 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
-import { toast } from 'react-toastify';
 import api from '../../lib/api';
 import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdToCustodian } = context.query;
@@ -21,6 +22,7 @@ export const getServerSideProps = async (context) => {
 export default function RequestForm({ bookIdtoCustodian }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/booktoCustodian', payload);
+    
     toast.success('Request Sucess!', {
       position: 'bottom-right',
       autoClose: 5000,
@@ -193,6 +195,7 @@ export default function RequestForm({ bookIdtoCustodian }) {
                       {' '}
                       {bookIdtoCustodian.approvalFinance ? 'Yes' : 'No'}
                     </span>
+                 
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
@@ -232,6 +235,20 @@ export default function RequestForm({ bookIdtoCustodian }) {
                   />
 
                 </div>
+                <label htmlFor="requesID" className="block p-8">
+                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <img
+                        src={bookIdtoCustodian.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdtoCustodian.deanName}
+                        </div>
+
+                    </label>
 
                 <div className="block text-right p-8">
                   <button

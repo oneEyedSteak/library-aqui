@@ -7,15 +7,20 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
+import validateSession from '../../lib/session';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async (context) => {
   const { bookIdToRequest } = context.query;
   const { data } = await api.get(`/api/bookstorequest/${bookIdToRequest}`);
+  const { account } = await validateSession(context);
+
 
   console.log();
 
   return {
-    props: { bookIdToRequest: data },
+    props: { bookIdToRequest: data, account:account, },
 
   };
 };
@@ -29,7 +34,17 @@ export default function RequestForm({ bookIdToRequest, account }) {
       imageURL,
     });
 
-    alert(data.message); // eslint-disable-line no-alert
+
+    toast.success('Sent Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   const sigCanvas = useRef({});
   const clear = () => sigCanvas.current.clear();
@@ -96,6 +111,17 @@ export default function RequestForm({ bookIdToRequest, account }) {
                   <h1 className="text-xl mt 4  text-gray-600 ">Request Payment to Director of Libraries </h1>
 
                 </div>
+                <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="acquisitionName"
+                        type="hidden"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
 
                 <div className="flex space-x-6 content-around items-center mt-10 justify-end">
 
@@ -227,6 +253,19 @@ export default function RequestForm({ bookIdToRequest, account }) {
                         disabled
                       />
                     </label>
+                    <label htmlFor="requesID" className="block ">
+                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <img
+                        src={bookIdToRequest.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdToRequest.deanName}
+                        </div>
+                    </label>
 
                   </div>
                   <div className="row-start-2 col-span-2">
@@ -255,9 +294,13 @@ export default function RequestForm({ bookIdToRequest, account }) {
                         disabled
                       />
                     </label>
+             
 
                   </div>
+                
+
                   <div className="row-start-3">
+           
 
                     {imageURL ? (
                       <img

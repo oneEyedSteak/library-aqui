@@ -3,10 +3,10 @@ import mysql from '../../providers/mysql';
 export default async (req, res) => {
   try {
     const {
-      requestID, sendDatetoDirector, imageURL,
+      requestID, sendDatetoDirector, imageURL,acquisitionName
     } = req.body;
 
-    await mysql.query(`UPDATE requestform SET  sendtoDirector = 1 , sendDatetoDirector=('${sendDatetoDirector}'), signatureAcquisition=('${imageURL}')  WHERE requestID=('${requestID}')`);
+    await mysql.query(`UPDATE requestform SET  sendtoDirector = 1 , sendDatetoDirector=('${sendDatetoDirector}'), signatureAcquisition=('${imageURL}'), acquisitionName=('${acquisitionName}')   WHERE requestID=('${requestID}')`);
 
     await mysql.end();
 

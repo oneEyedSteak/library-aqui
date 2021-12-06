@@ -7,20 +7,26 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
+import validateSession from '../../lib/session';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdPaymentVPAA } = context.query;
   const { data } = await api.get(`/api/bookrequestpaymentvpaa/${bookIdPaymentVPAA}`);
+  const { account } = await validateSession(context);
+
 
   console.log(data);
 
   return {
-    props: { bookIdPaymentVPAA: data },
+    props: { bookIdPaymentVPAA: data, account: account },
 
   };
 };
 
-export default function RequestForm({ bookIdPaymentVPAA }) {
+export default function RequestForm({ bookIdPaymentVPAA, account }) {
   const [imageURL, setImageURL] = useState(null);
 
   const handleOnSubmit = async (payload) => {
@@ -29,7 +35,15 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
       imageURL,
     });
 
-    alert(data.message); // eslint-disable-line no-alert
+    toast.success(' Sent Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
   };
   const sigCanvas = useRef({});
   const clear = () => sigCanvas.current.clear();
@@ -97,6 +111,18 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
                   <h1 className="text-xl  text-gray-600 ">Approve Payment</h1>
 
                 </div>
+
+                <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="vpaaName"
+                        type="hidden"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
 
                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
                   <label htmlFor="date" className="block ">
@@ -250,19 +276,28 @@ export default function RequestForm({ bookIdPaymentVPAA }) {
                   </div>
                   <div className="row-start-4 ">
 
-                    <div className="flex space-x-2 ">
+                    <div className="flex space-x-6 ">
 
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Dean Signature</span>
                         <img src={bookIdPaymentVPAA.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentVPAA.deanName}
+                        </div>
                       </label>
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
                         <img src={bookIdPaymentVPAA.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentVPAA.acquisitionName}
+                        </div>
                       </label>
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs text-gray-500 p">Director Signature</span>
                         <img src={bookIdPaymentVPAA.signtureDirector} alt="College Dean Signature" width="100" height="100" className=" mt-2 border-double border-4 border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentVPAA.directorName}
+                        </div>
                       </label>
                     </div>
 

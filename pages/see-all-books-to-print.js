@@ -132,7 +132,7 @@ export default function seeAllBooksCustodian({ booksToPrint }) {
 
     <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
     <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-    <h1 className="text-xl  text-gray-600 ">Books to Print</h1>
+    <h1 className="text-xl  text-gray-600 ">Books to Printqw</h1>
 
   </div>
   <div className="text-xs shadow-md w-full mt-10 ">
