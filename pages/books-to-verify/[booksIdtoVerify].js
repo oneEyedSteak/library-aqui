@@ -3,6 +3,8 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
+import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 export const getServerSideProps = async (context) => {
   const { booksIdtoVerify } = context.query;
@@ -19,8 +21,26 @@ export const getServerSideProps = async (context) => {
 export default function RequestForm({ booksIdtoVerify }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdateVerified', payload);
+    
+    toast.success('Successfully Verified!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
 
-    alert(data.message);
+    toast.info(' Sent to Acquisition', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   const [session] = useSession();
 
@@ -171,6 +191,19 @@ export default function RequestForm({ booksIdtoVerify }) {
                         disabled
                       />
                     </label>
+                    <label htmlFor="requesID" className="block p-8">
+                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <img
+                        src={booksIdtoVerify.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {booksIdtoVerify.deanName}
+                        </div>
+                    </label>
 
                   </div>
                   <div className="row-start-3 gap-y-2">
@@ -202,7 +235,7 @@ export default function RequestForm({ booksIdtoVerify }) {
                       </Field>
                     </label>
                   </div>
-
+     
                   <div className="row-start-2 col-span-2">
 
                     <label htmlFor="publicationDate" className="mt-6 ml">

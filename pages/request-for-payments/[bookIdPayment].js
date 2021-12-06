@@ -7,20 +7,26 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import validateSession from '../../lib/session';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdPayment } = context.query;
   const { data } = await api.get(`/api/bookrequestpayment/${bookIdPayment}`);
+  const { account } = await validateSession(context);
+
 
   console.log(data);
 
   return {
-    props: { bookIdPayment: data },
+    props: { bookIdPayment: data, account:account },
 
   };
 };
 
-export default function RequestForm({ bookIdPayment }) {
+export default function RequestForm({ bookIdPayment, account }) {
   const [imageURL, setImageURL] = useState(null);
 
   const handleOnSubmit = async (payload) => {
@@ -29,7 +35,16 @@ export default function RequestForm({ bookIdPayment }) {
       imageURL,
     });
 
-    alert(data.message); // eslint-disable-line no-alert
+    toast.success(' Sent Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   const sigCanvas = useRef({});
   const clear = () => sigCanvas.current.clear();
@@ -220,6 +235,17 @@ export default function RequestForm({ bookIdPayment }) {
                       />
                     </label>
 
+                    <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="directorName"
+                        type="text"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
                   </div>
 
                   <div className="row-start-2 col-span-2">
@@ -270,17 +296,24 @@ export default function RequestForm({ bookIdPayment }) {
                   </div>
                   <div className="row-start-4 ">
 
-                    <div className="flex space-x-2 ">
+                    <div className="flex space-x-8 ">
 
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Dean Signature</span>
                         <img src={bookIdPayment.signatureDean} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPayment.deanName}
+                        </div>
                       </label>
 
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
                         <img src={bookIdPayment.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className=" mt-2  border border-1 border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPayment.acquisitionName}
+                        </div>
                       </label>
+               
 
                     </div>
 

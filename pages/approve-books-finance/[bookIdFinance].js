@@ -3,6 +3,9 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdFinance } = context.query;
@@ -20,7 +23,15 @@ export default function RequestForm({ bookIdFinance }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdateFinance', payload);
 
-    alert(data.message);
+    toast.success('Update Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
   };
 
   const [session] = useSession();
@@ -86,7 +97,7 @@ export default function RequestForm({ bookIdFinance }) {
 
                 </div>
 
-                <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 mt-1 ">
+                <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 mt-1 gap-2.5 ">
 
                   <div className="row-start-1">
                     <label htmlFor="author" className="">
@@ -183,8 +194,23 @@ export default function RequestForm({ bookIdFinance }) {
                         disabled
                       />
                     </label>
+                    <label htmlFor="requesID" className="block">
+                      <span className="  text-xs text-gray-500 mt-23">Dean Signature</span>
+                      <img
+                        src={bookIdFinance.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdFinance.deanName}
+                        </div>
 
-                  </div>
+                    </label>
+
+                  </div>               
+                 
 
                   <div className="row-start-2 col-span-2">
 
@@ -214,6 +240,7 @@ export default function RequestForm({ bookIdFinance }) {
                     </label>
 
                   </div>
+                  
                   <div className="row-start-3 col-span-2">
 
                     <label htmlFor="selectDosition" className="block ">
@@ -224,6 +251,7 @@ export default function RequestForm({ bookIdFinance }) {
                         required
                         className="   mb-2 text-gray-500 rounded-md border-gray-300  w-1/4
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                  required
                       >
 
                         <option value="">Enter Status </option>

@@ -92,15 +92,7 @@ export default function seeAllBooksCustodian({ booksToVerify }) {
           </div>
         ),
       },
-      {
-        Header: 'Approved By Director',
-        accessor: 'approvalDirector', // accessor is the "key" in the data
-        Cell: ({ row: { values } }) => (
-          <div>
-            {values.approvalDirector ? 'Yes' : 'No'}
-          </div>
-        ),
-      },
+    
       {
         Header: 'Approved By President',
         accessor: 'approvalPresident', // accessor is the "key" in the data

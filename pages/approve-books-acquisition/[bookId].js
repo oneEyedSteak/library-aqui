@@ -3,6 +3,8 @@ import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async (context) => {
   const { bookId } = context.query;
@@ -20,7 +22,16 @@ export default function RequestForm({ book }) {
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/bookUpdate', payload);
 
-    alert(data.message); // eslint-disable-line no-alert
+    toast.success('Update Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
+
   };
   const [session] = useSession();
   Date.prototype.toDateInputValue = (function() {
@@ -61,8 +72,7 @@ export default function RequestForm({ book }) {
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl mt 4 font-bold text-gray-600 ">Library Acquisition Entry of Books</h1>
-
+                  <h1 className="text-xl mt 4 font-bold text-gray-600 ">Enter Price </h1>
                 </div>
                 <label htmlFor="requesID" className="">
                   <span className=" hover:textColor-red  text-xs font-bold text-gray-500" />
@@ -176,6 +186,7 @@ export default function RequestForm({ book }) {
                         disabled
                       />
                     </label>
+              
                   </div>
 
                   <div className="row-start-2 col-span-2">
@@ -205,8 +216,23 @@ export default function RequestForm({ book }) {
                       />
                     </label>
                   </div>
-                  <div className="row-start-3">
-                    <label htmlFor="edition" className="mt-16">
+                  <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <img
+                        src={book.signatureDean}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />  
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {book.deanName}
+                        </div>
+
+                    </label>
+                  <div className="row-start-3 gap">
+      
+                    <label htmlFor="edition" className="mt-18">
                       <span className="  block text-xs  text-gray-500 ">Price</span>
                       <Field
                         required
@@ -226,6 +252,7 @@ export default function RequestForm({ book }) {
                         component="select"
                         className=" mb-2 text-gray-500 rounded-md border-gray-300  w-2/4
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50 "
+                      required
                       >
 
                         <option value="">Enter Status </option>

@@ -21,6 +21,7 @@ export default function RequestForm({ account }) {
   });
 
   const handleOnSubmit = async (payload) => {
+    
     const { data } = await axios.post('/api/requestform', payload);
 
     toast.success('Request Sent!', {
@@ -169,10 +170,8 @@ export default function RequestForm({ account }) {
                     placeholder="Name of the Publisher"
                   />
                 </label>
-
               </div>
               <div className="row-start-2   ">
-
                 <label htmlFor="pbadress" className="">
                   <span className=" hover:textColor-red text-xs  text-gray-500 mb-">Publisher Address</span>
                   <Field

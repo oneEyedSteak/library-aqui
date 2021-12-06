@@ -7,18 +7,24 @@ import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import validateSession from '../../lib/session';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdPaymentFinance } = context.query;
   const { data } = await api.get(`/api/bookrequestpaymentvpaa/${bookIdPaymentFinance}`);
+  const { account } = await validateSession(context);
+
   console.log(data);
 
   return {
-    props: { bookIdPaymentFinance: data },
+    props: { bookIdPaymentFinance: data, account:account },
 
   };
 };
-export default function RequestForm({ bookIdPaymentFinance }) {
+export default function RequestForm({ bookIdPaymentFinance, account }) {
   const [imageURL, setImageURL] = useState(null);
 
   const handleOnSubmit = async (payload) => {
@@ -26,8 +32,15 @@ export default function RequestForm({ bookIdPaymentFinance }) {
       ...payload,
       imageURL,
     });
-
-    alert(data.message); // eslint-disable-line no-alert
+    toast.success(' Sent Successfully!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
   };
 
   const sigCanvas = useRef({});
@@ -92,6 +105,17 @@ export default function RequestForm({ bookIdPaymentFinance }) {
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
                   <h1 className="text-xl   text-gray-600 ">Approve Payment</h1>
                 </div>
+                <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="vpaaName"
+                        type="text"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
                 <div className="flex space-x-6 content-around items-center  justify-end">
 
                   <label htmlFor="date" className=" ">
@@ -247,33 +271,43 @@ export default function RequestForm({ bookIdPaymentFinance }) {
                         disabled
                       />
                     </label>
-                  </div>
-                  <div className="row-start-4 mt-2 ">
+                    <div className="row-start-4 mt-2 ">
                     <div className="flex space-x-6 content-around items-center mt-5 justify-start ">
 
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Dean Signature</span>
                         <img src={bookIdPaymentFinance.signatureDean} alt="College Dean Signature" width="100" height="100" className=" border border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentFinance.deanName}
+                        </div>
                       </label>
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
                         <img src={bookIdPaymentFinance.signatureAcquisition} alt="College Dean Signature" width="100" height="100" className="  border  border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentFinance.acquisitionName}
+                        </div>
                       </label>
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs text-gray-500 p">Director Signature</span>
                         <img src={bookIdPaymentFinance.signtureDirector} alt="College Dean Signature" width="100" height="100" className=" border border-gray-blue-900" />
+                       <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentFinance.directorName}
+                        </div>
                       </label>
                       <label htmlFor="requesID" className="">
                         <span className="  text-xs text-gray-500 p">VPAA Signature</span>
                         <img src={bookIdPaymentFinance.signatureVPAA} alt="College Dean Signature" width="100" height="100" className="  border border-gray-blue-900" />
+                        <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdPaymentFinance.vpaaName}
+                        </div>
                       </label>
                     </div>
 
                   </div>
-                  <div className="row-start-5 mt-5 mb-6 ">
-
+          
                   </div>
-
+            
 
 
 
@@ -375,7 +409,7 @@ export default function RequestForm({ bookIdPaymentFinance }) {
                     className=" cursor-pointer  mx-auto text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-secondary hover:bg-indigo-700
                             focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
-                    Approve Book
+                    Send to Acquisition
                   </button>
                 </div>
               </form>
