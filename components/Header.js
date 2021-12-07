@@ -297,12 +297,21 @@ export default function Header() {
                       <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                       >
-                        Post your Books
+                        Track your Book
                       </div>
                     </Link>
                   </>
                 )}
 
+{['Acquisition'].includes(account.selectPosition) && (
+                  <Link href="/see-all-books-try">
+                    <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                  px-3 py-2 rounded-md text-sm font-medium mr-2"
+                    >
+                      Requested Books (New Edition)
+                    </div>
+                  </Link>
+                )}
                 {['Acquisition'].includes(account.selectPosition) && (
                   <Link href="/see-all-books-track-librarian">
                     <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
@@ -332,7 +341,7 @@ export default function Header() {
                   </Link>
                 )}
                 {['Faculty'].includes(account.selectPosition) && (
-                  <Link href="/requestform">
+                  <Link href="/requestform">  
                     <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                     >

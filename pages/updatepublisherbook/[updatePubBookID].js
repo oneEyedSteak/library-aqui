@@ -83,7 +83,7 @@ export default function EnterBook({ updatePubBookID }) {
                                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
 
                                     <label htmlFor="date" className="block ">
-                                        <span className="block  text-xs  text-gray-500 mb-1">Book Updated</span>
+                                        <span className="block  text-xs  text-gray-500 mb-1">Books Posted</span>
                                         <Field
                                             className="text-gray-500 rounded-md  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"

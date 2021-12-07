@@ -3,22 +3,16 @@ import { useSession } from 'next-auth/client';
 import BookCards from '../components/BookCards';
 
 export const getStaticProps = async () => {
-  try {
-    const res = await fetch('http://localhost:3000/api/postBooks');
- 
- 
+  const res = await fetch('http://localhost:3000/api/postBooks');
+  const posts = await res.json();
 
-    const post = JSON.parse(JSON.stringify(res));
-    return {
-      props: { postBooks: post, account },
-    };
-  } catch (error) {
-    return { props: { post: false } };
-  }
+  console.log(res);
+  return {
+    props: { booksDisplay: posts },
+  };
 };
 
-
-const Home = ({ postBooks }) => {
+const Home = ({ booksDisplay }) => {
   const [session] = useSession();
 
   return (
@@ -46,16 +40,15 @@ const Home = ({ postBooks }) => {
           See Whats new!
         </h2>
       </div>
-      
       <div className="p-28 grid grid-cols-3 gap-1
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
          xl:grid-cols-4"
         >
-          {session  && (
+          {session && (
             <>
               {
-                postBooks && postBooks  .map((books) => (
-                  <BookCards books={books} key={books.requestedID} />
+                booksDisplay && booksDisplay.map((books) => (
+                  <BookCards books={books} key={books.entryBooksID} />
                 ))
               }
             </>

@@ -9,8 +9,7 @@ export const getServerSideProps = async (context) => {
   try {
     const { account } = await validateSession(context);
 
-    const result = await mysql.query(`SELECT * FROM requestform WHERE 
-    pubName = ('${account.pubName}') AND pubAddress =('${account.pubAddress}')`);
+    const result = await mysql.query(`SELECT * FROM requestform WHERE status= 5`);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
@@ -25,19 +24,19 @@ export default function seeAllBooksDean({ bookTrack }) {
   console.log(bookTrack);
   const columns = useMemo(
     () => [
-    //   {
-    //     Header: 'Request ID',
-    //     accessor: 'requestID', // accessor is the "key" in the data
-    //   },-
-    //   {
-    //     Header: 'Request Date',
-    //     accessor: 'date',
-    //     Cell: ({ row: { values } }) => (
-    //       <div>
-    //         {new Date(values.date).toDateString()}
-    //       </div>
-    //     ),
-    //   },
+      {
+        Header: 'Request ID',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Request Date',
+        accessor: 'date',
+        Cell: ({ row: { values } }) => (
+          <div>
+            {new Date(values.date).toDateString()}
+          </div>
+        ),
+      },
       {
         Header: 'Athor Name',
         accessor: 'authorName',
@@ -68,6 +67,10 @@ export default function seeAllBooksDean({ bookTrack }) {
         Header: 'Department',
         accessor: 'selectDepartment', // accessor is the "key" in the data
       },
+      {
+        Header: 'Position',
+        accessor: 'selectPosition', // accessor is the "key" in the data
+      },
 
       {
         Header: 'Status',
@@ -81,27 +84,26 @@ export default function seeAllBooksDean({ bookTrack }) {
           {values.status  === 5 && 'Requested'}
 
 
-
           </div>
           
         ),
       },
-    //   {
-    //     Header: () => 'Action',
-    //     accessor: 'action',
-    //     Cell: ({ row: { values } }) => (
-    //       <Link href={`/track-book/${values.requestID}`}>
-    //         <button
-    //           type="button"
-    //           className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-    //                                  text-white bg-indigo-600 hover:bg-indigo-700
-    //                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-    //         >
-    //           See Details
-    //         </button>
-    //       </Link>
-    //     ),
-    //   },
+      {
+        Header: () => 'Action',
+        accessor: 'action',
+        Cell: ({ row: { values } }) => (
+          <Link href={`/details/${values.requestID}`}>
+            <button
+              type="button"
+              className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+                                     text-white bg-indigo-600 hover:bg-indigo-700
+                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              See Details
+            </button>
+          </Link>
+        ),
+      },
     ],
     [],
   );
@@ -121,7 +123,7 @@ export default function seeAllBooksDean({ bookTrack }) {
 
             <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
             <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-            <h1 className="text-xl  text-gray-600 ">Track your book</h1>
+            <h1 className="text-xl  text-gray-600 ">All Requested Books(New Edition) </h1>
 
           </div>
           <div />
