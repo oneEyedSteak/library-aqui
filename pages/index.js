@@ -47,7 +47,7 @@ const Home = ({ booksDisplay }) => {
           {session && (
             <>
               {
-                booksDisplay && booksDisplay.map((books) => (
+                booksDisplay && booksDisplay.map ((books) => (
                   <BookCards books={books} key={books.entryBooksID} />
                 ))
               }
