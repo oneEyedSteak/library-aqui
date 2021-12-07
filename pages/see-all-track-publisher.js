@@ -10,7 +10,7 @@ export const getServerSideProps = async (context) => {
     const { account } = await validateSession(context);
 
     const result = await mysql.query(`SELECT * FROM requestform WHERE 
-    userID = ('${account.id}') OR selectDepartment = ('${account.selectDepartment}')`);
+    pubName = ('${account.pubName}') AND pubAddress =('${account.pubAddress}')`);
 
     const post = JSON.parse(JSON.stringify(result));
     return {
@@ -25,19 +25,19 @@ export default function seeAllBooksDean({ bookTrack }) {
   console.log(bookTrack);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Request Date',
-        accessor: 'date',
-        Cell: ({ row: { values } }) => (
-          <div>
-            {new Date(values.date).toDateString()}
-          </div>
-        ),
-      },
+    //   {
+    //     Header: 'Request ID',
+    //     accessor: 'requestID', // accessor is the "key" in the data
+    //   },-
+    //   {
+    //     Header: 'Request Date',
+    //     accessor: 'date',
+    //     Cell: ({ row: { values } }) => (
+    //       <div>
+    //         {new Date(values.date).toDateString()}
+    //       </div>
+    //     ),
+    //   },
       {
         Header: 'Athor Name',
         accessor: 'authorName',
@@ -77,30 +77,29 @@ export default function seeAllBooksDean({ bookTrack }) {
           <div>
 
           {values.status  === 0 && 'Processing'}
-          {values.status  === 1 && 'Arrived'}
-          {values.status  === 2 && 'Confirmed'}
-          {values.status  === 3 && 'Published'}
+          {values.status  === 4 && 'Posted'}
+
 
           </div>
           
         ),
       },
-      {
-        Header: () => 'Action',
-        accessor: 'action',
-        Cell: ({ row: { values } }) => (
-          <Link href={`/track-book/${values.requestID}`}>
-            <button
-              type="button"
-              className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
-                                     text-white bg-indigo-600 hover:bg-indigo-700
-                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              See Details
-            </button>
-          </Link>
-        ),
-      },
+    //   {
+    //     Header: () => 'Action',
+    //     accessor: 'action',
+    //     Cell: ({ row: { values } }) => (
+    //       <Link href={`/track-book/${values.requestID}`}>
+    //         <button
+    //           type="button"
+    //           className="mx-auto mt-3  text-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md
+    //                                  text-white bg-indigo-600 hover:bg-indigo-700
+    //                                 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+    //         >
+    //           See Details
+    //         </button>
+    //       </Link>
+    //     ),
+    //   },
     ],
     [],
   );

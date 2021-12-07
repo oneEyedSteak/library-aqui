@@ -274,48 +274,76 @@ export default function RequestForm({ bookIdToPrint }) {
                       height="100"
                       className=" mt-2 border-solid border-4 border-gray-blue-900"
                     />
+                    <div className="text-xs mt-2 text-gray-500 underline">
+                      {bookIdToPrint.deanName}
+                    </div>
                   </label>
-                  <label htmlFor="requesID" className="">
-                    <span className="  text-xs text-gray-500 p">Acquisition Signature</span>
-                    <img
-                      src={bookIdToPrint.signatureAcquisition}
-                      alt="College Dean Signature"
-                      width="100"
-                      height="100"
-                      className=" mt-2 border-solid border-4 border-gray-blue-900"
-                    />
-                  </label>
-                  <label htmlFor="requesID" className="">
-                    <span className="  text-xs text-gray-500 p">VPAA Signature</span>
-                    <img
-                      src={bookIdToPrint.signatureVPAA}
-                      alt="College Dean Signature"
-                      width="100"
-                      height="100"
-                      className=" mt-2 border-solid border-4 border-gray-blue-900"
-                    />
-                  </label>
-                  <label htmlFor="requesID" className="">
-                    <span className="  text-xs text-gray-500 p">Finance Signature</span>
-                    <img
-                      src={bookIdToPrint.signatureFinance}
-                      alt="College Dean Signature"
-                      width="100"
-                      height="100"
-                      className=" mt-2 border-solid border-4 border-gray-blue-900"
-                    />
-                  </label>
+                  {bookIdToPrint.signatureAcquisition && (
+                    <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">Acquisition Signature</span>
+                      <img
+                        src={bookIdToPrint.signatureAcquisition}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdToPrint.acquisitionName}
+                      </div>
+                    </label>
 
-                  <label htmlFor="requesID" className="">
-                    <span className="  text-xs text-gray-500 p">Director Signature</span>
-                    <img
-                      src={bookIdToPrint.signtureDirector}
-                      alt="College Dean Signature"
-                      width="100"
-                      height="100"
-                      className=" mt-2 border-solid border-4 border-gray-blue-900"
-                    />
-                  </label>
+                  )}
+                  {bookIdToPrint.signatureVPAA && (
+                    <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">VPAA Signature</span>
+                      <img
+                        src={bookIdToPrint.signatureVPAA}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdToPrint.vpaaName}
+                      </div>
+                    </label>
+
+                  )}
+
+                  {bookIdToPrint.signatureFinance && (
+                    <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">Finance Signature</span>
+                      <img
+                        src={bookIdToPrint.signatureFinance}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdToPrint.financeName}
+                      </div>
+                    </label>
+                  )}
+
+                  {bookIdToPrint.signtureDirector && (
+                    <label htmlFor="requesID" className="">
+                      <span className="  text-xs text-gray-500 p">Director Signature</span>
+                      <img
+                        src={bookIdToPrint.signtureDirector}
+                        alt="College Dean Signature"
+                        width="100"
+                        height="100"
+                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                      />
+                      <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdToPrint.directorName}
+                      </div>
+                    </label>
+
+                  )}
+
                 </div>
 
                 <div className="flex pl-2 justify-end">

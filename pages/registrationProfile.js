@@ -3,8 +3,6 @@ import { useSession } from 'next-auth/client';
 import Head from 'next/head';
 import Link from 'next/dist/client/link';
 import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-
 
 import axios from 'axios';
 
@@ -13,26 +11,9 @@ export default function RegistrationForm() {
     try {
       const { data } = await axios.post('/api/register', payload);
 
-      
-    toast.success('Registration Success!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+      toast.success('Registration Success');
     } catch (error) {
-      toast.error('Registration Error!', {
-        position: 'bottom-right',
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: false,
-        draggable: true,
-        progress: undefined,
-      });
+      toast.error('Error in Registration');
     }
   };
   const [session] = useSession();
@@ -81,7 +62,7 @@ export default function RegistrationForm() {
                 </div>
 
                 <label htmlFor="uname" className="block">
-                  <span className="block text-xs font-bold text-gray-500 mb-">Username</span>
+                  <span className="block text-xs font-bold text-gray-500 mb-">ID</span>
                   <Field
                     className="  text-xs font-bold text-gray-500  placeholder-gray-400 mt-1 focus:placeholder-gray-500 placeholder-opacity-50
            rounded-md border-gray-300 shadow-sm w-full"
@@ -119,7 +100,7 @@ export default function RegistrationForm() {
                     />
                   </label>
                 </div>
-
+``
                 <label htmlFor="fname" className="block mt-3">
                   <span className="block mt-1 text-xs font-bold text-gray-500 mb-1">Firstname</span>
                   <Field
@@ -167,6 +148,7 @@ export default function RegistrationForm() {
                     <option className="text-xs font-bold text-gray-500" value="College of Medicine">College of Medicine</option>
                     <option className="text-xs font-bold text-gray-500" value="College of Theology">College of Theology</option>
                     <option className="text-xs font-bold text-gray-500" value="College of Theology">Admin</option>
+
                   </Field>
                 </label>
 
@@ -181,6 +163,7 @@ export default function RegistrationForm() {
                       <option className="text-xs font-bold text-gray-500" value="Faculty">Faculty</option>
                       <option className="text-xs font-bold text-gray-500" value="VPAA">VPAA</option>
                       <option className="text-xs font-bold text-gray-500" value=">Director of Library">Director of Library</option>
+f
                     </Field>
                   </label>
                 </div>
@@ -213,7 +196,6 @@ export default function RegistrationForm() {
                   </label>
 
                 </div>
-
                 <div className="block text-right mt-5">
                   <button
                     type="submit"

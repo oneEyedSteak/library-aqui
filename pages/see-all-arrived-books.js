@@ -56,10 +56,6 @@ export default function seeAllEntryForm({ arrivedBooks }) {
 
       },
       {
-        Header: 'User ID',
-        accessor: 'userID', // accessor is the "key" in the data
-      },
-      {
         Header: 'Requested By',
         accessor: 'requestee', // accessor is the "key" in the data
       },
@@ -72,10 +68,7 @@ export default function seeAllEntryForm({ arrivedBooks }) {
         accessor: 'selectDepartment', // accessor is the "key" in the data
       },
 
-      {
-        Header: 'Note',
-        accessor: 'notereqform', // accessor is the "key" in the data
-      },
+
       {
         Header: 'Price',
         accessor: 'price', // accessor is the "key" in the data
@@ -131,6 +124,23 @@ export default function seeAllEntryForm({ arrivedBooks }) {
 
           </div>
           
+        ),
+      },
+      {
+        Header: () => 'Action',
+        accessor: 'action',
+        Cell: ({ row: { values } }) => (
+          <Link href={`/bookstoconfirm/${values.requestID}`}>
+
+            <button
+              type="button"
+              className="mx-auto mt-3  text-center py-2 px-2 border border-transparent shadow-sm text-sm font-medium rounded-md
+                                     text-white bg-indigo-600 hover:bg-indigo-700
+                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+            See Details
+            </button>
+          </Link>
         ),
       },
 

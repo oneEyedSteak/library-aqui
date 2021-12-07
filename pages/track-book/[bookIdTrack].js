@@ -330,7 +330,7 @@ export default function RequestForm({ bookIdTrack }) {
                       {bookIdTrack.approvalDirector ? '✓' : 'No'}
                     </span>
                   </div>
-                  <div className="row-start-3 border-b">
+                  <div className="row-start-3 ">
                     <span className="  text-xs  text-gray-500 mb-1">Signed by: </span>
 
                     <div className="flex  space-x-2">
@@ -345,6 +345,9 @@ export default function RequestForm({ bookIdTrack }) {
                             height="100"
                             className=" mt-2  border border-1 border-gray-blue-900"
                           />
+                            <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdTrack.deanName}
+                        </div>
                         </label>
                       )}
                       {bookIdTrack.signatureAcquisition && (
@@ -358,6 +361,9 @@ export default function RequestForm({ bookIdTrack }) {
                             height="100"
                             className="mt-2  border border-1 border-gray-blue-900"
                           />
+                             <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdTrack.acquisitionName}
+                        </div>
                         </label>
                       )}
                       {bookIdTrack.signatureVPAA && (
@@ -370,6 +376,9 @@ export default function RequestForm({ bookIdTrack }) {
                             height="100"
                             className=" mt-2   border border-1 border-gray-blue-900"
                           />
+                          <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdTrack.vpaaName}
+                        </div>
                         </label>
                       )}
 
@@ -384,6 +393,9 @@ export default function RequestForm({ bookIdTrack }) {
                             height="100"
                             className=" mt-2  border border-1 border-gray-blue-900"
                           />
+                              <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdTrack.financeName}
+                        </div>
                         </label>
                       )}
                       {bookIdTrack.signtureDirector && (
@@ -396,6 +408,9 @@ export default function RequestForm({ bookIdTrack }) {
                             height="100"
                             className=" mt-2 mb-2  border border-1 border-gray-blue-900"
                           />
+                          <div className="text-xs mt-2 text-gray-500 underline">
+                        {bookIdTrack.directorName}
+                        </div>
                         </label>
                       )}
 
