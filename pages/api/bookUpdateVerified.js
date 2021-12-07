@@ -1,4 +1,3 @@
-import { Console } from 'console';
 import mysql from '../../providers/mysql';
 
 export default async (req, res) => {
