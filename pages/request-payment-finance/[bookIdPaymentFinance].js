@@ -111,7 +111,7 @@ export default function RequestForm({ bookIdPaymentFinance, account }) {
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
                         component="input"
                         name="vpaaName"
-                        type="text"
+                        type="hidden"
                         initialValue={account.fname + " "+  account.mname + " " + account.lname} 
                         disabled
                       />
@@ -309,7 +309,17 @@ export default function RequestForm({ bookIdPaymentFinance, account }) {
                   </div>
             
 
-
+                  <label htmlFor="edition" className="">
+                      <Field
+                        className="text-gray-500 rounded-md border-gray-300  w-full
+                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        component="input"
+                        name="financeName"
+                        type="hidden"
+                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        disabled
+                      />
+                    </label>
 
                   <div className="row-start-6 ">
 

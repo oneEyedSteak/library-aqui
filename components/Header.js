@@ -33,7 +33,7 @@ export default function Header() {
               <div className="flex-shrink-0 flex items-center cursor-pointer">
                 <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
                 <Link href="/"><img className="hidden lg:block h-12 w-auto  cursor-pointerrounded mr-3" src="/cpulogo.png" alt="okay" /></Link>
-                <Link href="/"><h1 className="mr- text-2xl text-gray-100   cursor-pointer"> University Library Acquition</h1></Link>
+                <Link href="/"><h1 className="mr- text-2xl text-gray-100   cursor-pointer"> University Library Acquisition</h1></Link>
                 <div className="hidden sm:block sm:ml-6">
                   <div className="flex space-x-4">
                     <Link href="/">
@@ -345,7 +345,7 @@ export default function Header() {
                     <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                     >
-                      Approved Books
+                      Request Books
                     </div>
                   </Link>
                 )}

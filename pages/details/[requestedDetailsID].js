@@ -191,7 +191,7 @@ export default function RequestForm({requestedDetailsID }) {
 
                   <div className="row-start-2 ">
                     <label htmlFor="copvol" className=" ">
-                      <span className="  text-xs  text-gray-500">Copies/Volumes</span>
+                      <span className="  text-xs  text-gray-500">Copies</span>
                       <Field
                         className="  block text-gray-500 rounded-md  w-full
                         focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
