@@ -428,7 +428,7 @@ export default function Header() {
 
                           </div>
                           <div className="py-1">
-                            <span role="menuitem" tabIndex="-1" className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 cursor-not-allowed opacity-50" aria-disabled="true">View Profile</span>
+                            <span role="menuitem" tabIndex="-1" className="flex justify-between w-full px-4 py-2 text-sm leading-5 text-left text-gray-700 cursor-not-allowed opacity-50" aria-disabled="true">View Profile(Next Update)</span>
 
                           </div>
 

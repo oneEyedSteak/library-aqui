@@ -5,6 +5,8 @@ import axios from 'axios';
 import api from '../lib/api';
 import ReactTable from '../components/table';
 import BudgetForm from './budget-form';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async () => {
   const { data: cost } = await api.get('/api/totalCost');
@@ -20,6 +22,13 @@ export const getServerSideProps = async () => {
 };
 
 export default function SignIn({ totalCost, totalBudget }) {
+
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
+    local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
+    return local.toJSON().slice(0, 10);
+  });
+
   const postBudget = useMemo(
     () => [
       {
@@ -59,8 +68,18 @@ export default function SignIn({ totalCost, totalBudget }) {
 
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/saveBudget', payload);
+  
+  
+    toast.success('Added Successfuly!', {
+      position: 'bottom-right',
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    }, data);
 
-    alert(data.message);// eslint-disable-line no-alert
   };
 
   return (
@@ -79,15 +98,15 @@ export default function SignIn({ totalCost, totalBudget }) {
 
             <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w- mx-auto h-auto w-4/5 shadow-lg ">
               {/* MODAL ENDS HERE */}
-              {/* <Field
+              <Field
                 className="text-gray-500 rounded-md  border-gray-300  w-auto
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
-                name="dateAdded"
+                name="add_date"
                 component="input"
                 type="hidden"
                 initialValue={new Date().toDateInputValue()}
                 required
-              /> */}
+              />
               <div className="flex-shrink-0 flex content-around items-center">
 
                 <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />

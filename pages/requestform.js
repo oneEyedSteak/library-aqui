@@ -110,7 +110,7 @@ export default function RequestForm({ account }) {
                   <span className="  text-xs  text-gray-500 mb-1">User ID</span>
 
                   <Field
-                    className="block text-gray-500 rounded-md  w-auto
+                    className="block text-gray-400 rounded-md  w-auto
               focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
                     component="input"
                     name="userID"
@@ -123,7 +123,7 @@ export default function RequestForm({ account }) {
                   <span className="  text-xs  text-gray-500 mb-1">Name</span>
 
                   <Field
-                    className="block text-gray-500 rounded-md  w-auto
+                    className="block text-gray-400 rounded-md  w-auto
               focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
                     component="input"
                     name="requestee"
@@ -234,12 +234,13 @@ export default function RequestForm({ account }) {
                 <label htmlFor="chargedto" className=" ">
                   <span className="  text-xs  text-gray-500 ">Charge to</span>
                   <Field
-                    className="text-gray-500 w-full rounded-md border-gray-300
+                    className="text-gray-400 w-full rounded-md border-gray-300 border-0
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
                     component="input"
                     name="chargeto"
                     type="text"
-                    placeholder="Charge to"
+                    initialValue= {account.selectDepartment}
+                    disabled
                   />
                 </label>
 
