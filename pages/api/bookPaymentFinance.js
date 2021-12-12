@@ -17,3 +17,4 @@ export default async (req, res) => {
     console.log(error);
   }
 };
+// tuyo2 pako deputa

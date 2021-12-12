@@ -105,14 +105,10 @@ export default function RequestForm({ bookDean, account }) {
 
               <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16  shadow-md mx-auto w-full min-h-screen ">
 
-                <div className="flex-shrink-0 flex content-around items-center p-8
-                "
-                >
-
+                <div className="flex-shrink-0 flex content-around items-center p-8">
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">Approve Books</h1>
-
+                  <h1 className="text-xl  text-gray-600 ">Dean's Form</h1>
                 </div>
 
                 <div className="flex space-x-6 content-around items-center justify-end p-8">

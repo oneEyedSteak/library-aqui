@@ -28,7 +28,7 @@ const BudgetForm = ({ selectDepartment }) => {
   const handleOnSubmit = async () => {
     const { data: result } = await api.post('/api/saveBudget', {
       subtracted: data.subtracted,
-      selectDepartment,
+      selectDepartment, add_date
     });
 
     alert(result.message);// eslint-disable-line no-alert
@@ -67,6 +67,16 @@ const BudgetForm = ({ selectDepartment }) => {
                           placeholder="₱"
                           disabled
                           initialValue={data.totalBudget || 0}
+                        />
+                           <span className="block  text-xs  text-gray-500 p">Date Added </span>
+                        <Field
+                          className="text-xs mt-2 w-auto text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
+              placeholder-opacity-100 rounded-md border-gray-300   shadow-lg   "
+                          name="add_date"
+                          component="input"
+                          type="date"
+                          disabled
+                          initialValue={data.add_date}
                         />
      
                       </label>
