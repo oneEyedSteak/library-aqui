@@ -2,12 +2,10 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
+import { toast } from 'react-toastify';
 import api from '../../lib/api';
 import validateSession from '../../lib/session';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 
 export const getServerSideProps = async (context) => {
   try {
@@ -16,7 +14,7 @@ export const getServerSideProps = async (context) => {
     const { account } = await validateSession(context);
 
     return {
-      props: { bookVPAAId: data, account: account },
+      props: { bookVPAAId: data, account },
 
     };
   } catch (error) {
@@ -28,7 +26,6 @@ export default function RequestForm({ bookVPAAId, account }) {
   console.log(bookVPAAId);
 
   const handleOnSubmit = async (payload) => {
-
     const { data } = await axios.post('/api/bookUpdateVPAA', payload);
 
     toast.success(' Update Successfully!', {
@@ -40,15 +37,14 @@ export default function RequestForm({ bookVPAAId, account }) {
       draggable: true,
       progress: undefined,
     }, data);
-
   };
   const [session] = useSession();
 
-  Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
+    return local.toJSON().slice(0, 10);
+  });
 
   return (
 
@@ -223,12 +219,12 @@ export default function RequestForm({ bookVPAAId, account }) {
                         disabled
                       />
                     </label>
-                  
+
                   </div>
 
                   <div className="row-start-3">
 
-                  <label htmlFor="requesID" className="">
+                    <label htmlFor="requesID" className="">
                       <span className="  text-xs text-gray-500 p">Dean Signature</span>
                       <img
                         src={bookVPAAId.signatureDean}
@@ -236,10 +232,10 @@ export default function RequestForm({ bookVPAAId, account }) {
                         width="100"
                         height="100"
                         className=" mt-2 border-solid border-4 border-gray-blue-900"
-                      />  
+                      />
                       <div className="text-xs mt-2 text-gray-500 underline">
                         {bookVPAAId.deanName}
-                        </div>
+                      </div>
 
                     </label>
                     <label htmlFor="edition" className="">
@@ -249,11 +245,11 @@ export default function RequestForm({ bookVPAAId, account }) {
                         component="input"
                         name="vpaaName"
                         type="hidden"
-                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        initialValue={`${account.fname} ${account.mname} ${account.lname}`}
                         disabled
                       />
                     </label>
-                    
+
                   </div>
 
                   <div className="row-start-4">
@@ -264,7 +260,7 @@ export default function RequestForm({ bookVPAAId, account }) {
                         component="select"
                         className=" text-gray-500 rounded-md border-1 border-gray-300  w-full
                    bg-gray-50"
-                   required
+                        required
                       >
                         <option value=""> </option>
                         <option className="block text-xs  text-gray-500" value="0">On Going</option>

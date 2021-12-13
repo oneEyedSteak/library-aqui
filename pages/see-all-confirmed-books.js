@@ -9,7 +9,7 @@ export const getServerSideProps = async (context) => {
   try {
     const { account } = await validateSession(context);
 
-    const result = await mysql.query(`SELECT * FROM requestform WHERE status = 2`);
+    const result = await mysql.query('SELECT * FROM requestform WHERE status = 2');
 
     const post = JSON.parse(JSON.stringify(result));
     return {
@@ -79,7 +79,7 @@ export default function seeAllEntryForm({ confirmedBooks }) {
       {
         Header: 'Price',
         accessor: 'price', // accessor is the "key" in the data
-        Cell: ({ row: { values } }) => `₱${values['price']}`,
+        Cell: ({ row: { values } }) => `₱${values.price}`,
       },
       {
         Header: 'Approved By Director',
@@ -124,11 +124,11 @@ export default function seeAllEntryForm({ confirmedBooks }) {
 
           <div>
 
-          {values.status  === 0 && 'Processing'}
-          {values.status  === 1 && 'Arrived'}
-          {values.status  === 2 && 'Confirmed'}
+            {values.status === 0 && 'Processing'}
+            {values.status === 1 && 'Arrived'}
+            {values.status === 2 && 'Confirmed'}
           </div>
-          
+
         ),
       },
 

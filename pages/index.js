@@ -28,7 +28,7 @@ const Home = ({ booksDisplay }) => {
         <img src="/1234.jpg" className="  mt-16 w-full h-10/12  mx-auto" alt="1234" />
       </div>
 
-      <div>
+      {/* <div>
         <h2 className=" bg-gray-500 text-yellow-50 text-center w-3/4 mx-auto p-4 mt-2 rounded">
           {!session && (
             <>
@@ -39,21 +39,21 @@ const Home = ({ booksDisplay }) => {
           )}
           See Whats new!
         </h2>
-      </div>
+      </div> */}
       <div className="p-28 grid grid-cols-3 gap-1
         sm:grid-cols-5 md:grid-cols-5 lg:grid-cols-5
          xl:grid-cols-4"
-        >
-          {session && (
-            <>
-              {
+      >
+        {session && (
+        <>
+          {
                 booksDisplay && booksDisplay.map((books) => (
                   <BookCards books={books} key={books.entryBooksID} />
                 ))
               }
-            </>
-          )}
-        </div>
+        </>
+        )}
+      </div>
 
     </>
   );

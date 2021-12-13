@@ -8,7 +8,7 @@ import ReactTable from '../components/table';
 export const getServerSideProps = async (context) => {
   try {
     const result = await
-      mysql.query('SELECT * FROM requestform WHERE verifytocustodian = 0 AND (approvalFinance = 1 OR approvalPresident = 1 )');
+    mysql.query('SELECT * FROM requestform WHERE verifytocustodian = 0 AND (approvalFinance = 1 OR approvalPresident = 1 )');
     const session = await validateSession(context);
 
     const post = JSON.parse(JSON.stringify(result));
@@ -131,7 +131,6 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
             <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
             <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
             <h1 className="text-xl  text-gray-600 "> Books to  Verify</h1>
-
 
           </div>
           <div className="text-xs shadow-md w-full mt-10 ">

@@ -1,16 +1,53 @@
-import { useTable } from 'react-table';
+import { useMemo } from 'react';
+import { useTable, useFilters } from 'react-table';
+import { matchSorter } from 'match-sorter';
+import { DefaultColumnFilter } from './Filters';
+
+export const fuzzyTextFilterFn = (rows, id, filterValue) => matchSorter(rows, filterValue, { keys: [(row) => row.values[id]] });
+
+// Let the table remove the filter if the string is empty
+fuzzyTextFilterFn.autoRemove = (val) => !val;
 
 const Table = ({
   data,
   columns,
 }) => {
+  const filterTypes = useMemo(
+    () => ({
+      // Add a new fuzzyTextFilterFn filter type.
+      fuzzyText: fuzzyTextFilterFn,
+      // Or, override the default text filter to use
+      // "startWith"
+      text: (rows, id, filterValue) => rows.filter((row) => {
+        const rowValue = row.values[id];
+        return rowValue !== undefined
+          ? String(rowValue)
+            .toLowerCase()
+            .startsWith(String(filterValue).toLowerCase())
+          : true;
+      }),
+    }),
+    [],
+  );
+
+  const defaultColumn = useMemo(
+    () => ({
+      // Let's set up our default Filter UI
+      Filter: DefaultColumnFilter,
+    }),
+    [],
+  );
+
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow,
-  } = useTable({ columns, data });
+  } = useTable({
+    columns, data, defaultColumn, filterTypes,
+  },
+  useFilters);
 
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
@@ -35,6 +72,7 @@ const Table = ({
                   <span>
                     {isSorted}
                   </span>
+                  <div className="mt-2">{column.canFilter ? column.render('Filter') : null}</div>
                 </th>
               );
             })}
