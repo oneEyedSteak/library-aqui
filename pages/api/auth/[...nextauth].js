@@ -14,13 +14,16 @@ const options = {
       async authorize(credentials) {
         try {
           const { uname, password } = credentials;
+          
 
           const [data] = await mysql.query(`SELECT * FROM users WHERE uname ='${uname}' && password ='${password}'`);
           console.log(data);
           const user = { name: uname, email: data.email };
+  const router = useRouter();
 
           if (data) {
             return user;
+
           }
           return null;
         } catch (error) {

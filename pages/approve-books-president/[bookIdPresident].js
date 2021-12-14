@@ -2,8 +2,8 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { useSession } from 'next-auth/client';
-import api from '../../lib/api';
 import { toast } from 'react-toastify';
+import api from '../../lib/api';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const getServerSideProps = async (context) => {
@@ -31,13 +31,12 @@ export default function RequestForm({ bookIdPresident }) {
       draggable: true,
       progress: undefined,
     }, data);
-
   };
-  Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
+    return local.toJSON().slice(0, 10);
+  });
 
   const [session] = useSession();
   return (
@@ -193,7 +192,7 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
-            
+
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
@@ -220,7 +219,7 @@ export default function RequestForm({ bookIdPresident }) {
                         disabled
                       />
                     </label>
-            
+
                   </div>
 
                   <div className="col-span-1 row-start-6">
@@ -233,7 +232,7 @@ export default function RequestForm({ bookIdPresident }) {
                         component="select"
                         className="  text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-1 bg-gray-50 "
-                  required
+                        required
                       >
 
                         <option value="">Enter Status </option>

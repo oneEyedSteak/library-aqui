@@ -100,7 +100,6 @@ export default function RegistrationForm() {
                     />
                   </label>
                 </div>
-``
                 <label htmlFor="fname" className="block mt-3">
                   <span className="block mt-1 text-xs font-bold text-gray-500 mb-1">Firstname</span>
                   <Field
@@ -163,7 +162,7 @@ export default function RegistrationForm() {
                       <option className="text-xs font-bold text-gray-500" value="Faculty">Faculty</option>
                       <option className="text-xs font-bold text-gray-500" value="VPAA">VPAA</option>
                       <option className="text-xs font-bold text-gray-500" value=">Director of Library">Director of Library</option>
-f
+                      f
                     </Field>
                   </label>
                 </div>

@@ -292,8 +292,7 @@ export default function Header() {
                 )}
                 {['Faculty', 'Admin'].includes(account.selectPosition) && (
                   <>
-                    <Link href="/see-all-books-track"
-                    >
+                    <Link href="/see-all-books-track">
                       <div className="   hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                       >
@@ -303,10 +302,12 @@ export default function Header() {
                   </>
                 )}
 
-{['Acquisition'].includes(account.selectPosition) && (
+                {['Acquisition'].includes(account.selectPosition) && (
                   <Link href="/see-all-books-try">
-                    <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
+                    <div
+                      className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
+                      s
                     >
                       Requested Books (New Edition)
                     </div>
@@ -341,7 +342,7 @@ export default function Header() {
                   </Link>
                 )}
                 {['Faculty'].includes(account.selectPosition) && (
-                  <Link href="/requestform">  
+                  <Link href="/requestform">
                     <div className="    hover:bg-gray-900 hover:text-white  cursor-pointer text-gray-300
                   px-3 py-2 rounded-md text-sm font-medium mr-2"
                     >
@@ -398,10 +399,22 @@ export default function Header() {
                                   {account.pubName && (
                                     <div className="text-xs text-gray-500">
                                       Publisher Name:
-                                      <div className="text-xs font-normal"> {account.pubName} </div>
+                                      <div className="text-xs font-normal">
+                                        {' '}
+                                        {account.pubName}
+                                        {' '}
+                                      </div>
 
-                                      <div className="text-xs font-normal">   Publisher: &nbsp; <div className="text-xs font-semibold" > {account.pubAddress}</div>  </div>
-
+                                      <div className="text-xs font-normal">
+                                        {' '}
+                                        Publisher: &nbsp;
+                                        {' '}
+                                        <div className="text-xs font-semibold">
+                                          {' '}
+                                          {account.pubAddress}
+                                        </div>
+                                        {' '}
+                                      </div>
 
                                     </div>
 
@@ -438,7 +451,8 @@ export default function Header() {
                               onClick={signOut}
                               className="cursor-pointer
                             hover:text-gray-300
-text-gray-900 px-3 py-2 rounded-md text-sm font-medium "
+text-gray-900 px-3 py-2 rounded-md
+ text-sm font-medium "
                             >
                               Sign Out
                             </div>

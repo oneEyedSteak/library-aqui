@@ -275,6 +275,28 @@ const HeaderMenu = ({ account, activities }) => {
             )}
           </>
         )}
+        {account && (
+        <>
+          {['Acquisition', 'Admin'].includes(account.selectPosition) && (
+          <>
+            <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r lg:border-b-0 pb-3 pt-3 lg:pt-1 ">
+              <div className="block items-center" />
+              <Link href="/see-all-books-inventory">
+                <span className="hover:bg-gray-300 cursor-pointer hover:text-gray-700 text-blue-700 px-auto mx-auto
+                       text-sm font-medium"
+                >
+                  Inventory
+                </span>
+              </Link>
+              <div className="mt-1">
+                <p className=" text-gray-800 font-thin italic text-sm">All Books</p>
+                {/* <p className=" text-gray-800 font-medium text-xs">Approved by Dean</p> */}
+              </div>
+            </ul>
+          </>
+          )}
+        </>
+        )}
         {['Acquisition', 'Admin'].includes(account.selectPosition) && (
         <>
           <ul className="px-4 w-aut sm:w-1/2 lg:w-1/4 border-gray-400 border-b sm:border-r-0 lg:border-b-0 pb-3 pt-3 lg:pt-1 ">

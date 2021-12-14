@@ -2,6 +2,7 @@ import { Form, Field } from 'react-final-form';
 import axios from 'axios';
 import Head from 'next/head';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
 import 'react-toastify/dist/ReactToastify.css';
 import validateSession from '../lib/session';
 
@@ -14,6 +15,8 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ account }) {
+  const router = useRouter();
+
   Date.prototype.toDateInputValue = (function () {
     const local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
@@ -21,18 +24,24 @@ export default function RequestForm({ account }) {
   });
 
   const handleOnSubmit = async (payload) => {
-    
-    const { data } = await axios.post('/api/requestform', payload);
+    try {
+      const { data } = await axios.post('/api/requestform', payload);
 
-    toast.success('Request Sent!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+      toast.success('Request Sent!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }, data);
+
+      // router.push('/');
+      location.reload();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -239,7 +248,7 @@ export default function RequestForm({ account }) {
                     component="input"
                     name="chargeto"
                     type="text"
-                    initialValue= {account.selectDepartment}
+                    initialValue={account.selectDepartment}
                     disabled
                   />
                 </label>

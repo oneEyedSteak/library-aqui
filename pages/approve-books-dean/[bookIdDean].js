@@ -5,12 +5,11 @@ import { useSession } from 'next-auth/client';
 import Popup from 'reactjs-popup';
 import { useRef, useState } from 'react';
 import SignaturePad from 'react-signature-canvas';
+import { toast } from 'react-toastify';
 import api from '../../lib/api';
 import dataURItoBlob from '../../lib/date-uri-to-blob';
 import validateSession from '../../lib/session';
-import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
 
 export const getServerSideProps = async (context) => {
   const { bookIdDean } = context.query;
@@ -20,7 +19,7 @@ export const getServerSideProps = async (context) => {
   console.log(data);
 
   return {
-    props: { bookDean: data, account:account },
+    props: { bookDean: data, account },
 
   };
 };
@@ -43,7 +42,6 @@ export default function RequestForm({ bookDean, account }) {
       draggable: true,
       progress: undefined,
     }, data);
-
   };
 
   const sigCanvas = useRef({});
@@ -70,11 +68,11 @@ export default function RequestForm({ bookDean, account }) {
   };
   const [session] = useSession();
 
-  Date.prototype.toDateInputValue = (function() {
-    var local = new Date(this);
+  Date.prototype.toDateInputValue = (function () {
+    const local = new Date(this);
     local.setMinutes(this.getMinutes() - this.getTimezoneOffset());
-    return local.toJSON().slice(0,10);
-});
+    return local.toJSON().slice(0, 10);
+  });
 
   return (
 
@@ -215,7 +213,7 @@ export default function RequestForm({ bookDean, account }) {
                         component="input"
                         name="deanName"
                         type="hidden"
-                        initialValue={account.fname + " "+  account.mname + " " + account.lname} 
+                        initialValue={`${account.fname} ${account.mname} ${account.lname}`}
                         disabled
                       />
                     </label>
@@ -283,10 +281,9 @@ export default function RequestForm({ bookDean, account }) {
                         }}
                       />
                     ) : save}
-                         <div className="text-sm font-medium mt-2 text-gray-500 underline">
-                         {account.fname + " " + account.lname}
-                        </div>
-                    
+                    <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                      {`${account.fname} ${account.lname}`}
+                    </div>
 
                     <Popup
                       modal

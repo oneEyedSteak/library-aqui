@@ -1,8 +1,8 @@
 import Head from 'next/head';
-import mysql from '../providers/mysql';
-import validateSession from '../lib/session';
 import { useMemo } from 'react';
 import Link from 'next/link';
+import mysql from '../providers/mysql';
+import validateSession from '../lib/session';
 import ReactTable from '../components/table';
 
 export const getServerSideProps = async (context) => {
@@ -76,14 +76,12 @@ export default function seeAllBooksDean({ bookTrack }) {
 
           <div>
 
-          {values.status  === 0 && 'Processing'}
-          {values.status  === 4 && 'Posted'}
-          {values.status  === 5 && 'Requested'}
-
-
+            {values.status === 0 && 'Processing'}
+            {values.status === 4 && 'Posted'}
+            {values.status === 5 && 'Requested'}
 
           </div>
-          
+
         ),
       },
     //   {

@@ -1,10 +1,9 @@
 import Head from 'next/head';
-import mysql from '../providers/mysql';
-import validateSession from '../lib/session';
 import { useMemo } from 'react';
 import Link from 'next/link';
+import mysql from '../providers/mysql';
+import validateSession from '../lib/session';
 import ReactTable from '../components/table';
-
 
 export const getServerSideProps = async (context) => {
   try {
@@ -94,7 +93,6 @@ export default function seeAllBooksCustodian({ booksToPrint }) {
         ),
       },
 
-
       {
         Header: () => 'Action',
         accessor: 'action',
@@ -107,7 +105,7 @@ export default function seeAllBooksCustodian({ booksToPrint }) {
                                      text-white bg-indigo-600 hover:bg-indigo-700
                                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-            Print 
+              Print
             </button>
           </Link>
         ),
@@ -125,23 +123,23 @@ export default function seeAllBooksCustodian({ booksToPrint }) {
       </Head>
       <section className="max-w-screen bg-base min-h-screen mx-auto ">
 
-<form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+        <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
 
-  <div className="flex-shrink-0 flex content-around items-center">
+          <div className="flex-shrink-0 flex content-around items-center">
 
-    <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
-    <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-    <h1 className="text-xl  text-gray-600 ">Books to Printqw</h1>
+            <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
+            <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
+            <h1 className="text-xl  text-gray-600 ">Books to Printqw</h1>
 
-  </div>
-  <div className="text-xs shadow-md w-full mt-10 ">
-    <span className="block  text-xs  text-gray-500 "> All Books</span>
+          </div>
+          <div className="text-xs shadow-md w-full mt-10 ">
+            <span className="block  text-xs  text-gray-500 "> All Books</span>
 
-    <ReactTable data={booksToPrint} columns={columns} />
-  </div>
-</form>
+            <ReactTable data={booksToPrint} columns={columns} />
+          </div>
+        </form>
 
-</section>
+      </section>
     </>
   );
 }
