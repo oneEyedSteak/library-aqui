@@ -6,6 +6,8 @@ import { toast } from 'react-toastify';
 import api from '../../lib/api';
 import validateSession from '../../lib/session';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+
 
 export const getServerSideProps = async (context) => {
   try {
@@ -24,19 +26,28 @@ export const getServerSideProps = async (context) => {
 
 export default function RequestForm({ bookVPAAId, account }) {
   console.log(bookVPAAId);
+  const router = useRouter();
 
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookUpdateVPAA', payload);
+    try {
+      const { data } = await axios.post('/api/bookUpdateVPAA', payload);
 
-    toast.success(' Update Successfully!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+      toast.success(' Update Successfully!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }, data);
+      router.push('/see-all-books-vpaa');
+
+      
+    } catch (error) {
+      console.log(error);
+    }
+
   };
   const [session] = useSession();
 

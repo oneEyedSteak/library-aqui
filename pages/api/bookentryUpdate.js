@@ -6,9 +6,7 @@ export default async (req, res) => {
       updateDate, requestID, status,
     } = req.body;
 
-    if (status === 5) {
-      await mysql.query(`UPDATE requestform SET status=('${status}'), updateDate=('${updateDate}'),   WHERE requestID=('${requestID}')`);
-    }
+      await mysql.query(`UPDATE requestform SET status=('${status}'), updateDate=('${updateDate}')   WHERE requestID=('${requestID}')`);
     await mysql.end();
     return res.status(200).json({ message: 'Succesfully Updated' });
   } catch (error) {

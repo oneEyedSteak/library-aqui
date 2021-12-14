@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
 import 'react-toastify/dist/ReactToastify.css';
 import { toast } from 'react-toastify';
+import { useRouter } from 'next/router';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdToCustodian } = context.query;
@@ -19,18 +21,29 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdtoCustodian }) {
-  const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/booktoCustodian', payload);
+  const router = useRouter();
 
-    toast.success('Request Sucess!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+  const handleOnSubmit = async (payload) => {
+
+try {
+  const { data } = await axios.post('/api/booktoCustodian', payload);
+
+  toast.success('Sent Success!', {
+    position: 'bottom-right',
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: false,
+    draggable: true,
+    progress: undefined,
+  }, data);
+  router.push('/see-all-books-topurchase');
+  
+} catch (error) {
+  console.log(error);
+}
+
+ 
   };
   const [session] = useSession();
 

@@ -10,6 +10,7 @@ import dataURItoBlob from '../../lib/date-uri-to-blob';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import validateSession from '../../lib/session';
+import { useRouter } from 'next/router';
 
 
 export const getServerSideProps = async (context) => {
@@ -26,9 +27,12 @@ export const getServerSideProps = async (context) => {
 };
 export default function RequestForm({ bookIdPaymentFinance, account }) {
   const [imageURL, setImageURL] = useState(null);
+  const router = useRouter();
+
 
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookPaymentFinance', {
+    try { 
+      const { data } = await axios.post('/api/bookPaymentFinance', {
       ...payload,
       imageURL,
     });
@@ -41,6 +45,14 @@ export default function RequestForm({ bookIdPaymentFinance, account }) {
       draggable: true,
       progress: undefined,
     }, data);
+
+    router.push('/see-all-books-payment-finance');
+      
+    } catch (error) {
+  console.log(error);
+      
+    }
+   
   };
 
   const sigCanvas = useRef({});
@@ -338,10 +350,13 @@ export default function RequestForm({ bookIdPaymentFinance, account }) {
                         }}
                       />
                     ) : save}
-                      <div className="text-sm font-medium mt-2 text-gray-500 underline">
-                      {account.fname + " " + account.lname}
-                     </div>
-                     
+                    {imageURL &&(
+                           <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                           {account.fname + " " + account.lname}
+                          </div>
+                          
+                    )}
+                 
 
                     <Popup
                       modal

@@ -80,6 +80,10 @@ export default function seeAllBooksDean({ bookTrack }) {
           {values.status  === 1 && 'Arrived'}
           {values.status  === 2 && 'Confirmed'}
           {values.status  === 3 && 'Published'}
+          {values.status  === 4 && 'Posted'}
+          {values.status  === 5 && 'Requested'}
+
+
 
           </div>
           

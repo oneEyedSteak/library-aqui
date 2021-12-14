@@ -5,6 +5,8 @@ import { useSession } from 'next-auth/client';
 import { toast } from 'react-toastify';
 import api from '../../lib/api';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdPresident } = context.query;
@@ -19,8 +21,12 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdPresident }) {
+  const router = useRouter();
+
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookUpdatePresident', payload);
+
+    try {  
+        const { data } = await axios.post('/api/bookUpdatePresident', payload);
 
     toast.success('Update Successfully!', {
       position: 'bottom-right',
@@ -31,6 +37,13 @@ export default function RequestForm({ bookIdPresident }) {
       draggable: true,
       progress: undefined,
     }, data);
+    router.push('/see-all-books-president');
+
+      
+    } catch (error) {
+      
+    }
+
   };
   Date.prototype.toDateInputValue = (function () {
     const local = new Date(this);
