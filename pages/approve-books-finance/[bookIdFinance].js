@@ -5,6 +5,7 @@ import { useSession } from 'next-auth/client';
 import api from '../../lib/api';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 
 
 export const getServerSideProps = async (context) => {
@@ -20,18 +21,29 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdFinance }) {
-  const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookUpdateFinance', payload);
+  const router = useRouter();
 
-    toast.success('Update Successfully!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+  const handleOnSubmit = async (payload) => {
+
+    try {
+      const { data } = await axios.post('/api/bookUpdateFinance', payload);
+
+      toast.success('Update Successfully!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }, data);
+      router.push('/see-all-books-finance');
+
+      
+    } catch (error) {
+      console.log(error);
+    }
+   
   };
 
   const [session] = useSession();

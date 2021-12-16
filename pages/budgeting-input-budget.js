@@ -11,17 +11,20 @@ import 'react-toastify/dist/ReactToastify.css';
 export const getServerSideProps = async () => {
   const { data: cost } = await api.get('/api/totalCost');
   const { data: budget } = await api.get('/api/postTotalBudget');
+  const { data: timeAdded } = await api.get('/api/postTotalBudget');
+  
 
-  console.log(cost, budget);
+  console.log(cost, budget, timeAdded);
   return {
     props: {
       totalCost: cost,
       totalBudget: budget,
+      timeAdded:timeAdded,
     },
   };
 };
 
-export default function SignIn({ totalCost, totalBudget }) {
+export default function SignIn({ totalCost, totalBudget, timeAdded }) {
 
   Date.prototype.toDateInputValue = (function () {
     const local = new Date(this);
@@ -96,12 +99,12 @@ export default function SignIn({ totalCost, totalBudget }) {
           onSubmit={handleOnSubmit}
           render={({ handleSubmit }) => (
 
-            <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 w- mx-auto h-auto w-4/5 shadow-lg ">
+            <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16  mx-auto h-auto w-full shadow-lg  ">
               {/* MODAL ENDS HERE */}
               <Field
                 className="text-gray-500 rounded-md  border-gray-300  w-auto
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
-                name="add_date"
+                name="dateAdded"
                 component="input"
                 type="hidden"
                 initialValue={new Date().toDateInputValue()}
@@ -170,10 +173,10 @@ export default function SignIn({ totalCost, totalBudget }) {
                     <ReactTable data={totalBudget} columns={postBudget} />
                   </label>
                 </div>
-                <div className="text-xs shadow-md">
+                <div className="text-xs shadow-md w-auto">
                   <label htmlFor="selectDepartment" className="block ">
                     <span className="block  text-xs  text-gray-500 "> Remaining</span>
-                    <ReactTable data={totalCost} columns={postCost} />
+                    <ReactTable data={totalCost} columns={postCost}  className="w-auto"/>
                   </label>
                 </div>
               </div>

@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import { useTable, useFilters } from 'react-table';
-import { matchSorter } from 'match-sorter';
 import { DefaultColumnFilter } from './Filters';
 
 export const fuzzyTextFilterFn = (rows, id, filterValue) => matchSorter(rows, filterValue, { keys: [(row) => row.values[id]] });

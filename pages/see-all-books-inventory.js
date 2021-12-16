@@ -24,9 +24,20 @@ export const getServerSideProps = async (context) => {
       if (s === 2) {
         return 'Confirmed';
       }
-
+      if (s === 3) {
+        return 'Published';
+      }
+      if (s === 4) {
+        return 'Posted';
+      }
+      if (s === 5) {
+        return 'Requested';
+      }
       return 'Invalid Status';
     };
+
+    
+
 
     const post = JSON.parse(JSON.stringify(result));
     const confirmedBooks = post.map((p) => ({ ...p, statusText: statusFormat(p.status) }));

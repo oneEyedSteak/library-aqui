@@ -10,6 +10,7 @@ import dataURItoBlob from '../../lib/date-uri-to-blob';
 import validateSession from '../../lib/session';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
 
 
 export const getServerSideProps = async (context) => {
@@ -28,8 +29,11 @@ export const getServerSideProps = async (context) => {
 
 export default function RequestForm({ bookIdPaymentVPAA, account }) {
   const [imageURL, setImageURL] = useState(null);
+  const router = useRouter();
+
 
   const handleOnSubmit = async (payload) => {
+   try {
     const { data } = await axios.post('/api/bookPaymentVPAA', {
       ...payload,
       imageURL,
@@ -44,6 +48,12 @@ export default function RequestForm({ bookIdPaymentVPAA, account }) {
       draggable: true,
       progress: undefined,
     }, data);
+    router.push('/see-all-books-payment-vpaa');
+
+   } catch (error) {
+     
+   }
+   
   };
   const sigCanvas = useRef({});
   const clear = () => sigCanvas.current.clear();
@@ -135,7 +145,6 @@ export default function RequestForm({ bookIdPaymentVPAA, account }) {
                       type="date"
                       required
                       initialValue={new Date().toDateInputValue()}
-
                     />
                   </label>
                 </div>
@@ -317,10 +326,12 @@ export default function RequestForm({ bookIdPaymentVPAA, account }) {
                         }}
                       />
                     ) : save}
-                        <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                    {imageURL &&(
+                      <div className="text-sm font-medium mt-2 text-gray-500 underline">
                       {account.fname + " " + account.lname}
                      </div>
-                     
+                    )}
+                        
                     <Popup
                       modal
                       trigger={(

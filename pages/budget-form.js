@@ -1,10 +1,36 @@
 import { Fragment, useEffect, useState } from 'react';
 import { Field, Form } from 'react-final-form';
 import api from '../lib/api';
+import ReactTable from '../components/table';
+import React, { useMemo } from 'react';
+
+
+
 
 const BudgetForm = ({ selectDepartment }) => {
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [data, setData] = useState({});
+
+  const dateAdded = useMemo(
+    () => [
+      {
+        Header: 'Budget',
+        accessor: 'budget', // accessor is the "key" in the data
+      },
+      {
+        Header: 'Date',
+        accessor: 'dateAdded', // accessor is the "key" in the data
+        Cell: ({ row: values  }) => (
+          <div>
+            {new Date(values.date).toDateString()}
+          </div>
+        ),
+      },
+   
+    ],
+    [],
+  );
+
 
   // Fetching of data
   const fetchData = async () => {
@@ -18,22 +44,26 @@ const BudgetForm = ({ selectDepartment }) => {
       console.error(error);
     }
   };
+ 
 
   // Trigger fetch on first load
   useEffect(() => {
     fetchData();
   }, []);
 
+
   // Handle form submission
   const handleOnSubmit = async () => {
     const { data: result } = await api.post('/api/saveBudget', {
       subtracted: data.subtracted,
-      selectDepartment, add_date
+      selectDepartment,
     });
+   
 
     alert(result.message);// eslint-disable-line no-alert
   };
   // Form
+  
   const renderForm = (
     <Form
       onSubmit={handleOnSubmit}
@@ -109,6 +139,8 @@ const BudgetForm = ({ selectDepartment }) => {
                         />
                       </label>
                     </div>
+              {/* <ReactTable data={time} columns={dateAdded} /> */}
+
                   </form>
                 </section>
                 {/* footer */}

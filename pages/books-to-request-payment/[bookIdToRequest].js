@@ -10,6 +10,8 @@ import dataURItoBlob from '../../lib/date-uri-to-blob';
 import validateSession from '../../lib/session';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useRouter } from 'next/router';
+
 
 export const getServerSideProps = async (context) => {
   const { bookIdToRequest } = context.query;
@@ -26,24 +28,34 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function RequestForm({ bookIdToRequest, account }) {
+  const router = useRouter();
+
   const [imageURL, setImageURL] = useState(null);
 
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/booktoDirector', {
-      ...payload,
-      imageURL,
-    });
-
-
-    toast.success('Sent Successfully!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+    try {
+      const { data } = await axios.post('/api/booktoDirector', {
+        ...payload,
+        imageURL,
+      });
+  
+  
+      toast.success('Sent Successfully!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }, data);
+      router.push('/see-all-verified-books');
+      
+    } catch (error) {
+  console.log(error);
+      
+    }
+    
 
   };
   const sigCanvas = useRef({});
@@ -318,6 +330,12 @@ export default function RequestForm({ bookIdToRequest, account }) {
                         }}
                       />
                     ) : save}
+                    {imageURL &&(
+     <div className="text-sm font-medium mt-2 text-gray-500 underline">
+     {`${account.fname} ${account.lname}`}
+   </div>
+                    )}
+                 
                     <Popup
                       modal
                       trigger={(

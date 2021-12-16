@@ -10,6 +10,7 @@ import dataURItoBlob from '../../lib/date-uri-to-blob';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import validateSession from '../../lib/session';
+import { useRouter } from 'next/router';
 
 
 export const getServerSideProps = async (context) => {
@@ -28,22 +29,30 @@ export const getServerSideProps = async (context) => {
 
 export default function RequestForm({ bookIdPayment, account }) {
   const [imageURL, setImageURL] = useState(null);
+  const router = useRouter();
 
   const handleOnSubmit = async (payload) => {
-    const { data } = await axios.post('/api/bookPayment', {
-      ...payload,
-      imageURL,
-    });
+    try {
+      const { data } = await axios.post('/api/bookPayment', {
+        ...payload,
+        imageURL,
+      });
+  
+      toast.success(' Sent Successfully!', {
+        position: 'bottom-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: false,
+        draggable: true,
+        progress: undefined,
+      }, data);
+      router.push('/see-all-books-director');
 
-    toast.success(' Sent Successfully!', {
-      position: 'bottom-right',
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      draggable: true,
-      progress: undefined,
-    }, data);
+    } catch (error) {
+      
+    }
+    
 
   };
   const sigCanvas = useRef({});
@@ -338,9 +347,12 @@ export default function RequestForm({ bookIdPayment, account }) {
                       
                    
                     )  : save}
-                        <div className="text-sm font-medium mt-2 text-gray-500 underline">
+                    {imageURL &&(
+                      <div className="text-sm font-medium mt-2 text-gray-500 underline">
                       {account.fname + " " + account.lname}
                      </div>
+                    )}
+                        
                  
                        
                     <Popup

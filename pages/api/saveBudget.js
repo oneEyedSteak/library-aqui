@@ -3,10 +3,10 @@ import mysql from '../../providers/mysql';
 export default async function (req, res) {
   try {
     const {
-      budget, selectDepartment, add_date
+      budget, selectDepartment, dateAdded
     } = req.body;
 
-    await mysql.query(`INSERT INTO add_budget( budget,selectDepartment, add_date ) VALUES('${budget}','${selectDepartment}','${add_date}')`);
+    await mysql.query(`INSERT INTO add_budget( budget,selectDepartment, dateAdded ) VALUES('${budget}','${selectDepartment}','${dateAdded}')`);
 
     await mysql.end();
 

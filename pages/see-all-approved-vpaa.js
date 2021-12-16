@@ -1,6 +1,5 @@
 import { useMemo } from 'react';
 import Head from 'next/head';
-import Link from 'next/link';
 import validateSession from '../lib/session';
 import mysql from '../providers/mysql';
 import ReactTable from '../components/table';

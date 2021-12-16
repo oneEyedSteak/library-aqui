@@ -24,7 +24,10 @@ export default function AllApprovedDirector({ approvalAcqui }) {
   console.log(approvalAcqui);
   const postRequestedBooks = useMemo(
     () => [
+<<<<<<< HEAD
      
+=======
+>>>>>>> 1290c807d7caa15c3617cc0ac1bb38c745300aff
       {
         Header: 'Requested Date',
         accessor: 'date', // accessor is the "key" in the data
