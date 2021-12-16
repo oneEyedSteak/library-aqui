@@ -177,13 +177,6 @@ export default function Inventory({ confirmedBooks }) {
           <div className="text-xs shadow-md w-full mt-10 p">
             <label htmlFor="selectDepartment" className="block ">
               <span className="block  text-xs  text-gray-500 "> All Books</span>
-              <input
-                placeholder="Search . . ."
-                className="mt-1 rounded-md border-gray-300 shadow-sm w-auto  focus:placeholder-gray-700
-            placeholder-gray-500 placeholder-opacity-50 "
-                name="Search"
-                type="text"
-              />
 
               <ReactTable data={confirmedBooks} columns={postRequestedBooks} />
             </label>
