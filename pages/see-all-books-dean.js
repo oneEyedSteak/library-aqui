@@ -25,11 +25,6 @@ export default function seeAllBooksDean({ booksDeanDisplay }) {
   console.log(booksDeanDisplay);
   const postRequestedBooks = useMemo(
     () => [
-<<<<<<< HEAD
-     
-=======
- 
->>>>>>> 1290c807d7caa15c3617cc0ac1bb38c745300aff
       {
         Header: 'Requested Date',
         accessor: 'date', // accessor is the "key" in the data

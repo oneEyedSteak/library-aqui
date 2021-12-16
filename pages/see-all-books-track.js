@@ -25,11 +25,6 @@ export default function seeAllBooksDean({ bookTrack }) {
   console.log(bookTrack);
   const columns = useMemo(
     () => [
-<<<<<<< HEAD
-    
-=======
-   
->>>>>>> 1290c807d7caa15c3617cc0ac1bb38c745300aff
       {
         Header: 'Request Date',
         accessor: 'date',

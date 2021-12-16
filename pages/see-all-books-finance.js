@@ -23,11 +23,7 @@ export default function seeAllBooksFinance({ booksFinanceDisplay }) {
   console.log(booksFinanceDisplay);
   const columns = useMemo(
     () => [
-<<<<<<< HEAD
-      
-=======
-     
->>>>>>> 1290c807d7caa15c3617cc0ac1bb38c745300aff
+
       {
         Header: 'Request Date',
         accessor: 'date',
