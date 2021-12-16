@@ -75,7 +75,7 @@ export default function RequestForm({ bookIdFinance }) {
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl   text-gray-600 ">Library Acquisition Approval Books</h1>
+                  <h1 className="text-xl   text-gray-600 ">Finance Library Acquisition Approval Books</h1>
 
                 </div>
 

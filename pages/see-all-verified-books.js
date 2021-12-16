@@ -24,7 +24,7 @@ export default function seeAllVerifiedBooks({ verifiedBooks }) {
   const columns = useMemo(
     () => [
       {
-        Header: 'Request ID',
+        Header: 'Acquisition #',
         accessor: 'requestID', // accessor is the "key" in the data
       },
       {

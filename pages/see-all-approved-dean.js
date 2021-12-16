@@ -25,10 +25,7 @@ export default function AllApprovedDean({ booksDeanDisplay }) {
   console.log(booksDeanDisplay);
   const postRequestedBooks = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+    
       {
         Header: 'Requested Date',
         accessor: 'date', // accessor is the "key" in the data

@@ -108,7 +108,7 @@ export default function RequestForm({ bookIdToRequest, account }) {
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl mt 4  text-gray-600 ">Request Payment to Director of Libraries </h1>
+                  <h1 className="text-xl mt 4  text-gray-600 ">Library Acqusition Request Payment Signature </h1>
 
                 </div>
                 <label htmlFor="edition" className="">

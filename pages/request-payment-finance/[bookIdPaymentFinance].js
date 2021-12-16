@@ -103,7 +103,7 @@ export default function RequestForm({ bookIdPaymentFinance, account }) {
                 <div className="flex-shrink-0 flex content-around items-center">
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl   text-gray-600 ">Approve Payment</h1>
+                  <h1 className="text-xl   text-gray-600 ">Finance Request Payment Signature</h1>
                 </div>
                 <label htmlFor="edition" className="">
                       <Field

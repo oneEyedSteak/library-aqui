@@ -23,10 +23,7 @@ export default function seeAllBooksFinance({ booksDisplayFinance }) {
   console.log(booksDisplayFinance);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+     
       {
         Header: 'Request Date',
         accessor: 'date',
@@ -106,7 +103,7 @@ export default function seeAllBooksFinance({ booksDisplayFinance }) {
                                      text-white bg-indigo-600 hover:bg-indigo-700
                                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
-             Send to Finance
+             Sign this Request
             </button>
           </Link>
         ),
@@ -131,7 +128,7 @@ export default function seeAllBooksFinance({ booksDisplayFinance }) {
 
     <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
     <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-    <h1 className="text-xl  text-gray-600 ">Approved Books by Finance</h1>
+    <h1 className="text-xl  text-gray-600 ">Finance Request Signature</h1>
 
   </div>
   <div className="text-xs shadow-md w-full mt-10 ">
