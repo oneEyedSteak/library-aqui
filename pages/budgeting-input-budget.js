@@ -19,7 +19,6 @@ export const getServerSideProps = async () => {
     props: {
       totalCost: cost,
       totalBudget: budget,
-      timeAdded:timeAdded,
     },
   };
 };
