@@ -26,10 +26,7 @@ export default function publisherBook({ publisherBook }) {
   console.log(publisherBook);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Book Id',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+    
     {
         Header: 'Publisher Name',
         accessor: 'pubName', // accessor is the "key" in the data

@@ -23,10 +23,7 @@ export default function seeAllBooksFinance({ booksDisplayFinance }) {
   console.log(booksDisplayFinance);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+  
       {
         Header: 'Request Date',
         accessor: 'date',

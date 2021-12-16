@@ -145,7 +145,6 @@ export default function RequestForm({ bookIdPaymentVPAA, account }) {
                       type="date"
                       required
                       initialValue={new Date().toDateInputValue()}
-
                     />
                   </label>
                 </div>

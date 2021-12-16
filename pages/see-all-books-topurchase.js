@@ -23,10 +23,7 @@ export default function seeAllBooksPresident({ booksDisplayToPurchase }) {
   console.log(booksDisplayToPurchase);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+   
       {
         Header: 'Request Date',
         accessor: 'date',

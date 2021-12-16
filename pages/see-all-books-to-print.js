@@ -23,10 +23,7 @@ export default function seeAllBooksCustodian({ booksToPrint }) {
   console.log(booksToPrint);
   const columns = useMemo(
     () => [
-      {
-        Header: 'Request ID',
-        accessor: 'requestID', // accessor is the "key" in the data
-      },
+     
       {
         Header: 'Request Date',
         accessor: 'date',
