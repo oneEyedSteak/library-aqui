@@ -22,6 +22,10 @@ export const getServerSideProps = async (context) => {
 export default function seeAllBooksVPAA({ booksDisplayPresident }) {
   const columns = useMemo(
     () => [
+      {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
 
       {
         Header: 'Request Date',

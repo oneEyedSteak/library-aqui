@@ -23,6 +23,10 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
   console.log(booksVPAADisplay);
   const postRequestedBooks = useMemo(
     () => [
+      {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
      
       {
         Header: 'Requested Date',

@@ -24,6 +24,10 @@ export default function AllApprovedVPAA({ approvedVPAA }) {
   console.log(approvedVPAA);
   const postRequestedBooks = useMemo(
     () => [
+      {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
 
     
       {

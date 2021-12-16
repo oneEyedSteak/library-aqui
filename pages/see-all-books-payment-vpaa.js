@@ -25,6 +25,10 @@ export default function seeAllBooksFinance({ booksDisplayVPAA }) {
   console.log(booksDisplayVPAA);
   const columns = useMemo(
     () => [
+      {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
 
       {
         Header: 'Request Date',

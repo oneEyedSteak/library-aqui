@@ -24,7 +24,11 @@ export default function AllApprovedFinance({ approvalFinance }) {
     console.log(approvalFinance);
     const postRequestedBooks = useMemo(
         () => [
-
+            {
+                Header: 'Acquisition #',
+                accessor: 'requestID', // accessor is the "key" in the data
+              },
+        
         
             {
                 Header: 'Requested Date',

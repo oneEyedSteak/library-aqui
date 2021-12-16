@@ -26,6 +26,10 @@ export default function seeAllBooksDean({ bookTrack }) {
   const columns = useMemo(
     () => [
       {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+      {
         Header: 'Request Date',
         accessor: 'date',
         Cell: ({ row: { values } }) => (

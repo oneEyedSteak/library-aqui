@@ -58,6 +58,10 @@ export default function Inventory({ confirmedBooks }) {
         accessor: 'requestID', // accessor is the "key" in the data
       },
       {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+      {
         Header: 'Requested Date',
         accessor: 'date', // accessor is the "key" in the data
         Cell: ({ row: { values } }) => (

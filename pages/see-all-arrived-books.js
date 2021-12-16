@@ -24,7 +24,11 @@ export default function seeAllEntryForm({ arrivedBooks }) {
   console.log(arrivedBooks);
   const postRequestedBooks = useMemo(
     () => [
-     
+      {
+        Header: 'Acquisition #',
+        accessor: 'requestID', // accessor is the "key" in the data
+      },
+
       {
         Header: 'Requested Date',
         accessor: 'date', // accessor is the "key" in the data
