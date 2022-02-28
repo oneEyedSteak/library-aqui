@@ -8,9 +8,11 @@ const ContactUs = () => (
       <link rel="icon" href="/icon.ico" />
     </Head>
 
-    <section className="bg-base min-h-screen mx-auto">
+    <section className="px-8 pt-8 pb-32 bg-base rounded-md my-16   mx-auto h-max w-full ">
 
-      <h1>CONTACTUS</h1>
+    <h1 className="font-bold text-2xl ml-7 pb-3">
+          MISSION/VISION & OBJECTIVES
+        </h1>
     </section>
   </>
 );

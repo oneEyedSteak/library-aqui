@@ -25,7 +25,7 @@ const Home = ({ booksDisplay }) => {
       </Head>
 
       <div className=" w-full  sm:px-6 lg:px-8 shadow-md">
-        <img src="/1234.jpg" className="  mt-16 w-full h-10/12  mx-auto" alt="1234" />
+        <img src="/1234.jpg" className="  mt-16 w-full h-10/12  mx-auto" alt="1234" width={1348}/>
       </div>
 
       {/* <div>

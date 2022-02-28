@@ -7,23 +7,92 @@ import ReactTable from '../components/table';
 import BudgetForm from './budget-form';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { Fragment, useEffect, useState } from 'react';
+import mysql from '../providers/mysql';
+
 
 export const getServerSideProps = async () => {
   const { data: cost } = await api.get('/api/totalCost');
   const { data: budget } = await api.get('/api/postTotalBudget');
-  const { data: timeAdded } = await api.get('/api/postTotalBudget');
-  
+  const { data: refFil } = await api.get('/api/getReferenceFilipiniana');
 
-  console.log(cost, budget, timeAdded);
+  const totalAddedBudget = await mysql.query('SELECT sum(budget) FROM add_budget WHERE selectDepartment NOT IN ("Filipiniana","Reference") ');
+  const totalAddedRefFil = await mysql.query('SELECT sum(budget) FROM add_budget WHERE selectDepartment  IN ("Filipiniana","Reference") ');
+
+
+  const totalPostAddedBud = JSON.stringify(totalAddedBudget);
+  const totalPostAddedRefFil = JSON.stringify(totalAddedRefFil);
+
+
   return {
     props: {
       totalCost: cost,
       totalBudget: budget,
+      data: refFil,
+      totalAddedBud: totalPostAddedBud,
+      totalPostAddedRefFil: totalPostAddedRefFil,
+
+
+
+
     },
-  };
+  }
+
 };
 
-export default function SignIn({ totalCost, totalBudget, timeAdded }) {
+
+
+
+export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, totalPostAddedRefFil }) {
+
+  // console.log( Object.keys(totalAddedBud).forEach(function(total){
+  //   return totalAddedBud[total];
+  // })); 
+ console.log(totalAddedBud);
+ console.log(totalPostAddedRefFil);
+
+
+  const [total, setTotalBud] = useState(null);
+
+  const [txtBudget, setTextBudget] = useState(null);
+  const [txtEnrol, setTxtEnrol] = useState(null);
+
+  const [txtTotalAddedBud, setTotalAddedBud] = useState(totalAddedBud.split(':')[1].toString().replace('}]',''));
+  const [txtTotalAddedRefFil, setTotalAddedBudRefFil] = useState(totalPostAddedRefFil.split(':')[1].toString().replace('}]',''));
+
+
+
+
+
+
+
+
+  const handleKeyPressEnrollees = (event) => {
+    var inputTxtBoxLibFee = document.getElementById('textboxLibFee').value;
+    var inputTxtBoxEnrollees = document.getElementById('textboxEnrollees').value;
+    var totalBud = document.getElementById('budget').value;
+
+    if (inputTxtBoxLibFee != "NaN" || inputTxtBoxLibFee != "") {
+      totalBud = document.getElementById('textboxEnrollees').value * document.getElementById('textboxLibFee').value;
+      setTotalBud(totalBud);
+      setTxtEnrol(document.getElementById('textboxEnrollees').value);
+
+    }
+
+  }
+
+  const handleKeyPress = (event) => {
+    var inputTxtBoxLibFee = document.getElementById('textboxLibFee').value;
+    var inputTxtBoxEnrollees = document.getElementById('textboxEnrollees').value;
+    var totalBud = document.getElementById('budget').value;
+    if (document.getElementById('textboxEnrollees').value == "NaN" || document.getElementById('textboxLibFee').value == "NaN") {
+
+    }
+    totalBud = document.getElementById('textboxEnrollees').value * document.getElementById('textboxLibFee').value;
+    setTotalBud(totalBud);
+    setTextBudget(document.getElementById('textboxLibFee').value);
+
+  }
 
   Date.prototype.toDateInputValue = (function () {
     const local = new Date(this);
@@ -42,7 +111,7 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
         accessor: 'sum(budget)', //
         Cell: ({ row: { values } }) => `₱${values['sum(budget)']}`, // accessor is the "key" in the data
       },
-
+    
     ],
     [],
   );
@@ -68,10 +137,33 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
     [],
   );
 
+  const cjok = useMemo(
+    () => [
+      {
+        Header: 'Library Section',
+        accessor: 'selectDepartment', // accessor is the "key" in the data
+
+      },
+
+      {
+        Header: 'Total Budget',
+        accessor: 'budget', //
+        Cell: ({ row: { values } }) => `₱${values['budget']}`,// accessor is the "key" in the data
+        // Footer:()=>{
+        //   const totalAdded = 0
+        //   return totalAdded;
+        // for(let i = 0; i<=){}
+      },
+
+
+    ],
+    [],
+  );
+
   const handleOnSubmit = async (payload) => {
     const { data } = await axios.post('/api/saveBudget', payload);
-  
-  
+
+
     toast.success('Added Successfuly!', {
       position: 'bottom-right',
       autoClose: 5000,
@@ -81,8 +173,10 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
       draggable: true,
       progress: undefined,
     }, data);
+  location.reload();
 
   };
+
 
   return (
     <>
@@ -121,7 +215,7 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
                 <div className="">
                   <label htmlFor="selectDepartment" className="block p">
                     <span className="block  text-xs  text-gray-500 p">Select Department</span>
-                    <Field name="selectDepartment" component="select" className="rounded-md  text-xs  text-gray-500 border-gray-300 space -space-y-1 w-full mt-1" required>
+                    <Field name="selectDepartment" component="select" className="rounded-md  text-xs divide-y divide-dashed text-gray-500 border-gray-300 space -space-y-1 w-full mt-1" required>
                       <option value="">Select Department</option>
                       <option className="text-xs  text-gray-500" value="College of Agriculture">College of Agriculture</option>
                       <option className="text-xs  text-gray-500" value="College of Arts & Sciences">College of Arts & Sciences</option>
@@ -140,7 +234,50 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
                       <option className="text-xs text-gray-500" value="Elementary">Elementary</option>
                       <option className="text-xs text-gray-500" value="High School">High School</option>
                       <option className="text-xs text-gray-500" value="Senior High School">Senior High School</option>
+                      <option className="text-xs text-gray-500" value="Filipiniana">Filipiniana</option>
+                      <option className="text-xs text-gray-500" value="Reference">Reference</option>
                     </Field>
+                  </label>
+
+                  {/* <label htmlFor="budget" className="block pb-2">
+                    <span className="block text-xs   text-gray-500 ">Number of Enrollees</span>
+                    <Field
+                        className="text-xs  text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
+                        placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
+                      name="numOfEnrollees"
+                      component="input"
+                      type="text  "
+                      id = "textboxNumOfEnrollees"
+                    />
+                  </label> */}
+                  <label htmlFor="budget" className="block pb-2">
+                    <span className="block text-xs   text-gray-500 ">Number of Enrollees</span>
+                    <Field
+                      className="text-xs  text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
+                      placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
+                      name="numOfEnrollees"
+                      component="input"
+                      type="number"
+                      placeholder="# of Enrolless"
+                      id="textboxEnrollees"
+                      onChange={handleKeyPressEnrollees}
+                      initialValue={txtEnrol}
+
+                    />
+                  </label>
+                  <label htmlFor="budget" className="block pb-2">
+                    <span className="block text-xs   text-gray-500 ">Library Fee</span>
+                    <Field
+                      className="text-xs  text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
+                      placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
+                      name="libFee"
+                      component="input"
+                      type="number"
+                      placeholder="Library Fee"
+                      id="textboxLibFee"
+                      onChange={handleKeyPress}
+                      initialValue={txtBudget}
+                    />
                   </label>
 
                   <label htmlFor="budget" className="block pb-2">
@@ -151,10 +288,12 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
                       name="budget"
                       component="input"
                       type="number"
-                      placeholder="₱"
                       required
+                      id="budget"
+                      initialValue={total}
                     />
                   </label>
+
 
                   <button
                     type="submit"
@@ -172,13 +311,59 @@ export default function SignIn({ totalCost, totalBudget, timeAdded }) {
                     <ReactTable data={totalBudget} columns={postBudget} />
                   </label>
                 </div>
+
                 <div className="text-xs shadow-md w-auto">
                   <label htmlFor="selectDepartment" className="block ">
                     <span className="block  text-xs  text-gray-500 "> Remaining</span>
-                    <ReactTable data={totalCost} columns={postCost}  className="w-auto"/>
+                    <ReactTable data={totalCost} columns={postCost} className="w-auto" />
                   </label>
                 </div>
+                <div className="col-start-2">
+
+                  <label htmlFor="budget" className="block pb-2">
+                    <span className="block text-xs  pt-2 text-gray-500 ">Total Budget</span>
+                    <Field
+                      className="text-xs  text-gray-500 border-0 placeholder-gray-400 focus:placeholder-gray-500
+                  placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
+                      name="totalbudget"
+                      component="input"
+                      type="number"
+                      required
+                      id="idTotalBudget"
+                      initialValue={txtTotalAddedBud}
+                      disabled
+                    />
+                  </label>
+                </div>
+
+                <div className="col-start-2">
+
+                <div className="text-xs shadow-md w-auto">
+                    <label htmlFor="selectDepartment" className="block ">
+                      <span className="block  text-xs  text-gray-500 "> Library Section</span>
+                      <ReactTable data={data} columns={cjok} className="w-auto" />
+                    </label>
+                  </div>
+                  <label htmlFor="budget" className="block pb-2">
+                    <span className="block text-xs  pt-2 text-gray-500 ">Total Budget</span>
+                    <Field
+                      className="text-xs  text-gray-500 border-0  placeholder-gray-400 focus:placeholder-gray-500
+                  placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
+                      name="totaladdedFilRef"
+                      component="input"
+                      type="number"
+                      required
+                      id="budget"
+                      initialValue={txtTotalAddedRefFil}
+                      disabled
+                    />
+                  </label>
+
+                </div>
+
               </div>
+
+
 
             </form>
           )}
