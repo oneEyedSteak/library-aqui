@@ -22,7 +22,7 @@ export const getServerSideProps = async (context) => {
 };
 
 export default function AllApprovedDean({ booksDeanDisplay }) {
-  console.log(booksDeanDisplay);
+  // console.log(booksDeanDisplay);
   const postRequestedBooks = useMemo(
     () => [
    

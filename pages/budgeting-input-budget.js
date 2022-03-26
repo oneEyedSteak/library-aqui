@@ -48,8 +48,9 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
   // console.log( Object.keys(totalAddedBud).forEach(function(total){
   //   return totalAddedBud[total];
   // })); 
- console.log(totalAddedBud);
- console.log(totalPostAddedRefFil);
+  // console.log(totalAddedBud);
+  // console.log(totalPostAddedRefFil);
+
 
 
   const [total, setTotalBud] = useState(null);
@@ -57,12 +58,12 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
   const [txtBudget, setTextBudget] = useState(null);
   const [txtEnrol, setTxtEnrol] = useState(null);
 
-  const [txtTotalAddedBud, setTotalAddedBud] = useState(totalAddedBud.split(':')[1].toString().replace('}]',''));
-  const [txtTotalAddedRefFil, setTotalAddedBudRefFil] = useState(totalPostAddedRefFil.split(':')[1].toString().replace('}]',''));
+  const [txtTotalAddedBud, setTotalAddedBud] = useState(totalAddedBud.split(':')[1].toString().replace('}]', ''));
+  const [txtTotalAddedRefFil, setTotalAddedBudRefFil] = useState(totalPostAddedRefFil.split(':')[1].toString().replace('}]', ''));
 
 
 
-
+  const overallBudget = Number(txtTotalAddedBud) + Number(txtTotalAddedRefFil);
 
 
 
@@ -111,12 +112,12 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
         accessor: 'sum(budget)', //
         Cell: ({ row: { values } }) => `₱${values['sum(budget)']}`, // accessor is the "key" in the data
       },
-    
+
     ],
     [],
   );
 
-  console.log(totalCost);
+  // console.log(totalCost);
   const postCost = useMemo(
     () => [
       {
@@ -173,7 +174,7 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
       draggable: true,
       progress: undefined,
     }, data);
-  location.reload();
+    location.reload();
 
   };
 
@@ -192,7 +193,7 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
           onSubmit={handleOnSubmit}
           render={({ handleSubmit }) => (
 
-            <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16  mx-auto h-auto w-full shadow-lg  ">
+            <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my- mx-auto h-auto w-full shadow-lg  ">
               {/* MODAL ENDS HERE */}
               <Field
                 className="text-gray-500 rounded-md  border-gray-300  w-auto
@@ -293,8 +294,6 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
                       initialValue={total}
                     />
                   </label>
-
-
                   <button
                     type="submit"
                     className="  mx-auto text-center  cursor-pointer py-2 px-10 border border-transparent shadow-sm text-sm font-medium rounded-md
@@ -305,25 +304,22 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
                   </button>
                 </div>
                 <div className="text-xs shadow-md ">
-                  <label htmlFor="selectDepartment" className="block ">
-                    <span className="block  text-xs  text-gray-500 "> Budget</span>
-
+                  <label htmlFor="Budget" className="block ">
+                    <span className="block text-xs text-gray-500 "> Budget</span>
                     <ReactTable data={totalBudget} columns={postBudget} />
                   </label>
                 </div>
-
-                <div className="text-xs shadow-md w-auto">
-                  <label htmlFor="selectDepartment" className="block ">
-                    <span className="block  text-xs  text-gray-500 "> Remaining</span>
-                    <ReactTable data={totalCost} columns={postCost} className="w-auto" />
+                <div className="text-xs shadow-md ">
+                  <label htmlFor="Remaining" className="block ">
+                    <span className="block text-xs text-gray-500 "> Remaining</span>
+                    <ReactTable data={totalCost} columns={postCost} />
                   </label>
                 </div>
                 <div className="col-start-2">
-
                   <label htmlFor="budget" className="block pb-2">
                     <span className="block text-xs  pt-2 text-gray-500 ">Total Budget</span>
                     <Field
-                      className="text-xs  text-gray-500 border-0 placeholder-gray-400 focus:placeholder-gray-500
+                      className="text-xs  text-gray-500 text-right border-0 placeholder-gray-400 focus:placeholder-gray-500
                   placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
                       name="totalbudget"
                       component="input"
@@ -338,7 +334,7 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
 
                 <div className="col-start-2">
 
-                <div className="text-xs shadow-md w-auto">
+                  <div className="text-xs shadow-md w-auto">
                     <label htmlFor="selectDepartment" className="block ">
                       <span className="block  text-xs  text-gray-500 "> Library Section</span>
                       <ReactTable data={data} columns={cjok} className="w-auto" />
@@ -347,7 +343,7 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
                   <label htmlFor="budget" className="block pb-2">
                     <span className="block text-xs  pt-2 text-gray-500 ">Total Budget</span>
                     <Field
-                      className="text-xs  text-gray-500 border-0  placeholder-gray-400 focus:placeholder-gray-500
+                      className="text-xs  text-gray-500 border-0 text-right   placeholder-gray-400 focus:placeholder-gray-500
                   placeholder-opacity-100 rounded-md border-gray-300 w-full shadow-sm  "
                       name="totaladdedFilRef"
                       component="input"
@@ -358,13 +354,24 @@ export default function SignIn({ totalCost, totalBudget, data, totalAddedBud, to
                       disabled
                     />
                   </label>
+                  <div className="col-end-4">
 
+                    <label htmlFor="budget" className="block pb-2">
+                      <span className="block text-xs   pt-2 text-gray-500 "> Total Budget Academic Year</span>
+                      <Field
+                        className="text-xs text-right w-100  text-gray-500 border-0 shadow-sm  placeholder-gray-400 focus:placeholder-gray-500
+                  placeholder-opacity-100 rounded-md border-gray-300 w-full   "
+                        name="totalBudAcademicYear"
+                        component="input"
+                        type="number"
+                        required
+                        initialValue={overallBudget}
+                        disabled
+                      />
+                    </label>
+                  </div>
                 </div>
-
               </div>
-
-
-
             </form>
           )}
         />

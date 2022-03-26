@@ -11,46 +11,80 @@ const BudgetForm = ({ selectDepartment }) => {
   const [isModalOpen, setIsModelOpen] = useState(false);
   const [data, setData] = useState({});
 
-  const dateAdded = useMemo(
-    () => [
-      {
-        Header: 'Budget',
-        accessor: 'budget', // accessor is the "key" in the data
-      },
-      {
-        Header: 'Date',
-        accessor: 'dateAdded', // accessor is the "key" in the data
-        Cell: ({ row: values  }) => (
-          <div>
-            {new Date(values.date).toDateString()}
-          </div>
-        ),
-      },
-   
-    ],
-    [],
-  );
+  const [showDept, setShowDept] = useState(false);
+
+
+  const toggleDept = () =>{
+    showDept ?  setShowDept(false):  setShowDept(true);
+  }
+
+
+
 
 
   // Fetching of data
+  const [dataAccounts, setDataAccounts] = useState({});
   const fetchData = async () => {
+    
     try {
       // Query to database
       const { data: result } = await api.get(`/api/subtract/${selectDepartment}`);
 
+      // debugger;
       console.log(result);
+    const post = JSON.parse(JSON.stringify(result.borrowedAccountbudget));
+
+      setDataAccounts(post);
+    //   Object.keys(result.borrowedAccountbudget).map(function(index){
+    //     setDataAccounts(result.borrowedAccountbudget[index].selectDepartment);
+    // })
+
+
       setData(result);
     } catch (error) {
       console.error(error);
     }
+
   };
- 
+
 
   // Trigger fetch on first load
   useEffect(() => {
     fetchData();
+
   }, []);
 
+  const borrowAccounts = useMemo(
+    () => [
+      {
+        Header: 'Department',
+        accessor: 'selectDepartment', // accessor is the "key" in the data
+
+      },
+      {
+        Header: 'Budget',
+        accessor: 'budget', // accessor is the "key" in the data
+     
+      },
+      {
+        Header: () => 'Action',
+        accessor: 'action',
+        Cell: ({ row: { values } }) =>  (
+          <button
+              type="submit"
+              className="mx-auto mt-3  text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md
+                                     text-white bg-indigo-600 hover:bg-indigo-700
+                                    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            >
+              Select
+              {data.subtracted}
+            </button>
+        ),
+      },
+     
+    ],
+    [],
+  );
 
   // Handle form submission
   const handleOnSubmit = async () => {
@@ -58,13 +92,14 @@ const BudgetForm = ({ selectDepartment }) => {
       subtracted: data.subtracted,
       selectDepartment,
     });
-   
+
 
     alert(result.message);// eslint-disable-line no-alert
   };
+
   // Form
-  
   const renderForm = (
+
     <Form
       onSubmit={handleOnSubmit}
       render={({ handleSubmit }) => (
@@ -86,7 +121,7 @@ const BudgetForm = ({ selectDepartment }) => {
 
                   <form onSubmit={handleSubmit} className="p-12 bg-white rounded-md my-16 w- mx-auto  w-full shadow-sm min-h-full  ">
                     <div className="grid grid-cols-3 gap-2">
-                    <label htmlFor="selectDepartment" className="block p">
+                      <label htmlFor="selectDepartment" className="block p">
                         <span className="block  text-xs  text-gray-500 p">Total Budget</span>
                         <Field
                           className="text-xs mt-2 w-auto text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
@@ -98,17 +133,8 @@ const BudgetForm = ({ selectDepartment }) => {
                           disabled
                           initialValue={data.totalBudget || 0}
                         />
-                           <span className="block  text-xs  text-gray-500 p">Date Added </span>
-                        <Field
-                          className="text-xs mt-2 w-auto text-gray-500  placeholder-gray-400 focus:placeholder-gray-500
-              placeholder-opacity-100 rounded-md border-gray-300   shadow-lg   "
-                          name="add_date"
-                          component="input"
-                          type="date"
-                          disabled
-                          initialValue={data.add_date}
-                        />
-     
+
+
                       </label>
                       <label htmlFor="selectDepartment" className="block p">
                         <span className="block  text-xs  text-gray-500 p">Total Cost</span>
@@ -122,9 +148,9 @@ const BudgetForm = ({ selectDepartment }) => {
                           disabled
                           initialValue={data.totalCost || 0}
                         />
-                                           <span className="  text-2xl  text-gray-500 p">=</span>
+                        <span className="  text-2xl  text-gray-500 p">=</span>
                       </label>
-                    
+
                       <label htmlFor="selectDepartment" className="block p">
                         <span className="block  text-   text-gray-500 p">Remaining Budget</span>
                         <Field
@@ -136,11 +162,46 @@ const BudgetForm = ({ selectDepartment }) => {
                           placeholder="₱"
                           disabled
                           initialValue={data.subtracted || 0}
-                        />
-                      </label>
-                    </div>
-              {/* <ReactTable data={time} columns={dateAdded} /> */}
 
+                        />
+
+                      </label>
+
+                    </div>
+                    {data.subtracted < 1 ? <>
+                        <div className="">
+                          <button
+                            className="bg-secondary float-right items-end mt-4 w-auto text-white text-xs active:bg-emerald-600
+                         px-6 py-3 rounded shadow-md "
+                            type="button"
+                            onClick={toggleDept}
+                          >
+                            
+                          <div className="text-xs shadow-md w-auto">
+                  <label htmlFor="selectDepartment" className="block ">
+
+                    <span className="block  text-xs  text-gray-500 "> 
+                    {
+                          showDept ? "Hide" : 'Show'
+                      }
+                    </span>
+                  </label>
+                </div>
+                          </button>
+                  
+
+                        </div>
+                      </> :
+                        <>
+                        </>}
+                        
+                        <div style={{
+                          display:showDept ? "block" : 'none'
+                      }}>
+                        
+        <ReactTable data={dataAccounts} columns={borrowAccounts} className="w-auto" />
+                        </div>
+                    {/* <ReactTable data={time} columns={dateAdded} /> */}
                   </form>
                 </section>
                 {/* footer */}

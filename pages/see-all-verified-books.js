@@ -20,7 +20,7 @@ export const getServerSideProps = async (context) => {
   }
 };
 export default function seeAllVerifiedBooks({ verifiedBooks }) {
-  console.log(verifiedBooks);
+  // console.log(verifiedBooks);
   const columns = useMemo(
     () => [
 
