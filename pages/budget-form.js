@@ -3,6 +3,7 @@ import { Field, Form } from 'react-final-form';
 import api from '../lib/api';
 import ReactTable from '../components/table';
 import React, { useMemo } from 'react';
+import axios from 'axios';
 
 
 
@@ -14,8 +15,24 @@ const BudgetForm = ({ selectDepartment }) => {
   const [showDept, setShowDept] = useState(false);
 
 
-  const toggleDept = () =>{
-    showDept ?  setShowDept(false):  setShowDept(true);
+  const toggledBorrowedAccount = async (getselectDepartment, getselectDepartmentBudget, getcurrentDepartmentSubtractedBudget) => {
+
+    var difference =(getselectDepartmentBudget + getcurrentDepartmentSubtractedBudget); //Subtract current Budget
+
+   
+    try {
+
+      const  data = await axios.post(`/api/UpdateCurrentBudget`, difference, selectDepartment, budget, 
+      payload);
+      alert(data.message);
+
+    } catch (error) {
+
+    }
+  };
+
+  const toggleDept = () => {
+    showDept ? setShowDept(false) : setShowDept(true);
   }
 
 
@@ -25,19 +42,19 @@ const BudgetForm = ({ selectDepartment }) => {
   // Fetching of data
   const [dataAccounts, setDataAccounts] = useState({});
   const fetchData = async () => {
-    
+
     try {
       // Query to database
       const { data: result } = await api.get(`/api/subtract/${selectDepartment}`);
 
       // debugger;
       console.log(result);
-    const post = JSON.parse(JSON.stringify(result.borrowedAccountbudget));
+      const post = JSON.parse(JSON.stringify(result.borrowedAccountbudget));
 
       setDataAccounts(post);
-    //   Object.keys(result.borrowedAccountbudget).map(function(index){
-    //     setDataAccounts(result.borrowedAccountbudget[index].selectDepartment);
-    // })
+      //   Object.keys(result.borrowedAccountbudget).map(function(index){
+      //     setDataAccounts(result.borrowedAccountbudget[index].selectDepartment);
+      // })
 
 
       setData(result);
@@ -64,24 +81,25 @@ const BudgetForm = ({ selectDepartment }) => {
       {
         Header: 'Budget',
         accessor: 'budget', // accessor is the "key" in the data
-     
+
       },
       {
         Header: () => 'Action',
         accessor: 'action',
-        Cell: ({ row: { values } }) =>  (
+        Cell: ({ row: { values } }) => (
           <button
-              type="submit"
-              className="mx-auto mt-3  text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md
+            type="submit"
+            onClick={() => toggledBorrowedAccount(values.selectDepartment, values.budget, data.subtracted)}
+            className="mx-auto mt-3  text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md
                                      text-white bg-indigo-600 hover:bg-indigo-700
                                     focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-            >
-              Select
-              {data.subtracted}
-            </button>
+          >
+            Select
+
+          </button>
         ),
       },
-     
+
     ],
     [],
   );
@@ -167,40 +185,41 @@ const BudgetForm = ({ selectDepartment }) => {
 
                       </label>
 
+
                     </div>
                     {data.subtracted < 1 ? <>
-                        <div className="">
-                          <button
-                            className="bg-secondary float-right items-end mt-4 w-auto text-white text-xs active:bg-emerald-600
+                      <div className="">
+                        <button
+                          className="bg-secondary float-right items-end mt-4 w-auto text-white text-xs active:bg-emerald-600
                          px-6 py-3 rounded shadow-md "
-                            type="button"
-                            onClick={toggleDept}
-                          >
-                            
+                          type="button"
+                          onClick={toggleDept}
+                        >
+
                           <div className="text-xs shadow-md w-auto">
-                  <label htmlFor="selectDepartment" className="block ">
+                            <label htmlFor="selectDepartment" className="block ">
 
-                    <span className="block  text-xs  text-gray-500 "> 
-                    {
-                          showDept ? "Hide" : 'Show'
-                      }
-                    </span>
-                  </label>
-                </div>
-                          </button>
-                  
+                              <span className="block  text-xs cursor-pointer text-gray-500 ">
+                                {
+                                  showDept ? "Hide" : 'Show'
+                                }
+                              </span>
+                            </label>
+                          </div>
+                        </button>
 
-                        </div>
-                      </> :
-                        <>
-                        </>}
-                        
-                        <div style={{
-                          display:showDept ? "block" : 'none'
-                      }}>
-                        
-        <ReactTable data={dataAccounts} columns={borrowAccounts} className="w-auto" />
-                        </div>
+
+                      </div>
+                    </> :
+                      <>
+                      </>}
+
+                    <div style={{
+                      display: showDept ? "block" : 'none'
+                    }}>
+
+                      <ReactTable data={dataAccounts} columns={borrowAccounts} className="w-auto" />
+                    </div>
                     {/* <ReactTable data={time} columns={dateAdded} /> */}
                   </form>
                 </section>

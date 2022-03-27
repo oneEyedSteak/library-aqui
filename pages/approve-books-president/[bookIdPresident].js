@@ -245,7 +245,6 @@ export default function RequestForm({ bookIdPresident }) {
                         component="select"
                         className="  text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-1 bg-gray-50 "
-                        required
                       >
 
                         <option value="">Enter Status </option>
