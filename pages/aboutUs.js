@@ -29,18 +29,7 @@ const AboutUs = () => (
       </div>
       <br />
 
-      {/* <div className="">
-
-        <div className=" font-semibold text-xl ml-7 ">
-          ABOUT US
-        </div>
-        <p className="ml-11 font-normal  text-lg p-8" >
-          A modern University Library committed to the achievement of the Institution’s vision of Exemplary Christian Education for Life<br />
-          (EXCEL) through its user-oriented service and state-of-the-art library technologies.
-          LIBRARY MISSION/VISION
-        </p>
-
-      </div> */}
+     
       <br />
 
 
