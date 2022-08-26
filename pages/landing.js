@@ -3,9 +3,9 @@ import Head from 'next/head';
 
 export default function Landing() {
   return (
-    <section className=" mx-auto md:flex bg-gray-200min-h-screen ">
+    <section className=" mx-auto md:flex bg-black-200min-h-screen ">
 
-      <div className=" md:w-auto bg-black md:bg-gray-600 px-2  fixed   h-16 md:h-screen md:border-r-4 md:border-grey-dark">
+      <div className=" md:w-auto bg-black md:bg-black-600 px-2  fixed   h-16 md:h-screen md:border-r-4 md:border-grey-dark">
 
         <Head>
           <title>Library Acquisition | Welcome! </title>
@@ -22,7 +22,7 @@ export default function Landing() {
               </a>
             </li>
             <li className="mr-3 flex-1">
-              <Link href="/requestform"><span className=" hover:bg-gray-900 hover:text-white text-gray-300 px-3 py-2 border-0 border-b-2 text-sm font-medium">About Us</span></Link>
+              <Link href="/requestform"><span className=" hover:bg-black-900 hover:text-white text-black-300 px-3 py-2 border-0 border-b-2 text-sm font-medium">About Us</span></Link>
 
             </li>
             <li className="mr-3 flex-1">

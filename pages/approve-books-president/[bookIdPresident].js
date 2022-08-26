@@ -79,20 +79,20 @@ export default function RequestForm({ bookIdPresident }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" p-8 bg-white rounded-md my-16 w-full  shadow-md  mx-auto min-h-screen ">
+              <form onSubmit={handleSubmit} className=" p-8 bg-blue-200 rounded-md my-16 w-full  shadow-md  mx-auto min-h-screen ">
 
                 <div className="flex-shrink-0 flex content-around items-center p-8">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">Library Acquisition Approval Books</h1>
+                  <h1 className="text-3xl font-bold text-gray-600 ">Library Acquisition Approval Books</h1>
 
                 </div>
 
                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
 
                   <label htmlFor="date" className="block ">
-                    <span className="block  text-xs   text-gray-500 ">Approved Date</span>
+                    <span className="block  text-sm font-bold  text-gray-500 ">Approved Date</span>
                     <Field
                       className="text-gray-500 rounded-md border-gray-300  w-full
                       focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -111,7 +111,7 @@ export default function RequestForm({ bookIdPresident }) {
                   <div className="row-start-1 col-span-1">
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red  text-xs text-gray-500 ">User ID</span>
+                      <span className="block hover:textColor-red  text-sm font-bold text-gray-500 ">User ID</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -124,7 +124,7 @@ export default function RequestForm({ bookIdPresident }) {
                     </label>
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red  text-xs  text-gray-500 ">Name</span>
+                      <span className="block hover:textColor-red  text-sm font-bold text-gray-500 ">Name</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -139,7 +139,7 @@ export default function RequestForm({ bookIdPresident }) {
 
                   <div className="row-start-1 col-span-2">
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs  text-gray-500 ">Author</span>
+                      <span className="block hover:textColor-red text-sm font-bold text-gray-500 ">Author</span>
                       <Field
                         className=" text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -153,7 +153,7 @@ export default function RequestForm({ bookIdPresident }) {
                     </label>
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs  text-gray-500">Title</span>
+                      <span className="block hover:textColor-red text-sm font-bold  text-gray-500">Title</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -169,7 +169,7 @@ export default function RequestForm({ bookIdPresident }) {
                   </div>
                   <div className="row-start-2">
                     <label htmlFor="edition" className="">
-                      <span className="block  text-xs text-gray-500 ">Number of Copies</span>
+                      <span className="block  text-sm font-bold text-gray-500 ">Number of Copies</span>
                       <Field
                         className="  text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -181,7 +181,7 @@ export default function RequestForm({ bookIdPresident }) {
                       />
                     </label>
                     <label htmlFor="edition" className=" ">
-                      <span className="block  text-xs  text-gray-500 ">Edition</span>
+                      <span className="block  text-sm font-bold text-gray-500 ">Edition</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-full
                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -194,7 +194,7 @@ export default function RequestForm({ bookIdPresident }) {
                     </label>
 
                     <label htmlFor="edition" className="">
-                      <span className="block  text-xs  text-gray-500 ">Price:</span>
+                      <span className="block  text-sm font-bold text-gray-500 ">Price:</span>
                       <Field
                         className="text-gray-500 rounded-md border-gray-300  w-auto
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
@@ -209,7 +209,7 @@ export default function RequestForm({ bookIdPresident }) {
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
-                      <span className="block  text-xs text-gray-500 ">Publication Date</span>
+                      <span className="block  text-sm font-bold text-gray-500 ">Publication Date</span>
                       <Field
                         className="text-s focus:placeholder-gray-400  placeholder-gray-500 placeholder-opacity-25 pt-3 pb-2
                                         block w-36 px-0  text-gray-500  mt-0 bg-transparent border-0 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
@@ -221,7 +221,7 @@ export default function RequestForm({ bookIdPresident }) {
                       />
                     </label>
                     <label htmlFor="notereqform" className="">
-                      <span className="block  text-xs  text-gray-500">Note:</span>
+                      <span className="block  text-sm font-bold text-gray-500">Note:</span>
                       <Field
                         className=" resize-none text-gray-500 rounded-md border-gray-300  w-full
                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50 "
@@ -238,7 +238,7 @@ export default function RequestForm({ bookIdPresident }) {
                   <div className="col-span-1 row-start-6">
 
                     <label htmlFor="selectDosition" className="block ">
-                      <span className="block  text-xs text-gray-500 ">For Approval</span>
+                      <span className="block  text-sm font-bold text-gray-500 ">For Approval</span>
                       <Field
                         required
                         name="approvalPresident"
@@ -248,8 +248,8 @@ export default function RequestForm({ bookIdPresident }) {
                       >
 
                         <option value="">Enter Status </option>
-                        <option className="block text-xs  text-gray-500" value="0">On Going</option>
-                        <option className="block text-xs  text-gray-500" value="1">Approved</option>
+                        <option className="block text-sm font-bold text-gray-500" value="0">On Going</option>
+                        <option className="block text-sm font-bold text-gray-500" value="1">Approved</option>
 
                       </Field>
                     </label>
@@ -258,9 +258,9 @@ export default function RequestForm({ bookIdPresident }) {
                 </div>
 
                 <label htmlFor="requesID" className="">
-                  <span className="block hover:textColor-red  text-xs  text-gray-500" />
+                  <span className="block hover:textColor-red  text-sm  text-gray-500" />
                   <Field
-                    className="form-text  text-xs    text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
+                    className="form-text  text-sm    text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
                             block px-0bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
                     component="input"
                     name="requestID"

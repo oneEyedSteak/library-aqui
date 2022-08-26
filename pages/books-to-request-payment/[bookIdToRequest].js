@@ -100,7 +100,7 @@ export default function RequestForm({ bookIdToRequest, account }) {
         <>
           <div className=" mx-auto p-10 md:flex bg-white  border-blue-900 border-1 rounded">
             <span className="
-         text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+         text-black-600 px-3 py-2 rounded-md text-sm font-medium"
             >
               Please Sign In First
             </span>
@@ -114,19 +114,19 @@ export default function RequestForm({ bookIdToRequest, account }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 shadow-md mx-auto w-full min-h-screen ">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-blue-200 rounded-md my-16 shadow-md mx-auto w-full min-h-screen ">
 
                 <div className="flex-shrink-0 flex content-around items-center">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl mt 4  text-gray-600 ">Library Acqusition Request Payment Signature </h1>
+                  <h1 className="text-3xl mt 4 font-bold text-black-600 ">Library Acqusition Request Payment Signature </h1>
 
                 </div>
                 <label htmlFor="edition" className="">
                       <Field
-                        className="text-gray-500 rounded-md border-gray-300  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 placeholder-opacity-50 border-0 bg-gray-50"
+                        className="text-black-500 rounded-md border-black-300  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 placeholder-opacity-50 border-0 bg-black-50"
                         component="input"
                         name="acquisitionName"
                         type="hidden"
@@ -138,10 +138,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                 <div className="flex space-x-6 content-around items-center mt-10 justify-end">
 
                   <label htmlFor="date" className="block ">
-                    <span className="block  text-xs   text-gray-500 mb-1"> Date Sent</span>
+                    <span className="block  text-sm  font-bold text-black-500 mb-1"> Date Sent</span>
                     <Field
-                      className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                      className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 cursor-pointer placeholder-black-700 placeholder-opacity-50 bg-black-50"
                       name="sendDatetoDirector"
                       component="input"
                       type="date"
@@ -156,10 +156,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
 
                   <div className="row-start-1">
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red  text-xs  text-gray-500 mb-1">User ID</span>
+                      <span className="block hover:textColor-red  text-sm font-bold text-black-500 mb-1">User ID</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="userID"
                         type="text"
@@ -170,10 +170,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                     </label>
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red  text-xs  text-gray-500 mb-1">Name</span>
+                      <span className="block hover:textColor-red  text-sm font-bold text-black-500 mb-1">Name</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="requestee"
                         type="text"
@@ -185,10 +185,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                   <div className="row-start-1 col-span-2">
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs  text-gray-500 mb-1">Author</span>
+                      <span className="block hover:textColor-red text-sm font-bold text-black-500 mb-1">Author</span>
                       <Field
-                        className=" text-gray-500 rounded-md  w-auto
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className=" text-black-500 rounded-md  w-auto
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="Author"
                         type="text"
@@ -199,10 +199,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                     </label>
 
                     <label htmlFor="author" className="">
-                      <span className="block hover:textColor-red text-xs  text-gray-500 mb-1">Title</span>
+                      <span className="block hover:textColor-red text-sm font-bold text-black-500 mb-1">Title</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="Title"
                         type="text"
@@ -215,10 +215,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                   <div className="row-start-2 gap-y-4">
 
                     <label htmlFor="edition" className="mt-6">
-                      <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
+                      <span className="block  text-sm font-bold text-black-500 ">Number of Copies</span>
                       <Field
-                        className="  text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="  text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="NumberOfCopies"
                         type="text"
@@ -228,10 +228,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                     </label>
 
                     <label htmlFor="edition" className="mt-6 ml">
-                      <span className="block  text-xs  text-gray-500 ">Edition</span>
+                      <span className="block  text-sm font-bold text-black-500 ">Edition</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-auto
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50 bm"
+                        className="text-black-500 rounded-md  w-auto
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50 bm"
                         component="input"
                         name="Edition"
                         type="text"
@@ -240,10 +240,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       />
                     </label>
                     <label htmlFor="author" className="mb-3">
-                      <span className="block hover:textColor-red  text-xs  text-gray-500 mb-1 mr-2 ">Number of Existing Titles: </span>
+                      <span className="block hover:textColor-red  text-sm font-bold text-black-500 mb-1 mr-2 ">Number of Existing Titles: </span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="enumtitle"
                         type="text"
@@ -253,10 +253,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       />
                     </label>
                     <label htmlFor="author" className="mb-3">
-                      <span className="block hover:textColor-red  text-xs  text-gray-500 mb-1 mr-2 ">Price </span>
+                      <span className="block hover:textColor-red  text-xs  text-black-500 mb-1 mr-2 ">Price </span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="price"
                         type="text"
@@ -266,15 +266,15 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       />
                     </label>
                     <label htmlFor="requesID" className="block ">
-                      <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                      <span className="  text-sm font-bold text-black-500 p">Dean Signature</span>
                       <img
                         src={bookIdToRequest.signatureDean}
                         alt="College Dean Signature"
                         width="100"
                         height="100"
-                        className=" mt-2 border-solid border-4 border-gray-blue-900"
+                        className=" mt-2 border-solid border-4 border-black-blue-900"
                       />  
-                      <div className="text-xs mt-2 text-gray-500 underline">
+                      <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdToRequest.deanName}
                         </div>
                     </label>
@@ -282,10 +282,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
-                      <span className="block  text-xs  text-gray-500  ">Publication Date</span>
+                      <span className="block  text-sm font-bold text-black-500  ">Publication Date</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-auto
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-auto
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="publicationDate"
                         type="text"
@@ -295,10 +295,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                     </label>
 
                     <label htmlFor="notereqform" className="mt-2">
-                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <span className="block  text-sm font-bold text-black-500 mb-1">Note:</span>
                       <Field
-                        className="resize-none text-gray-500 rounded-md  w-full h-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0  placeholder-opacity-50 bg-gray-50 "
+                        className="resize-none text-black-500 rounded-md  w-full h-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0  placeholder-opacity-50 bg-black-50 "
                         component="textarea"
                         name="noteDeanbook"
                         type="input"
@@ -331,7 +331,7 @@ export default function RequestForm({ bookIdToRequest, account }) {
                       />
                     ) : save}
                     {imageURL &&(
-     <div className="text-sm font-medium mt-2 text-gray-500 underline">
+     <div className="text-sm font-medium mt-2 text-black-500 underline">
      {`${account.fname} ${account.lname}`}
    </div>
                     )}
@@ -393,10 +393,10 @@ export default function RequestForm({ bookIdToRequest, account }) {
                 </div>
 
                 <label htmlFor="requesID" className="">
-                  <span className="block hover:textColor-red  text-xs font-bold text-gray-500 mb-1" />
+                  <span className="block hover:textColor-red  text-xs font-bold text-black-500 mb-1" />
                   <Field
-                    className="form-text  text-xs  font-bold   text-gray-500 focus:placeholder-gray-500 placeholder-gray-500 placeholder-opacity-50  pt-3 pb-2
-                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-gray-400"
+                    className="form-text  text-xs  font-bold   text-black-500 focus:placeholder-black-500 placeholder-black-500 placeholder-opacity-50  pt-3 pb-2
+                            block px-0 mb-2 bg-transparent border-0 border-b-2 appearance-none focus:outline-none focus:ring-0 focus:border-black border-black-400"
                     component="input"
                     name="requestID"
                     type="hidden"

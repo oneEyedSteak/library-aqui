@@ -14,7 +14,7 @@ const AboutUs = () => (
         <h1 className="font-bold text-2xl ml-7 pb-3">
           MISSION/VISION & OBJECTIVES
         </h1>
-        <p className="ml-11 bg-gray-200 border-2 bg-auto p-8 rounded-xl italic  text-lg" >
+        <p className="ml-11 bg-blue-200 border-2 bg-auto p-8 rounded-xl italic  text-lg" >
           "A modern University Library committed to the achievement of the Institution’s vision  of Exemplary Christian Education
           for Life (EXCEL) through its user-oriented service and  state-of-the-art library technologies."
           <br />

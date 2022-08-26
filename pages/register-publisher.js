@@ -32,7 +32,7 @@ export default function RegistrationForm() {
           <div className=" mx-auto p-10 md:flex bg-base h-1/5 border-blue-900 border-1 rou">
             <Link href="/login">
               <span className=" hover:bg-blue-900 hover:text-white
-         text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+         text-black-600 px-3 py-2 rounded-md text-sm font-medium"
               >
                 Please Sign In First
               </span>
@@ -49,7 +49,7 @@ export default function RegistrationForm() {
           <Form
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
-              <form onSubmit={handleSubmit} className=" px-8 pt-8  bg-white rounded-md my-16 shadow-md mx-auto w-auto h-auto">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8  bg-blue-200 rounded-md my-16 shadow-md mx-auto w-auto h-auto">
 
                 <div className="content-around justify-center  flex items-center">
                   <img className="hidden lg:block h-20 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
@@ -57,15 +57,15 @@ export default function RegistrationForm() {
                 </div>
 
                 <div className="justify-center  flex items-center">
-                <h3 className="text-xl m-4 text-gray-600 cursor-not-allowed">Sign  Up </h3>
+                <h3 className="text-xl m-4 text-black-600 font-bold cursor-not-allowed">Sign  Up </h3>
                 </div>
 
                 <label htmlFor="uname" className="block">
-                  <span className="block text-xs text-gray-500 mb-">User Name</span>
+                  <span className="block text-sm font-bold text-black-500 mb-">User Name</span>
                   <Field
                     className="block mt-2
-                     text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50"
+                     text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50"
                     component="input"
                     name="uname"
                     type="text"
@@ -76,11 +76,11 @@ export default function RegistrationForm() {
 
                 <div className="flex space-x-6 content-around items-center mt-3">
                   <label htmlFor="password" control className="block">
-                    <span className="block  text-xs   text-gray-500 mb-">Password</span>
+                    <span className="block  text-sm  font-bold text-black-500 mb-">Password</span>
                     <Field
                       className=" block mt-2
-                      text-gray-500 rounded-md  w-full
-                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50"
+                      text-black-500 rounded-md  w-full
+                     focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50"
                       name="password"
                       component="input"
                       type="password"
@@ -90,11 +90,11 @@ export default function RegistrationForm() {
 
                   <label htmlFor="cpassword">
 
-                    <span className="block  text-xs  text-gray-500 ml-3">Confirm Password</span>
+                    <span className="block  text-sm font-bold text-black-500 ml-3">Confirm Password</span>
                     <Field
                       className="block mt-2
-                      text-gray-500 rounded-md  w-full
-                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50"
+                      text-black-500 rounded-md  w-full
+                     focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50"
                       name="cpassword"
                       component="input"
                       type="password"
@@ -104,11 +104,11 @@ export default function RegistrationForm() {
                 </div>
 
                 <label htmlFor="fname" className="block mt-3">
-                  <span className="block mt-1 text-xs  text-gray-500 mb-1">Publisher Name</span>
+                  <span className="block mt-1 text-sm font-bold text-black-500 mb-1">Publisher Name</span>
                   <Field
                     className="block mt-2
-                    text-gray-500 rounded-md  w-full
-                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50 "
+                    text-black-500 rounded-md  w-full
+                   focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50 "
                     component="input"
                     name="pubName"
                     type="text"
@@ -117,11 +117,11 @@ export default function RegistrationForm() {
                 </label>
 
                 <label htmlFor="fname" className="block mt-3">
-                  <span className="block mt-1 text-xs  text-gray-500 mb-1">Publisher Address</span>
+                  <span className="block mt-1 text-sm font-bold text-black-500 mb-1">Publisher Address</span>
                   <Field
                     className="block mt-2
-                    text-gray-500 rounded-md  w-full
-                   focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50 "
+                    text-black-500 rounded-md  w-full
+                   focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50 "
                     component="input"
                     name="pubAddress"
                     type="text"
@@ -133,11 +133,11 @@ export default function RegistrationForm() {
                 <div className="flex space-x-6 content-around items-center mt-3">
 
                   <label htmlFor="email">
-                    <span className="block text-gray-500   text-xs f mb-1">Email</span>
+                    <span className="block text-black-500  font-bold text-sm f mb-1">Email</span>
                     <Field
                       className=" block mt-2
-                      text-gray-500 rounded-md  w-full
-                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50 "
+                      text-black-500 rounded-md  w-full
+                     focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50 "
                       name="email"
                       component="input"
                       type="email"
@@ -146,11 +146,11 @@ export default function RegistrationForm() {
                     />
                   </label>
                   <label htmlFor="pnumber" className="block mt- ">
-                    <span className="block  text-xs  text-gray-500 mb-1">Contact Number</span>
+                    <span className="block  text-sm font-bold text-black-500 mb-1">Contact Number</span>
                     <Field
                       className=" block mt-2
-                      text-gray-500 rounded-md  w-full
-                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50 "
+                      text-black-500 rounded-md  w-full
+                     focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50 "
                       name="pnumber"
                       component="input"
                       type="number"
@@ -159,8 +159,8 @@ export default function RegistrationForm() {
                   </label>
                   <Field
                       className=" block mt-2
-                      text-gray-500 rounded-md  w-full
-                     focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700  placeholder-opacity-50 bg-gray-50 "
+                      text-black-500 rounded-md  w-full
+                     focus:placeholder-black-700 focus:border-black-500 placeholder-black-700  placeholder-opacity-50 bg-black-50 "
                       name="selectPosition"
                       component="input"
                       type="hidden"

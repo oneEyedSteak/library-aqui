@@ -34,9 +34,9 @@ export default function RequestForm({requestedDetailsID }) {
       </Head>
       {!session && (
         <>
-          <div className=" mx-auto p-10 md:flex bg-gray-500  border-blue-900 border-1 rounded">
+          <div className=" mx-auto p-10 md:flex bg-black-500  border-blue-900 border-1 rounded">
             <span className="
-         text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+         text-black-600 px-3 py-2 rounded-md text-sm font-medium"
             >
               Please Sign In First
             </span>
@@ -50,23 +50,23 @@ export default function RequestForm({requestedDetailsID }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 shadow-md w-full mx-auto h-auto  ">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-blue-200 rounded-md my-16 shadow-md w-full mx-auto h-auto  ">
 
                 <div className="flex-shrink-0 flex content-around items-center">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">Print</h1>
+                  <h1 className="text-xl  text-black-600 ">Print</h1>
                 </div>
 
                 <div className="flex space-x-6 content-around items-center mt-10 justify-end p-8">
    
                   <label htmlFor="date" className="block  mr-3">
-                    <span className="block  text-xs text-gray-500 ">Requested Date</span>
+                    <span className="block  text-sm font-bold text-black-500 ">Requested Date</span>
                     <Field
-                      className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 border-0
-                        cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                      className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 border-0
+                        cursor-pointer placeholder-black-700 placeholder-opacity-50 bg-black-50"
                       name="date"
                       component="input"
                       type="text"
@@ -80,10 +80,10 @@ export default function RequestForm({requestedDetailsID }) {
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
                   <div className="row-start-1">
                     <label htmlFor="title" className=" ">
-                      <span className=" mt-2 text-xs  text-gray-500 ">User ID</span>
+                      <span className=" mt-2 text-sm font-bold  text-black-500 ">User ID</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="userID"
                         type="text"
@@ -92,11 +92,11 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Name</span>
+                      <span className="  text-sm font-bold  text-black-500 ">Name</span>
 
                       <Field
-                        className="  block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="  block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="requestee"
                         type="text"
@@ -105,11 +105,11 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Department</span>
+                      <span className="  text-sm font-bold  text-black-500 ">Department</span>
 
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="selectDepartment"
                         type="text"
@@ -119,11 +119,11 @@ export default function RequestForm({requestedDetailsID }) {
                     </label>
 
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Position</span>
+                      <span className="  text-sm font-bold  text-black-500 ">Position</span>
 
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="selectPosition"
                         type="text"
@@ -135,10 +135,10 @@ export default function RequestForm({requestedDetailsID }) {
                   </div>
                   <div className="row-start-1 col-span-2">
                     <label htmlFor="author" className="">
-                      <span className=" hover:textColor-red text-xs  text-gray-500 mb-1">Author</span>
+                      <span className=" hover:textColor-red text-sm font-bold  text-black-500 mb-1">Author</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="authorName"
                         type="text"
@@ -149,10 +149,10 @@ export default function RequestForm({requestedDetailsID }) {
                     </label>
 
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs text-gray-500 ">Title</span>
+                      <span className="  text-sm font-bold text-black-500 ">Title</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="title"
                         type="text"
@@ -162,10 +162,10 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className="">
-                      <span className="  text-xs  text-gray-500 mb-1">Publisher Name</span>
+                      <span className="  text-sm font-bold  text-black-500 mb-1">Publisher Name</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubName"
                         type="text"
@@ -174,10 +174,10 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Publisher Address</span>
+                      <span className="  text-sm font-bold  text-black-500 ">Publisher Address</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubAddress"
                         type="text"
@@ -191,10 +191,10 @@ export default function RequestForm({requestedDetailsID }) {
 
                   <div className="row-start-2 ">
                     <label htmlFor="copvol" className=" ">
-                      <span className="  text-xs  text-gray-500">Copies</span>
+                      <span className="  text-sm font-bold  text-black-500">Copies</span>
                       <Field
-                        className="  block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="  block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="copvol"
                         type="text"
@@ -204,10 +204,10 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="edition" className="">
-                      <span className="  text-xs  text-gray-500 ">Edition</span>
+                      <span className="  text-sm font-bold  text-black-500 ">Edition</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="edition"
                         type="text"
@@ -217,10 +217,10 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className=" h-48">
-                      <span className="block  text-xs  text-gray-500 mb-1">Charge to</span>
+                      <span className="block  text-sm font-bold  text-black-500 mb-1">Charge to</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="chargeto"
                         type="text"
@@ -232,10 +232,10 @@ export default function RequestForm({requestedDetailsID }) {
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="subjectr" className="">
-                      <span className="  text-xs text-gray-500 mb-1">Subject</span>
+                      <span className="  text-sm font-bold text-black-500 mb-1">Subject</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="subject"
                         type="text"
@@ -246,10 +246,10 @@ export default function RequestForm({requestedDetailsID }) {
                     </label>
                     <label htmlFor="pdate" className="  ">
 
-                      <span className="  text-xs text-gray-500">Publication Date</span>
+                      <span className="  text-sm font-bold text-black-500">Publication Date</span>
                       <Field
-                        className="block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubdate"
                         type="text"
@@ -259,10 +259,10 @@ export default function RequestForm({requestedDetailsID }) {
                       />
                     </label>
                     <label htmlFor="notereqform" className="">
-                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <span className="block  text-sm font-bold  text-black-500 mb-1">Note:</span>
                       <Field
-                        className="resize-none text-gray-500 rounded-md  w-full h-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50 "
+                        className="resize-none text-black-500 rounded-md  w-full h-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50 "
                         component="textarea"
                         name="notereqform"
                         type="input"

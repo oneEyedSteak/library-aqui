@@ -39,13 +39,13 @@ export default function TotalCost({ totalCost }) {
 
       <section className=" mx-auto  md:flex bg-base  min-h-screen ">
 
-        <form className=" px-8 p-10 bg-white rounded-md my-16 w- mx-auto h-auto w-4/5 shadow-lg ">
+        <form className=" px-8 p-10 bg-blue-200 rounded-md my-16 w- mx-auto h-auto w-4/5 shadow-lg ">
 
           <div className="flex-shrink-0 flex content-around items-center">
 
             <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
             <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-            <h1 className="text-xl  text-gray-600 ">Total Cost of Books by every Department</h1>
+            <h1 className="text-3xl font-bold text-black-600 ">Total Cost of Books by every Department</h1>
 
           </div>
 
@@ -54,7 +54,7 @@ export default function TotalCost({ totalCost }) {
           </div>
           <div className="flex  justify-end mt-9">
             <Link href="/budgeting-input-budget">
-              <div className="     cursor-pointer text-gray-600
+              <div className="     cursor-pointer text-black-600
                 rounded-md text-sm font-medium flex "
               >
                 Go to Budgeting

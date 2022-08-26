@@ -113,15 +113,15 @@ export default function publisherBook({ publisherBook }) {
         <link rel="icon" href="/icon.ico" />
       </Head>
       <section className="max-w-screen from-blue-900 to-yellow-600 bg-base  min-h-screen mx-auto ">
-        <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+        <form className=" p-14 bg-blue-200 rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
           <div className="flex-shrink-0 flex content-around items-center">
             <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
             <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-            <h1 className="text-xl  text-gray-600 ">Track your book</h1>
+            <h1 className="text-3xl font-bold text-black-600 ">Track your book</h1>
           </div>
           <div />
           <div className="text-xs shadow-md w-full mt-10 ">
-            <span className="block  text-xs  text-gray-500 "> All Books</span>
+            <span className="block  text-sm font-bold text-black-500 "> All Books</span>
 
         
             <ReactTable data={publisherBook} columns={columns} />

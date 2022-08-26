@@ -66,7 +66,7 @@ try {
         <>
           <div className=" mx-auto p-10 md:flex bg-white  border-blue-900 border-1 rounded">
             <span className="
-         text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+         text-black-600 px-3 py-2 rounded-md text-sm font-medium"
             >
               Please Sign In First
             </span>
@@ -80,24 +80,24 @@ try {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" p-8 bg-white rounded-md my-16 shadow-md  w-full mx-auto min-h-screen ">
+              <form onSubmit={handleSubmit} className=" p-8 bg-blue-200 rounded-md my-16 shadow-md  w-full mx-auto min-h-screen ">
 
                 <div className="flex-shrink-0 flex content-around items-center p-8">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">To Custodian</h1>
+                  <h1 className="text-3xl font-bold text-black-600 ">To Custodian</h1>
 
                 </div>
 
                 <div className="flex space-x-6 content-around items-center  justify-end p-8">
 
                   <label htmlFor="date" className="block ">
-                    <span className="block  text-xs   text-gray-500 ">Sent Date</span>
+                    <span className="block  text-sm font-bold  text-black-500 ">Sent Date</span>
                     <Field
-                      className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500
-                      cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                      className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500
+                      cursor-pointer placeholder-black-700 placeholder-opacity-50 bg-black-50"
                       name="sendToCustodianDate"
                       component="input"
                       type="date"
@@ -111,10 +111,10 @@ try {
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
                   <div className="row-start-1">
                     <label htmlFor="author" className="">
-                      <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">User ID</span>
+                      <span className="blockg hover:textColor-red  text-sm font-bold text-black-500 mb-1">User ID</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="userID"
                         type="text"
@@ -124,10 +124,10 @@ try {
                     </label>
 
                     <label htmlFor="author" className="">
-                      <span className="blockg hover:textColor-red  text-xs  text-gray-500 mb-1">Name</span>
+                      <span className="blockg hover:textColor-red  text-sm font-bold text-black-500 mb-1">Name</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="requestee"
                         type="text"
@@ -139,10 +139,10 @@ try {
                   <div className="row-start-1 col-span-2">
 
                     <label htmlFor="author" className="">
-                      <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Author</span>
+                      <span className="blockg hover:textColor-red text-sm font-bold text-black-500 mb-1">Author</span>
                       <Field
-                        className=" text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="Author"
                         type="text"
@@ -152,10 +152,10 @@ try {
                       />
                     </label>
                     <label htmlFor="author" className="">
-                      <span className="blockg hover:textColor-red text-xs text-gray-500 mb-1">Title</span>
+                      <span className="blockg hover:textColor-red text-sm font-bold text-black-500 mb-1">Title</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="Title"
                         type="text"
@@ -168,10 +168,10 @@ try {
                   <div className="row-start-2 gap-y-4">
 
                     <label htmlFor="edition" className="">
-                      <span className="block  text-xs  text-gray-500 ">Number of Copies</span>
+                      <span className="block  text-sm font-bold text-black-500 ">Number of Copies</span>
                       <Field
-                        className=" text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="NumberOfCopies"
                         type="text"
@@ -181,10 +181,10 @@ try {
                     </label>
 
                     <label htmlFor="edition" className="">
-                      <span className="block  text-xs  text-gray-500 ">Edition</span>
+                      <span className="block  text-sm font-bold text-black-500 ">Edition</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="Edition"
                         type="text"
@@ -195,14 +195,14 @@ try {
 
                   </div>
                   <div className="row-start-3 gap-y-4">
-                    <small className="  block  text-xs text-gray-500  mr-2 ">Approved By:</small>
-                    <span className=" text-xs block mt-2 text-gray-500">
+                    <small className="  block  text-sm font-bold text-black-500  mr-2 ">Approved By:</small>
+                    <span className=" text-xs block mt-2 text-black-500">
                       President:
                       {' '}
                       {bookIdtoCustodian.approvalPresident ? 'Yes' : 'No'}
 
                     </span>
-                    <span className=" text-xs block mt-1 text-gray-500">
+                    <span className=" text-xs block mt-1 text-black-500">
                       Finance:
                       {' '}
                       {bookIdtoCustodian.approvalFinance ? 'Yes' : 'No'}
@@ -211,10 +211,10 @@ try {
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="publicationDate" className="">
-                      <span className="block  text-xs text-gray-500  ">Publication Date</span>
+                      <span className="block  text-sm font-bold text-black-500  ">Publication Date</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="publicationDate"
                         type="text"
@@ -223,10 +223,10 @@ try {
                       />
                     </label>
                     <label htmlFor="notereqform" className="">
-                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <span className="block  text-sm font-bold text-black-500 mb-1">Note:</span>
                       <Field
-                        className="resize-none text-gray-500 rounded-md  w-full  h-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="resize-none text-black-500 rounded-md  w-full  h-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="textarea"
                         name="noteDeanbook"
                         type="input"
@@ -237,8 +237,8 @@ try {
                   </div>
 
                   <Field
-                    className="resize-none text-gray-500 rounded-md  w-full  h-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                    className="resize-none text-black-500 rounded-md  w-full  h-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                     component="textarea"
                     name="requestID"
                     type="hidden"
@@ -248,15 +248,15 @@ try {
 
                 </div>
                 <label htmlFor="requesID" className="block p-8">
-                  <span className="  text-xs text-gray-500 p">Dean Signature</span>
+                  <span className="  text-sm font-bold text-black-500 p">Dean Signature</span>
                   <img
                     src={bookIdtoCustodian.signatureDean}
                     alt="College Dean Signature"
                     width="100"
                     height="100"
-                    className=" mt-2 border-solid border-4 border-gray-blue-900"
+                    className=" mt-2 border-solid border-4 border-black-blue-900"
                   />
-                  <div className="text-xs mt-2 text-gray-500 underline">
+                  <div className="text-xs mt-2 text-black-500 underline">
                     {bookIdtoCustodian.deanName}
                   </div>
 

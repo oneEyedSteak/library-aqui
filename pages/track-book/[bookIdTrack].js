@@ -35,9 +35,9 @@ export default function RequestForm({ bookIdTrack }) {
       </Head>
       {!session && (
         <>
-          <div className=" mx-auto p-10 md:flex bg-gray-500  border-blue-900 border-1 rounded">
+          <div className=" mx-auto p-10 md:flex bg-black-500  border-blue-900 border-1 rounded">
             <span className="
-         text-gray-600 px-3 py-2 rounded-md text-sm font-medium"
+         text-black-600 px-3 py-2 rounded-md text-sm font-medium"
             >
               Please Sign In First
             </span>
@@ -51,21 +51,21 @@ export default function RequestForm({ bookIdTrack }) {
             onSubmit={handleOnSubmit}
             render={({ handleSubmit }) => (
 
-              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-white rounded-md my-16 shadow-md w-full mx-auto h-auto  ">
+              <form onSubmit={handleSubmit} className=" px-8 pt-8 pb-8 bg-blue-200 rounded-md my-16 shadow-md w-full mx-auto h-auto  ">
 
                 <div className="flex-shrink-0 flex content-around items-center">
 
                   <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
                   <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-                  <h1 className="text-xl  text-gray-600 ">Track Books</h1>
+                  <h1 className="text-3xl font-bold text-black-600 ">Track Books</h1>
                 </div>
 
                 <div className="flex space-x-6 content-around items-center mt-10 justify-end p-8">
                   <label htmlFor="date" className="block">
-                    <span className="block  text-xs  text-gray-500">Rush or Not Rush</span>
+                    <span className="block  text-sm font-bold text-black-500">Rush or Not Rush</span>
                     <Field
-                      className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                      className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                       name="rushornrush"
                       component="input"
                       type="text"
@@ -75,11 +75,11 @@ export default function RequestForm({ bookIdTrack }) {
                     />
                   </label>
                   <label htmlFor="date" className="block  mr-3">
-                    <span className="block  text-xs text-gray-500 ">Requested Date</span>
+                    <span className="block  text-sm font-bold text-black-500 ">Requested Date</span>
                     <Field
-                      className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500
-                        cursor-pointer placeholder-gray-700 placeholder-opacity-50 bg-gray-50"
+                      className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500
+                        cursor-pointer placeholder-black-700 placeholder-opacity-50 bg-black-50"
                       name="date"
                       component="input"
                       type="text"
@@ -93,10 +93,10 @@ export default function RequestForm({ bookIdTrack }) {
                 <div className="grid grid-cols-3 gap-x-4 gap-y-6 p-8 border-1 ">
                   <div className="row-start-1">
                     <label htmlFor="title" className=" ">
-                      <span className=" mt-2 text-xs  text-gray-500 ">User ID</span>
+                      <span className=" mt-2 text-sm font-bold text-black-500 ">User ID</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="userID"
                         type="text"
@@ -105,11 +105,11 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Name</span>
+                      <span className="  text-sm font-bold text-black-500 ">Name</span>
 
                       <Field
-                        className="  block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="  block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="requestee"
                         type="text"
@@ -118,11 +118,11 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Department</span>
+                      <span className="  text-sm font-bold text-black-500 ">Department</span>
 
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="selectDepartment"
                         type="text"
@@ -132,11 +132,11 @@ export default function RequestForm({ bookIdTrack }) {
                     </label>
 
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Position</span>
+                      <span className="  text-sm font-bold text-black-500 ">Position</span>
 
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                    focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                    focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="selectPosition"
                         type="text"
@@ -148,10 +148,10 @@ export default function RequestForm({ bookIdTrack }) {
                   </div>
                   <div className="row-start-1 col-span-2">
                     <label htmlFor="author" className="">
-                      <span className=" hover:textColor-red text-xs  text-gray-500 mb-1">Author</span>
+                      <span className=" hover:textColor-red text-sm font-bold text-black-500 mb-1">Author</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="authorName"
                         type="text"
@@ -162,10 +162,10 @@ export default function RequestForm({ bookIdTrack }) {
                     </label>
 
                     <label htmlFor="title" className=" ">
-                      <span className="  text-xs text-gray-500 ">Title</span>
+                      <span className="  text-sm font-bold text-black-500 ">Title</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                      focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                      focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="title"
                         type="text"
@@ -175,10 +175,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className="">
-                      <span className="  text-xs  text-gray-500 mb-1">Publisher Name</span>
+                      <span className="  text-sm font-bold text-black-500 mb-1">Publisher Name</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubName"
                         type="text"
@@ -187,10 +187,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className=" ">
-                      <span className="  text-xs  text-gray-500 ">Publisher Address</span>
+                      <span className="  text-sm font-bold text-black-500 ">Publisher Address</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubAddress"
                         type="text"
@@ -204,10 +204,10 @@ export default function RequestForm({ bookIdTrack }) {
 
                   <div className="row-start-2 ">
                     <label htmlFor="copvol" className=" ">
-                      <span className="  text-xs  text-gray-500">Copies/Volumes</span>
+                      <span className="  text-sm font-bold text-black-500">Copies/Volumes</span>
                       <Field
-                        className="  block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="  block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="copvol"
                         type="text"
@@ -217,10 +217,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="edition" className="">
-                      <span className="  text-xs  text-gray-500 ">Edition</span>
+                      <span className="  text-sm font-bold text-black-500 ">Edition</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="edition"
                         type="text"
@@ -230,10 +230,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="dated" className="mb-1">
-                      <span className="  text-xs text-gray-500 mb-">Price </span>
+                      <span className="  text-sm font-bold text-black-500 mb-">Price </span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="price"
                         type="text"
@@ -243,10 +243,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="chargedto" className=" h-48">
-                      <span className="block  text-xs  text-gray-500 mb-1">Charge to</span>
+                      <span className="block  text-sm font-bold text-black-500 mb-1">Charge to</span>
                       <Field
-                        className="text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="chargeto"
                         type="text"
@@ -258,10 +258,10 @@ export default function RequestForm({ bookIdTrack }) {
                   </div>
                   <div className="row-start-2 col-span-2">
                     <label htmlFor="subjectr" className="">
-                      <span className="  text-xs text-gray-500 mb-1">Subject</span>
+                      <span className="  text-sm font-bold text-black-500 mb-1">Subject</span>
                       <Field
-                        className=" block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className=" block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="subject"
                         type="text"
@@ -272,10 +272,10 @@ export default function RequestForm({ bookIdTrack }) {
                     </label>
                     <label htmlFor="pdate" className="  ">
 
-                      <span className="  text-xs text-gray-500">Publication Date</span>
+                      <span className="  text-sm font-bold text-black-500">Publication Date</span>
                       <Field
-                        className="block text-gray-500 rounded-md  w-full
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50"
+                        className="block text-black-500 rounded-md  w-full
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50"
                         component="input"
                         name="pubdate"
                         type="text"
@@ -285,10 +285,10 @@ export default function RequestForm({ bookIdTrack }) {
                       />
                     </label>
                     <label htmlFor="notereqform" className="">
-                      <span className="block  text-xs  text-gray-500 mb-1">Note:</span>
+                      <span className="block  text-sm font-bold text-black-500 mb-1">Note:</span>
                       <Field
-                        className="resize-none text-gray-500 rounded-md  w-full h-2/4
-                        focus:placeholder-gray-700 focus:border-gray-500 placeholder-gray-700 border-0 placeholder-opacity-50 bg-gray-50 "
+                        className="resize-none text-black-500 rounded-md  w-full h-2/4
+                        focus:placeholder-black-700 focus:border-black-500 placeholder-black-700 border-0 placeholder-opacity-50 bg-black-50 "
                         component="textarea"
                         name="notereqform"
                         type="input"
@@ -299,53 +299,53 @@ export default function RequestForm({ bookIdTrack }) {
                     </label>
                   </div>
                   <div className="row-start-3">
-                    <span className="  text-xs  text-gray-500 mb-1">Approved by: </span>
-                    <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="  text-sm font-bold text-black-500 mb-1">Approved by: </span>
+                    <span className="text-xs block  text-black-500 mt-2">
                       Finance:
                       {' '}
                       {bookIdTrack.approvalFinance ? '✓' : 'No'}
 
                     </span>
-                    <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="text-xs block  text-black-500 mt-2">
                       Dean:
                       {' '}
                       {bookIdTrack.approvalDean ? '✓' : 'No'}
 
                     </span>
-                    <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="text-xs block  text-black-500 mt-2">
                       President:
                       {' '}
                       {bookIdTrack.approvalPresident ? '✓' : 'No'}
 
                     </span>
-                    <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="text-xs block  text-black-500 mt-2">
                       VPAA:
                       {' '}
                       {bookIdTrack.approvalVpaa ? '✓' : 'No'}
 
                     </span>
-                    <span className="text-xs block  text-gray-500 mt-2">
+                    <span className="text-xs block  text-black-500 mt-2">
                       Director:
                       {' '}
                       {bookIdTrack.approvalDirector ? '✓' : 'No'}
                     </span>
                   </div>
                   <div className="row-start-3 ">
-                    <span className="  text-xs  text-gray-500 mb-1">Signed by: </span>
+                    <span className="  text-sm font-bold text-black-500 mb-1">Signed by: </span>
 
                     <div className="flex  space-x-2">
 
                       {bookIdTrack.signatureDean && (
                         <label htmlFor="requesID" className="">
-                          <span className="  text-xs  text-gray-500 p">Dean Signature</span>
+                          <span className="  text-sm font-bold  text-black-500 p">Dean Signature</span>
                           <img
                             src={bookIdTrack.signatureDean}
                             alt="College Dean Signature"
                             width="100"
                             height="100"
-                            className=" mt-2  border border-1 border-gray-blue-900"
+                            className=" mt-2  border border-1 border-black-blue-900"
                           />
-                            <div className="text-xs mt-2 text-gray-500 underline">
+                            <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdTrack.deanName}
                         </div>
                         </label>
@@ -353,30 +353,30 @@ export default function RequestForm({ bookIdTrack }) {
                       {bookIdTrack.signatureAcquisition && (
 
                         <label htmlFor="requesID" className="">
-                          <span className="  text-xs  text-gray-500 p">Acquisition Signature</span>
+                          <span className="  text-sm font-bold text-black-500 p">Acquisition Signature</span>
                           <img
                             src={bookIdTrack.signatureAcquisition}
                             alt="College Dean Signature"
                             width="100"
                             height="100"
-                            className="mt-2  border border-1 border-gray-blue-900"
+                            className="mt-2  border border-1 border-black-blue-900"
                           />
-                             <div className="text-xs mt-2 text-gray-500 underline">
+                             <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdTrack.acquisitionName}
                         </div>
                         </label>
                       )}
                       {bookIdTrack.signatureVPAA && (
                         <label htmlFor="requesID" className="">
-                          <span className="  text-xs text-gray-500 p">VPAA Signature</span>
+                          <span className="  text-sm font-bold text-black-500 p">VPAA Signature</span>
                           <img
                             src={bookIdTrack.signatureVPAA}
                             alt="College Dean Signature"
                             width="100"
                             height="100"
-                            className=" mt-2   border border-1 border-gray-blue-900"
+                            className=" mt-2   border border-1 border-black-blue-900"
                           />
-                          <div className="text-xs mt-2 text-gray-500 underline">
+                          <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdTrack.vpaaName}
                         </div>
                         </label>
@@ -385,30 +385,30 @@ export default function RequestForm({ bookIdTrack }) {
                       {bookIdTrack.signatureFinance && (
 
                         <label htmlFor="requesID" className="">
-                          <span className="  text-xs  text-gray-500 ">Finance Signature</span>
+                          <span className="  text-sm font-bold  text-black-500 ">Finance Signature</span>
                           <img
                             src={bookIdTrack.signatureFinance}
                             alt="College Dean Signature"
                             width="100"
                             height="100"
-                            className=" mt-2  border border-1 border-gray-blue-900"
+                            className=" mt-2  border border-1 border-black-blue-900"
                           />
-                              <div className="text-xs mt-2 text-gray-500 underline">
+                              <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdTrack.financeName}
                         </div>
                         </label>
                       )}
                       {bookIdTrack.signtureDirector && (
                         <label htmlFor="requesID" className="">
-                          <span className="  text-xs  text-gray-500 p">Director Signature</span>
+                          <span className="  text-sm font-bold text-black-500 p">Director Signature</span>
                           <img
                             src={bookIdTrack.signtureDirector}
                             alt="College Dean Signature"
                             width="100"
                             height="100"
-                            className=" mt-2 mb-2  border border-1 border-gray-blue-900"
+                            className=" mt-2 mb-2  border border-1 border-black-blue-900"
                           />
-                          <div className="text-xs mt-2 text-gray-500 underline">
+                          <div className="text-xs mt-2 text-black-500 underline">
                         {bookIdTrack.directorName}
                         </div>
                         </label>

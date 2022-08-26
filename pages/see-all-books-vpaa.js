@@ -87,9 +87,9 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
         Cell: ({ row: { values } }) => (
           <Link href={`/approve-books-VPAA/${values.requestID}`}>
 
-            <div className="  bg-gray-100  text-center  border border-transparent shadow-sm text-sm  rounded-md
+            <div className="  bg-black-100  text-center  border border-transparent shadow-sm text-sm  rounded-md
                        hover:bg-base-700
-                    focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer text-gray-600
+                    focus:outline-none focus:ring-1 focus:ring-offset-2 focus:ring-indigo-500 cursor-pointer text-black-600
                 flex "
             >
               Update Request
@@ -115,18 +115,18 @@ export default function seeAllBooksVPAA({ booksVPAADisplay }) {
       </Head>
       <section className="max-w-screen bg-base min-h-screen mx-auto ">
 
-        <form className=" p-14 bg-white rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
+        <form className=" p-14 bg-blue-200 rounded-md my-16 w- mx-auto h-auto w-auto shadow-lg ">
           <div className="flex-shrink-0 flex content-around items-center">
 
             <img className="hidden lg:block h-14 w-auto  mr-3" src="/cpulogo.png" alt="okay" />
             <img className="block lg:hidden h-14 w-auto  mr-3" src="/cpulogo.png" alt="cpu logo" />
-            <h1 className="text-xl  text-gray-600 ">All Requested Books</h1>
+            <h1 className="text-3xl font-bold text-black-600 ">All Requested Books</h1>
 
           </div>
 
           <div className="text-xs shadow-md w-full mt-10 p">
             <label htmlFor="selectDepartment" className="block ">
-              <span className="block  text-xs  text-gray-500 "> All Books</span>
+              <span className="block  text-sm font-bold  text-black-500 "> All Books</span>
 
               <ReactTable data={booksVPAADisplay} columns={postRequestedBooks} />
             </label>
